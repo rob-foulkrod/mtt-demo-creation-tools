@@ -1,5 +1,5 @@
 ---
-version: 2.1.0
+version: 2.2.0
 name: demo-on-demand
 description: |
   Builds a clean, public-safe demo-on-demand package for an MTT private delivery and places it in
@@ -18,14 +18,33 @@ cowork:
 
 ## Version and Canonical Source
 
-- **Current version:** `2.1.0`
-- **Canonical source file:** `https://microsoft.sharepoint.com/teams/EngineeringProcurementDemo/CA%20West%20Team%20IdeaHub/Cowork%20Skills/demo-builder-SKILL.md`
+- **Current version:** `2.2.0`
+- **Public repository:** `https://github.com/rob-foulkrod/mtt-demo-creation-tools`
+- **Cowork skill folder:** `https://github.com/rob-foulkrod/mtt-demo-creation-tools/tree/main/cowork`
+- **Canonical source file:** `https://raw.githubusercontent.com/rob-foulkrod/mtt-demo-creation-tools/main/cowork/demo-builder-SKILL.md`
+- **Generate-data skill folder:** `https://github.com/rob-foulkrod/mtt-demo-creation-tools/tree/main/Common/generate-data`
+- **Generate-data source file:** `https://raw.githubusercontent.com/rob-foulkrod/mtt-demo-creation-tools/main/Common/generate-data/SKILL.md`
 
-Before running a demo-on-demand workflow, resolve and read the canonical source file with the
-SharePoint/OneDrive file tools and compare its frontmatter `version` with this loaded copy. If the
-canonical version is newer, use its current instructions for the run and tell the user that a newer
-version was found. Do not overwrite the installed personal skill unless the user asks to update it.
-If the canonical file cannot be accessed, continue with the loaded version and disclose the gap.
+Before running a demo-on-demand workflow, read the canonical source file from the public GitHub URL
+above and compare its frontmatter `version` with this loaded copy. If the canonical version is
+newer, use its current instructions for the run and tell the user that a newer version was found. Do
+not overwrite the installed personal skill unless the user asks to update it. If the canonical file
+cannot be accessed, continue with the loaded version and disclose the gap.
+
+## Generate-data Dependency
+
+- **Required version:** `2026.09.04.1` or newer.
+- Load the generate-data skill before creating any fictional company, person, email address, or
+  sample data.
+- If the generate-data skill or its `companies.csv` and `names.csv` support files are not installed
+  locally with this Cowork skill, offer to download and install the full folder from
+  `https://github.com/rob-foulkrod/mtt-demo-creation-tools/tree/main/Common/generate-data` before
+  generating data.
+- When downloading directly, use the raw files from
+  `https://raw.githubusercontent.com/rob-foulkrod/mtt-demo-creation-tools/main/Common/generate-data/SKILL.md`,
+  `https://raw.githubusercontent.com/rob-foulkrod/mtt-demo-creation-tools/main/Common/generate-data/companies.csv`,
+  and
+  `https://raw.githubusercontent.com/rob-foulkrod/mtt-demo-creation-tools/main/Common/generate-data/names.csv`.
 
 When the user asks to update this skill:
 
@@ -34,10 +53,11 @@ When the user asks to update this skill:
    version** line. Use a patch version for wording or fixes, a minor version for backward-compatible
    behavior additions, and a major version for incompatible workflow or output-structure changes.
 3. Apply the change to the active personal skill when requested, then validate and score it.
-4. Save the identical validated `SKILL.md` content back to the canonical source file at the URL
-   above with replace behavior.
-5. Read the saved canonical file again and verify that its version and content match before
-   reporting completion.
+4. Commit the identical validated `SKILL.md` content back to the public GitHub repository path
+   `https://github.com/rob-foulkrod/mtt-demo-creation-tools/tree/main/cowork`.
+5. Read the saved canonical file again from
+   `https://raw.githubusercontent.com/rob-foulkrod/mtt-demo-creation-tools/main/cowork/demo-builder-SKILL.md`
+   and verify that its version and content match before reporting completion.
 
 ## Overview
 

@@ -1,5 +1,5 @@
 ---
-version: 2026.08.28.4
+version: 2026.09.04.1
 name: demo-on-demand
 description: |
   Builds public-safe demo-on-demand packages for MTT private deliveries and first asks, "Will you
@@ -15,14 +15,23 @@ description: |
 Use this skill when an MTT wants to create a demo-on-demand package for a private delivery. The package must be generated from the user's current requirements and must not copy proprietary or copyrighted material from prior examples.
 
 Skill version:
-Version: 2026.08.28.4
+Version: 2026.09.04.1
 
 Source references:
-- Scout source of truth: `demo-on-demand-SKILL.md` in the SharePoint `ScoutSkills` folder for the `CA West Team IdeaHub` library.
-- Scout source file URL: `https://microsoft.sharepoint.com/teams/EngineeringProcurementDemo/CA%20West%20Team%20IdeaHub/ScoutSkills/demo-on-demand-SKILL.md?web=1`
-- Cowork format reference: `https://microsoft.sharepoint.com/teams/EngineeringProcurementDemo/CA%20West%20Team%20IdeaHub/Cowork%20Skills/demo-builder-SKILL.md?web=1`
+- Public repository: `https://github.com/rob-foulkrod/mtt-demo-creation-tools`
+- Scout skill folder: `https://github.com/rob-foulkrod/mtt-demo-creation-tools/tree/main/scout`
+- Scout source file: `https://raw.githubusercontent.com/rob-foulkrod/mtt-demo-creation-tools/main/scout/demo-on-demand-SKILL.md`
+- Cowork format reference: `https://raw.githubusercontent.com/rob-foulkrod/mtt-demo-creation-tools/main/cowork/demo-builder-SKILL.md`
+- Generate-data skill folder: `https://github.com/rob-foulkrod/mtt-demo-creation-tools/tree/main/Common/generate-data`
+- Generate-data source file: `https://raw.githubusercontent.com/rob-foulkrod/mtt-demo-creation-tools/main/Common/generate-data/SKILL.md`
 
-At the start of each use, check the Scout Source file URL above when SharePoint access is available. If the SharePoint copy has a higher version number than this local skill file, tell the user that a newer Scout version is available and prompt them to install it before continuing. If the user approves, update the local skill with the SharePoint source-of-truth file, then reload the updated skill instructions before continuing. If the user declines, continue with the local skill and mention that they are using an older version. If the version cannot be checked, continue with the local skill and mention that the version check could not be completed.
+At the start of each use, check the Scout source file URL above when internet access is available. If the public GitHub copy has a higher version number than this local skill file, tell the user that a newer Scout version is available and prompt them to install it before continuing. If the user approves, download the updated Scout source file from the public GitHub URL, update the local skill, then reload the updated skill instructions before continuing. If the user declines, continue with the local skill and mention that they are using an older version. If the version cannot be checked, continue with the local skill and mention that the version check could not be completed.
+
+Generate-data dependency:
+- Required version: `2026.09.04.1` or newer.
+- Before creating any fictional company, person, email address, or sample data, load the generate-data skill from `https://github.com/rob-foulkrod/mtt-demo-creation-tools/tree/main/Common/generate-data`.
+- If the generate-data skill or its `companies.csv` and `names.csv` support files are not installed locally with this skill, offer to download and install the full folder from `https://github.com/rob-foulkrod/mtt-demo-creation-tools/tree/main/Common/generate-data` before generating data.
+- When downloading directly, use the raw files from `https://raw.githubusercontent.com/rob-foulkrod/mtt-demo-creation-tools/main/Common/generate-data/SKILL.md`, `https://raw.githubusercontent.com/rob-foulkrod/mtt-demo-creation-tools/main/Common/generate-data/companies.csv`, and `https://raw.githubusercontent.com/rob-foulkrod/mtt-demo-creation-tools/main/Common/generate-data/names.csv`.
 
 Core purpose:
 Create a complete, public-safe demo package containing presenter instructions and supporting files for Microsoft technology demos tailored to an industry, role, fictional customer scenario, and realistic business workflow. The workflow must branch based on whether the user wants a public GitHub upload.

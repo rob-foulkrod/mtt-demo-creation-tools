@@ -1,4 +1,5 @@
 ---
+version: 2026.09.04.1
 name: generate-data
 description: >
   REQUIRED whenever synthetic, fake, or sample content will contain a COMPANY NAME or PERSON NAME.
@@ -13,6 +14,24 @@ metadata:
 ---
 
 # Generate Data Skill
+
+## Version and Canonical Source
+
+- **Current version:** `2026.09.04.1`
+- **Public repository:** `https://github.com/rob-foulkrod/mtt-demo-creation-tools`
+- **Canonical folder:** `https://github.com/rob-foulkrod/mtt-demo-creation-tools/tree/main/Common/generate-data`
+- **Canonical source file:** `https://raw.githubusercontent.com/rob-foulkrod/mtt-demo-creation-tools/main/Common/generate-data/SKILL.md`
+- **Approved company list:** `https://raw.githubusercontent.com/rob-foulkrod/mtt-demo-creation-tools/main/Common/generate-data/companies.csv`
+- **Approved person-name list:** `https://raw.githubusercontent.com/rob-foulkrod/mtt-demo-creation-tools/main/Common/generate-data/names.csv`
+
+Before using this skill, check the canonical source file when internet access is available. If the
+public GitHub copy has a higher version number than the local copy, tell the user that a newer
+generate-data skill is available and offer to download and install the full folder from
+`https://github.com/rob-foulkrod/mtt-demo-creation-tools/tree/main/Common/generate-data`. If this
+skill is referenced by another skill but is not installed locally with `companies.csv` and
+`names.csv`, offer to download and install the full generate-data folder before generating data. If
+the version check cannot be completed, continue with the local copy and disclose that the update
+check was skipped.
 
 ## When NOT to Use
 
