@@ -1,5 +1,5 @@
 ---
-version: 2.2.0
+version: 2.2.1
 name: demo-on-demand
 description: |
   Builds a clean, public-safe demo-on-demand package for an MTT private delivery and places it in
@@ -18,7 +18,7 @@ cowork:
 
 ## Version and Canonical Source
 
-- **Current version:** `2.2.0`
+- **Current version:** `2.2.1`
 - **Public repository:** `https://github.com/rob-foulkrod/mtt-demo-creation-tools`
 - **Cowork skill folder:** `https://github.com/rob-foulkrod/mtt-demo-creation-tools/tree/main/cowork`
 - **Canonical source file:** `https://raw.githubusercontent.com/rob-foulkrod/mtt-demo-creation-tools/main/cowork/demo-builder-SKILL.md`
@@ -33,7 +33,7 @@ cannot be accessed, continue with the loaded version and disclose the gap.
 
 ## Generate-data Dependency
 
-- **Required version:** `2026.09.04.1` or newer.
+- **Required version:** `2026.09.04.2` or newer.
 - Load the generate-data skill before creating any fictional company, person, email address, or
   sample data.
 - If the generate-data skill or its `companies.csv` and `names.csv` support files are not installed
@@ -45,6 +45,17 @@ cannot be accessed, continue with the loaded version and disclose the gap.
   `https://raw.githubusercontent.com/rob-foulkrod/mtt-demo-creation-tools/main/Common/generate-data/companies.csv`,
   and
   `https://raw.githubusercontent.com/rob-foulkrod/mtt-demo-creation-tools/main/Common/generate-data/names.csv`.
+
+## Local File Validation
+
+- **Cowork skill local path:** `C:\Users\anconnif\.scout\m-skills\demo-on-demand\SKILL.md`.
+- **Generate-data local folder:** `C:\Users\anconnif\.scout\m-skills\generate-data`.
+- Before running, validate that the Cowork skill local path exists and that the generate-data folder
+  contains `SKILL.md`, `companies.csv`, and `names.csv`.
+- If any required local file is missing, offer to download and install it from the full public GitHub
+  URL listed above before continuing.
+- If the user provides a different local Cowork skills root, validate that path instead and report
+  the exact path used.
 
 When the user asks to update this skill:
 
