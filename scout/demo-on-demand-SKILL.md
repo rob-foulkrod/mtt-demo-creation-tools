@@ -1,5 +1,5 @@
 ---
-version: 2026.09.04.3
+version: 2026.09.04.4
 name: demo-on-demand
 description: |
   Builds public-safe demo-on-demand packages for MTT private deliveries and first asks, "Will you
@@ -15,7 +15,7 @@ description: |
 Use this skill when an MTT wants to create a demo-on-demand package for a private delivery. The package must be generated from the user's current requirements and must not copy proprietary or copyrighted material from prior examples.
 
 Skill version:
-Version: 2026.09.04.3
+Version: 2026.09.04.4
 
 Source references:
 - Public repository: `https://github.com/rob-foulkrod/mtt-demo-creation-tools`
@@ -29,7 +29,7 @@ Source references:
 At the start of each use, check the Scout source file URL above when internet access is available. If the public GitHub copy has a higher version number than this local skill file, tell the user that a newer Scout version is available and prompt them to install it before continuing. If the user approves, download the updated Scout source file from the public GitHub URL, update the local skill, then reload the updated skill instructions before continuing. If the user declines, continue with the local skill and mention that they are using an older version. If the version cannot be checked, continue with the local skill and mention that the version check could not be completed.
 
 Generate-data dependency:
-- Required version: `2026.09.04.3` or newer.
+- Required version: `2026.09.04.4` or newer.
 - Before creating any fictional company, person, email address, or sample data, load the generate-data skill from `https://github.com/rob-foulkrod/mtt-demo-creation-tools/tree/main/Common/generate-data`.
 - If the generate-data skill or its `companies.csv` and `names.csv` support files are not installed locally with this skill, offer to download and install the full folder from `https://github.com/rob-foulkrod/mtt-demo-creation-tools/tree/main/Common/generate-data` before generating data.
 - When downloading directly, use the raw files from `https://raw.githubusercontent.com/rob-foulkrod/mtt-demo-creation-tools/main/Common/generate-data/SKILL.md`, `https://raw.githubusercontent.com/rob-foulkrod/mtt-demo-creation-tools/main/Common/generate-data/companies.csv`, and `https://raw.githubusercontent.com/rob-foulkrod/mtt-demo-creation-tools/main/Common/generate-data/names.csv`.
@@ -43,7 +43,7 @@ Local file validation:
 
 Change log requirement:
 - Every update to this skill must write a change log file in `https://github.com/rob-foulkrod/mtt-demo-creation-tools/tree/main/change%20logs`.
-- The change log file name must be `<skill-name>-<skill-version>-log.md`; for this skill, use `demo-on-demand-2026.09.04.3-log.md` for version `2026.09.04.3`.
+- The change log file name must be `<skill-name>-<skill-version>-log.md`; for this skill, use `demo-on-demand-2026.09.04.4-log.md` for version `2026.09.04.4`.
 - The change log title must be `<skill-name> <skill-version>-log`.
 - The change log must include `Skill name`, `Skill version`, `Additions`, and `Deletions` sections. If there are no deletions, write `None`.
 - Commit the change log file in the same commit as the skill update.
@@ -239,18 +239,11 @@ GitHub upload workflow when GitHub upload is Yes:
 8. Commit and push the link update after repository creation.
 9. If GitHub CLI is not available or not authenticated, try standard git commands if a remote repository can be created or provided. If public repository creation is not possible in the current environment, leave a complete local repository and provide exact commands for the user to create the public repo and upload all artifacts.
 
-Demo catalog workflow for GitHub packages:
-1. ALWAYS update the shared Demo-on-Demand catalog workbook after a demo repository is successfully published. This is mandatory for every published GitHub demo.
-2. Use an Excel workbook, not a Word document, for the catalog because the catalog is a structured manifest that MTTs need to filter, sort, and maintain.
-3. Default catalog location: the `Demos` folder in the same SharePoint site used by the MTT ideas and initiatives workflow, under `CA West Team IdeaHub`.
-4. Default catalog file name: `Demo-on-Demand Catalog.xlsx`.
-5. If the `Demos` folder or catalog workbook does not exist and permissions allow, create them. If direct SharePoint creation is not possible, create the workbook locally and provide the exact SharePoint destination for manual upload.
-6. The catalog workbook must be labeled Public and include at least these columns: Demo name, Status, GitHub owner, GitHub repository, GitHub URL, Industry or scenario, Fictional Microsoft Fake Company, Technology focus, Target audience, Created date, Created by, Last updated date, Public classification confirmed, README URL, Demo instructions URL, Manifest URL, Notes.
-7. Use `Active` for newly published demos unless the user specifies another status.
-8. Add or update exactly one row per GitHub repository. If the repository already appears in the catalog, update the existing row instead of creating a duplicate.
-9. Before uploading or replacing the shared catalog workbook, preview the row that will be added or changed and ask for user approval because the update is visible according to SharePoint permissions.
-10. After updating the catalog, report the catalog location and row status.
-11. If the catalog update cannot be completed because SharePoint, Excel, or permissions are unavailable, create a local catalog-update file containing the exact row values and provide the specific SharePoint catalog destination so the user can upload or apply it manually. Report this as a blocker, not as a successful catalog update.
+Demo logging:
+1. Do not log newly created demos to a shared catalog, SharePoint folder, workbook, list, or other tracking destination.
+2. Demo logging is intentionally deferred until a future logging process is selected.
+3. Use the public GitHub repository page `https://github.com/rob-foulkrod/mtt-demo-creation-tools` as the source for demo-builder skill updates and documentation.
+4. After a GitHub demo package is published, report only the created repository URL and generated package contents. Do not create or update any separate catalog row.
 
 Non-GitHub upload/verification workflow when GitHub upload is No:
 1. Preview the package before writing or uploading: technology scope, starting experience, build/use scope, destination, root structure, sample-data contents, prompt sequence, sources, assumptions, and classification/disclaimer approach.
@@ -261,14 +254,12 @@ Non-GitHub upload/verification workflow when GitHub upload is No:
 6. Report actual links returned by tools. Do not invent links.
 
 Demo archive and deletion workflow:
-1. If an MTT asks to delete, remove, retire, or archive a demo, first clarify whether they want to archive the catalog entry only, delete or archive the public GitHub repository, delete local generated files, remove generated SharePoint catalog entries, or all of the above.
+1. If an MTT asks to delete, remove, retire, or archive a demo, first clarify whether they want to delete or archive the public GitHub repository, delete local generated files, remove generated destination files, or all of the above.
 2. Never delete a public GitHub repository, local folder, or SharePoint file without explicit confirmation that names the target repository or file.
-3. Prefer archiving over deletion for the shared catalog. Set Status to `Archived` or `Deleted`, preserve the GitHub URL for traceability when appropriate, and add a note with the date and reason.
-4. If the repository should remain but no longer be promoted, update the catalog row to `Archived` and do not delete the GitHub repository.
-5. If the repository should be deleted, confirm the exact `owner/repository` name, clearly state that repository deletion is irreversible, obtain explicit confirmation naming that target, use GitHub CLI when authenticated, and then update the catalog row to `Deleted` with the deletion date and reason.
+3. If the repository should remain but no longer be promoted, keep the repository and tell the user demo logging/catalog updates are not currently maintained by this skill.
+4. If the repository should be deleted, confirm the exact `owner/repository` name, clearly state that repository deletion is irreversible, obtain explicit confirmation naming that target, and use GitHub CLI when authenticated.
 6. If the local generated package folder should be deleted, confirm the exact local path before deleting it.
-7. If a demo's own `manifest.json` is being updated during archive or deletion, set a repository-level status field when present or add one if needed, then commit and push that status update before any repository deletion. If the repository is being deleted immediately, update only the shared catalog because the repository manifest will no longer be available.
-8. After archive or deletion, validate that the shared catalog has no duplicate active rows for the demo.
+7. If a demo's own `manifest.json` is being updated during archive or deletion, set a repository-level status field when present or add one if needed, then commit and push that status update before any repository deletion.
 
 Quality bar:
 1. The package must be complete enough for an MTT to run the private delivery without asking for missing scripts or files.
@@ -283,7 +274,7 @@ Quality bar:
 10. Validate that Word documents are substantive and a few pages long where Word documents are part of the demo.
 11. Validate that Excel workbooks have multiple sheets and enough fictional data rows for the selected branch and scenario.
 12. Validate that prompts and human-readable instructions are consolidated in the branch-appropriate instruction files and prompt text is shown in clearly labeled boxes.
-13. Validate that the Demo-on-Demand catalog workbook was updated with exactly one Active row for published GitHub repositories, or that a catalog-update blocker and local catalog-update file were provided.
+13. Validate that no separate demo catalog, SharePoint logging file, workbook, or list was created or updated.
 14. Do not create or store secrets, credentials, tenant IDs, private URLs, or customer confidential content.
 
 ## Guardrails
@@ -301,18 +292,17 @@ Quality bar:
 - **Never fabricate real facts:** Use researched public patterns and invented demo content. Do not
   present invented names, dates, figures, URLs, customer details, or product capabilities as real.
 - **Approval before visible writes:** Preview the exact package, destination, classification, and
-  disclaimer approach before creating a public repository, uploading to a shared folder, or
-  updating the shared demo catalog.
-- **No silent overwrite:** If a repository, package, catalog row, or destination item already
+  disclaimer approach before creating a public repository or uploading to a shared folder.
+- **No silent overwrite:** If a repository, package, or destination item already
   exists, identify it and obtain explicit direction before replacing or reusing it.
 - **Destructive actions require named confirmation:** Never delete or permanently remove a
-  repository, package, file, folder, or catalog entry without explicit confirmation naming the
+  repository, package, file, or folder without explicit confirmation naming the
   exact target. Prefer archive or retired status where possible.
 - **Branch fidelity:** GitHub packages must contain the complete repository structure and download
   links. Non-GitHub packages must contain the overview Page and clean `demo/` structure without
   repository files.
 - **Completion requires verification:** Re-list or inspect every final destination and do not
-  report success while files, links, classifications, catalog updates, or required artifacts are
+  report success while files, links, classifications, or required artifacts are
   missing.
 
-When invoked, begin with the GitHub upload question unless the user already answered it in the current request. Ask only for missing fields after that branch is known. Research the industry, role, and company context; build a realistic multi-input workflow; generate the branch-appropriate local package; present a preview for approval; and then either publish to GitHub and update the shared catalog, or save/upload the Cowork-compatible package and verify the final structure before reporting the workflow complete.
+When invoked, begin with the GitHub upload question unless the user already answered it in the current request. Ask only for missing fields after that branch is known. Research the industry, role, and company context; build a realistic multi-input workflow; generate the branch-appropriate local package; present a preview for approval; and then either publish to GitHub and report the created repository URL without logging it elsewhere, or save/upload the Cowork-compatible package and verify the final structure before reporting the workflow complete.

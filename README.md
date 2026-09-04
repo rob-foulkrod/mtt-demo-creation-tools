@@ -55,9 +55,9 @@ Each skill carries its own version in frontmatter and in its version section:
 
 | Skill | Current version | Canonical source |
 | --- | --- | --- |
-| Scout demo builder | `2026.09.04.3` | `https://raw.githubusercontent.com/rob-foulkrod/mtt-demo-creation-tools/main/scout/demo-on-demand-SKILL.md` |
-| Cowork demo builder | `2.2.2` | `https://raw.githubusercontent.com/rob-foulkrod/mtt-demo-creation-tools/main/cowork/demo-builder-SKILL.md` |
-| Generate data | `2026.09.04.3` | `https://raw.githubusercontent.com/rob-foulkrod/mtt-demo-creation-tools/main/Common/generate-data/SKILL.md` |
+| Scout demo builder | `2026.09.04.4` | `https://raw.githubusercontent.com/rob-foulkrod/mtt-demo-creation-tools/main/scout/demo-on-demand-SKILL.md` |
+| Cowork demo builder | `2.2.3` | `https://raw.githubusercontent.com/rob-foulkrod/mtt-demo-creation-tools/main/cowork/demo-builder-SKILL.md` |
+| Generate data | `2026.09.04.4` | `https://raw.githubusercontent.com/rob-foulkrod/mtt-demo-creation-tools/main/Common/generate-data/SKILL.md` |
 
 At the start of a run, the installed skill should check its canonical raw GitHub URL. If the public
 copy has a higher version, it should tell the user and offer to download and install the updated
@@ -86,10 +86,9 @@ offer to download and install the folder before it generates any data.
 1. Edit the skill file in this repository.
 2. Increment the skill version. Use date-style versions for Scout and generate-data files, and semantic versions for the Cowork skill.
 3. Create a change log file in `change logs/` for every updated skill.
-4. Name each log file `<skill-name>-<skill-version>-log.md`, for example `generate-data-2026.09.04.3-log.md`.
+4. Name each log file `<skill-name>-<skill-version>-log.md`, for example `generate-data-2026.09.04.4-log.md`.
 5. Give each log file the title `<skill-name> <skill-version>-log`.
 6. Include `Skill name`, `Skill version`, `Additions`, and `Deletions` sections. If there are no deletions, write `None`.
 7. Keep every source reference as a full public GitHub URL.
 8. Commit and push the skill and change log changes together to `https://github.com/rob-foulkrod/mtt-demo-creation-tools`.
 9. Update local installed copies from the canonical raw GitHub URLs.
-
