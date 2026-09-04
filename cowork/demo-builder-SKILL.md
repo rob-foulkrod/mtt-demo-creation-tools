@@ -1,5 +1,5 @@
 ---
-version: 2.2.1
+version: 2.2.2
 name: demo-on-demand
 description: |
   Builds a clean, public-safe demo-on-demand package for an MTT private delivery and places it in
@@ -18,12 +18,13 @@ cowork:
 
 ## Version and Canonical Source
 
-- **Current version:** `2.2.1`
+- **Current version:** `2.2.2`
 - **Public repository:** `https://github.com/rob-foulkrod/mtt-demo-creation-tools`
 - **Cowork skill folder:** `https://github.com/rob-foulkrod/mtt-demo-creation-tools/tree/main/cowork`
 - **Canonical source file:** `https://raw.githubusercontent.com/rob-foulkrod/mtt-demo-creation-tools/main/cowork/demo-builder-SKILL.md`
 - **Generate-data skill folder:** `https://github.com/rob-foulkrod/mtt-demo-creation-tools/tree/main/Common/generate-data`
 - **Generate-data source file:** `https://raw.githubusercontent.com/rob-foulkrod/mtt-demo-creation-tools/main/Common/generate-data/SKILL.md`
+- **Change logs folder:** `https://github.com/rob-foulkrod/mtt-demo-creation-tools/tree/main/change%20logs`
 
 Before running a demo-on-demand workflow, read the canonical source file from the public GitHub URL
 above and compare its frontmatter `version` with this loaded copy. If the canonical version is
@@ -33,7 +34,7 @@ cannot be accessed, continue with the loaded version and disclose the gap.
 
 ## Generate-data Dependency
 
-- **Required version:** `2026.09.04.2` or newer.
+- **Required version:** `2026.09.04.3` or newer.
 - Load the generate-data skill before creating any fictional company, person, email address, or
   sample data.
 - If the generate-data skill or its `companies.csv` and `names.csv` support files are not installed
@@ -57,16 +58,29 @@ cannot be accessed, continue with the loaded version and disclose the gap.
 - If the user provides a different local Cowork skills root, validate that path instead and report
   the exact path used.
 
+## Change Log Requirement
+
+- Every update to this skill must write a change log file in
+  `https://github.com/rob-foulkrod/mtt-demo-creation-tools/tree/main/change%20logs`.
+- The change log file name must be `<skill-name>-<skill-version>-log.md`; for this skill, use
+  `demo-on-demand-2.2.2-log.md` for version `2.2.2`.
+- The change log title must be `<skill-name> <skill-version>-log`.
+- The change log must include `Skill name`, `Skill version`, `Additions`, and `Deletions`
+  sections. If there are no deletions, write `None`.
+- Commit the change log file in the same commit as the skill update.
+
 When the user asks to update this skill:
 
 1. Read the canonical source file before editing.
 2. Increment the semantic version in both the frontmatter `version` field and the **Current
    version** line. Use a patch version for wording or fixes, a minor version for backward-compatible
    behavior additions, and a major version for incompatible workflow or output-structure changes.
-3. Apply the change to the active personal skill when requested, then validate and score it.
-4. Commit the identical validated `SKILL.md` content back to the public GitHub repository path
+3. Write the required change log file for the new version in the public repository `change logs`
+   folder.
+4. Apply the change to the active personal skill when requested, then validate and score it.
+5. Commit the identical validated `SKILL.md` content back to the public GitHub repository path
    `https://github.com/rob-foulkrod/mtt-demo-creation-tools/tree/main/cowork`.
-5. Read the saved canonical file again from
+6. Read the saved canonical file again from
    `https://raw.githubusercontent.com/rob-foulkrod/mtt-demo-creation-tools/main/cowork/demo-builder-SKILL.md`
    and verify that its version and content match before reporting completion.
 

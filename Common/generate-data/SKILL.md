@@ -1,5 +1,5 @@
 ---
-version: 2026.09.04.2
+version: 2026.09.04.3
 name: generate-data
 description: >
   REQUIRED whenever synthetic, fake, or sample content will contain a COMPANY NAME or PERSON NAME.
@@ -15,12 +15,13 @@ description: >
 
 ## Version and Canonical Source
 
-- **Current version:** `2026.09.04.2`
+- **Current version:** `2026.09.04.3`
 - **Public repository:** `https://github.com/rob-foulkrod/mtt-demo-creation-tools`
 - **Canonical folder:** `https://github.com/rob-foulkrod/mtt-demo-creation-tools/tree/main/Common/generate-data`
 - **Canonical source file:** `https://raw.githubusercontent.com/rob-foulkrod/mtt-demo-creation-tools/main/Common/generate-data/SKILL.md`
 - **Approved company list:** `https://raw.githubusercontent.com/rob-foulkrod/mtt-demo-creation-tools/main/Common/generate-data/companies.csv`
 - **Approved person-name list:** `https://raw.githubusercontent.com/rob-foulkrod/mtt-demo-creation-tools/main/Common/generate-data/names.csv`
+- **Change logs folder:** `https://github.com/rob-foulkrod/mtt-demo-creation-tools/tree/main/change%20logs`
 
 Before using this skill, check the canonical source file when internet access is available. If the
 public GitHub copy has a higher version number than the local copy, tell the user that a newer
@@ -41,6 +42,17 @@ check was skipped.
 - If downloading directly, use the full raw GitHub URLs listed in the version section above.
 - If the user provides a different local skills root, validate that path instead and report the
   exact path used.
+
+## Change Log Requirement
+
+- Every update to this skill must write a change log file in
+  `https://github.com/rob-foulkrod/mtt-demo-creation-tools/tree/main/change%20logs`.
+- The change log file name must be `<skill-name>-<skill-version>-log.md`; for this skill, use
+  `generate-data-2026.09.04.3-log.md` for version `2026.09.04.3`.
+- The change log title must be `<skill-name> <skill-version>-log`.
+- The change log must include `Skill name`, `Skill version`, `Additions`, and `Deletions`
+  sections. If there are no deletions, write `None`.
+- Commit the change log file in the same commit as the skill update.
 
 ## When NOT to Use
 
