@@ -1,5 +1,5 @@
 ---
-version: 2026.09.04.3
+version: 2026.09.04.4
 name: generate-data
 description: >
   REQUIRED whenever synthetic, fake, or sample content will contain a COMPANY NAME or PERSON NAME.
@@ -15,7 +15,7 @@ description: >
 
 ## Version and Canonical Source
 
-- **Current version:** `2026.09.04.3`
+- **Current version:** `2026.09.04.4`
 - **Public repository:** `https://github.com/rob-foulkrod/mtt-demo-creation-tools`
 - **Canonical folder:** `https://github.com/rob-foulkrod/mtt-demo-creation-tools/tree/main/Common/generate-data`
 - **Canonical source file:** `https://raw.githubusercontent.com/rob-foulkrod/mtt-demo-creation-tools/main/Common/generate-data/SKILL.md`
@@ -48,15 +48,14 @@ check was skipped.
 - Every update to this skill must write a change log file in
   `https://github.com/rob-foulkrod/mtt-demo-creation-tools/tree/main/change%20logs`.
 - The change log file name must be `<skill-name>-<skill-version>-log.md`; for this skill, use
-  `generate-data-2026.09.04.3-log.md` for version `2026.09.04.3`.
+  `generate-data-2026.09.04.4-log.md` for version `2026.09.04.4`.
 - The change log title must be `<skill-name> <skill-version>-log`.
 - The change log must include `Skill name`, `Skill version`, `Additions`, and `Deletions`
   sections. If there are no deletions, write `None`.
 - Commit the change log file in the same commit as the skill update.
+ Use
 
-## When NOT to Use
-
-- **Real data of any kind** — real customers, employees, financials, incidents, medical or legal matters. Never synthesize around real records.
+- **Real data of any kind** — real employees, financials, incidents, medical or legal matters. Never synthesize around real records.
 - **Formatting or authoring an existing document** — if the content already exists and only needs writing, editing or design, use `docx`, `xlsx`, `pptx` or `create` directly. This skill is for originating data, not styling it.
 - **A deck or document with no invented companies or people in it** — an abstract diagram, a process doc, a slide of concepts. No names, no name compliance, no need for this skill.
 - **Building a full instructor-led course from existing source decks** — that is `courseware-create`. **But** if that build needs new sample data with company or person names, load this skill for the data portion and hand the named entities back.
