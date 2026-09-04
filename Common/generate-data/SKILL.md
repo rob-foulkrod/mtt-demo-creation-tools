@@ -8,9 +8,7 @@ description: >
   "make sample files", "dummy/mock/test data", "CIE or Copilot demo examples", "courseware or class demo pack",
   "invent a fictional company/customer/employee", or "/generate-data". Covers Excel, Word, PowerPoint and CSV. Load this BEFORE inventing any company or person name, including when the
   data is a supporting artifact of a larger build. Do NOT use for real customer, employee, confidential, or production data.
-metadata:
-  pluginTitleId: T_6e22199b-e5ec-e1e3-cb6a-655dca793a95
-  publishedAt: "2026-09-04T14:51:25Z"
+
 ---
 
 # Generate Data Skill
