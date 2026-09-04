@@ -2,6 +2,42 @@
 
 Public skill repository for MTT demo-on-demand tooling used by Scout and Cowork.
 
+## Installing locally
+
+Download the raw skill file and any required support files from the canonical URLs above, then place
+them in the local skill folder used by Scout or Cowork. For generate-data, install `SKILL.md`,
+`companies.csv`, and `names.csv` together so name and company validation can run locally.
+
+Before running either demo builder skill, validate that its local `SKILL.md` exists and that the
+generate-data folder contains all three required files. If a file is missing, download it from the
+full public GitHub URL rather than relying on a relative path.
+
+## Prompt: install everything for Scout
+
+Use this prompt in Scout to install or refresh the Scout demo builder and the shared generate-data
+dependency:
+
+```text
+Install these two skills from https://github.com/rob-foulkrod/mtt-demo-creation-tools
+
+- scout/demo-on-demand-SKILL.md → install as skill "demo-on-demand"
+- Common/generate-data/ → install as "generate-data", including companies.csv and names.csv
+```
+
+## Prompt: install everything for Cowork
+
+Use this prompt in Cowork to install or refresh the Cowork demo builder and the shared generate-data
+dependency:
+
+```text
+Install these two skills from https://github.com/rob-foulkrod/mtt-demo-creation-tools
+
+- cowork/demo-builder-SKILL.md → install as skill "demo-on-demand"
+- Common/generate-data/ → install as "generate-data", including companies.csv and names.csv
+```
+
+
+
 ## Repository layout
 
 | Path | Purpose |
@@ -52,41 +88,4 @@ offer to download and install the folder before it generates any data.
 4. Commit and push the changes to `https://github.com/rob-foulkrod/mtt-demo-creation-tools`.
 5. Update local installed copies from the canonical raw GitHub URLs.
 
-## Installing locally
 
-Download the raw skill file and any required support files from the canonical URLs above, then place
-them in the local skill folder used by Scout or Cowork. For generate-data, install `SKILL.md`,
-`companies.csv`, and `names.csv` together so name and company validation can run locally.
-
-Default local paths on this machine:
-
-| Component | Default local path |
-| --- | --- |
-| Scout demo builder skill | `C:\Users\anconnif\.scout\m-skills\demo-on-demand\SKILL.md` |
-| Cowork demo builder skill | `C:\Users\anconnif\.scout\m-skills\demo-on-demand\SKILL.md` |
-| Generate-data folder | `C:\Users\anconnif\.scout\m-skills\generate-data` |
-| Generate-data skill | `C:\Users\anconnif\.scout\m-skills\generate-data\SKILL.md` |
-| Approved companies CSV | `C:\Users\anconnif\.scout\m-skills\generate-data\companies.csv` |
-| Approved names CSV | `C:\Users\anconnif\.scout\m-skills\generate-data\names.csv` |
-
-Before running either demo builder skill, validate that its local `SKILL.md` exists and that the
-generate-data folder contains all three required files. If a file is missing, download it from the
-full public GitHub URL rather than relying on a relative path.
-
-## Prompt: install everything for Scout
-
-Use this prompt in Scout to install or refresh the Scout demo builder and the shared generate-data
-dependency:
-
-```text
-Install the Scout demo builder skill from https://github.com/rob-foulkrod/mtt-demo-creation-tools/tree/main/scout and install the shared generate-data dependency from https://github.com/rob-foulkrod/mtt-demo-creation-tools/tree/main/Common/generate-data. Download the raw files from the public GitHub URLs, place the Scout skill at C:\Users\anconnif\.scout\m-skills\demo-on-demand\SKILL.md, place generate-data at C:\Users\anconnif\.scout\m-skills\generate-data, and verify that generate-data includes SKILL.md, companies.csv, and names.csv before reporting completion.
-```
-
-## Prompt: install everything for Cowork
-
-Use this prompt in Cowork to install or refresh the Cowork demo builder and the shared generate-data
-dependency:
-
-```text
-Install the Cowork demo builder skill from https://github.com/rob-foulkrod/mtt-demo-creation-tools/tree/main/cowork and install the shared generate-data dependency from https://github.com/rob-foulkrod/mtt-demo-creation-tools/tree/main/Common/generate-data. Download the raw files from the public GitHub URLs, place the Cowork skill in the active Cowork personal skill folder, place generate-data at C:\Users\anconnif\.scout\m-skills\generate-data unless a different local skill root is configured, and verify that generate-data includes SKILL.md, companies.csv, and names.csv before reporting completion.
-```
