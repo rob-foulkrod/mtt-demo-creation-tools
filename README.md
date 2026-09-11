@@ -99,11 +99,11 @@ Each skill carries its own version in frontmatter `metadata.version` and in its 
 | Skill | Current version | Canonical source |
 | --- | --- | --- |
 | Scout demo builder | `2026.09.04.8` | `https://raw.githubusercontent.com/rob-foulkrod/mtt-demo-creation-tools/main/scout/demo-on-demand-SKILL.md` |
-| Scout creator maintenance | `1.0.1` | `https://raw.githubusercontent.com/rob-foulkrod/mtt-demo-creation-tools/main/scout/demo-on-demand-creator-maintenance-SKILL.md` |
+| Scout creator maintenance | `1.0.2` | `https://raw.githubusercontent.com/rob-foulkrod/mtt-demo-creation-tools/main/scout/demo-on-demand-creator-maintenance-SKILL.md` |
 | Cowork demo builder | `2.3.2` | `https://raw.githubusercontent.com/rob-foulkrod/mtt-demo-creation-tools/main/cowork/demo-builder-SKILL.md` |
-| Cowork creator maintenance | `1.1.1` | `https://raw.githubusercontent.com/rob-foulkrod/mtt-demo-creation-tools/main/cowork/demo-builder-creator-maintenance-SKILL.md` |
-| Shared edit guardrails | `1.0.1` | `https://raw.githubusercontent.com/rob-foulkrod/mtt-demo-creation-tools/main/Common/demo-builder-edit-guardrails-SKILL.md` |
-| Generate data | `2026.09.04.5` | `https://raw.githubusercontent.com/rob-foulkrod/mtt-demo-creation-tools/main/Common/generate-data/SKILL.md` |
+| Cowork creator maintenance | `1.1.2` | `https://raw.githubusercontent.com/rob-foulkrod/mtt-demo-creation-tools/main/cowork/demo-builder-creator-maintenance-SKILL.md` |
+| Shared edit guardrails | `1.0.2` | `https://raw.githubusercontent.com/rob-foulkrod/mtt-demo-creation-tools/main/Common/demo-builder-edit-guardrails-SKILL.md` |
+| Generate data | `2026.09.04.6` | `https://raw.githubusercontent.com/rob-foulkrod/mtt-demo-creation-tools/main/Common/generate-data/SKILL.md` |
 
 At the start of a run, the installed skill should check its canonical raw GitHub URL. If the public
 copy has a higher version, it should tell the user and offer to download and install the updated

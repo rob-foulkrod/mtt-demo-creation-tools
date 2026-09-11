@@ -5,7 +5,7 @@ description: |
   editing either runtime skill, support skill, or companion reference to keep behaviour, quality,
   safety, publishing, and verification requirements aligned.
 metadata:
-  version: "1.0.1"
+  version: "1.0.2"
 ---
 
 ## Purpose
@@ -46,12 +46,15 @@ references, support skills, generated examples, documentation, or change logs.
    must not prepare GitHub repositories.
 6. Keep source references public and GitHub-only. Do not introduce SharePoint, OneDrive, Teams, or
    private URLs as skill source-of-truth references.
-7. Update `metadata.version` and change logs in the same commit when a skill or support skill changes.
-8. Update README installation and repository-layout guidance when files are added, moved, renamed, or
+7. Do not introduce user-specific absolute paths or machine-specific install locations. Use
+   product-relative paths such as `/Documents/Cowork/skills/{skill-name}` for Cowork and generic
+   Scout skills-root wording for Scout.
+8. Update `metadata.version` and change logs in the same commit when a skill or support skill changes.
+9. Update README installation and repository-layout guidance when files are added, moved, renamed, or
    split.
-9. Update installed local copies only when the user asks or when the current task is explicitly to
+10. Update installed local copies only when the user asks or when the current task is explicitly to
    keep the user's local skill aligned with GitHub.
-10. After pushing, read back the canonical GitHub files or commit metadata and verify that the branch
+11. After pushing, read back the canonical GitHub files or commit metadata and verify that the branch
     contains the intended versions and files.
 
 ## Cross-skill parity checks
@@ -83,9 +86,11 @@ Use targeted checks appropriate to the edit:
 2. Confirm end-user runtime skills do not expose creator-only update, versioning, local install,
    change-log, or repository-maintenance procedures.
 3. Confirm support skills explicitly require this guardrail skill before edits.
-4. Confirm every new companion reference is one level deep from its skill root unless the platform
+4. Confirm no user-specific absolute paths, machine-specific paths, or private local locations were
+   introduced.
+5. Confirm every new companion reference is one level deep from its skill root unless the platform
    requires otherwise.
-5. Confirm line and approximate token limits for any platform with size constraints.
-6. Confirm README and change logs mention added, moved, or deleted files.
-7. Confirm local installed copies and GitHub source match when local sync is part of the task.
-8. If an issue is being addressed, include `Fixes #<number>` or `Refs #<number>` in the commit.
+6. Confirm line and approximate token limits for any platform with size constraints.
+7. Confirm README and change logs mention added, moved, or deleted files.
+8. Confirm local installed copies and GitHub source match when local sync is part of the task.
+9. If an issue is being addressed, include `Fixes #<number>` or `Refs #<number>` in the commit.

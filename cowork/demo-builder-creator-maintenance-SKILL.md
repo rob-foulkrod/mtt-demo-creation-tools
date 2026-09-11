@@ -5,7 +5,7 @@ description: |
   local installed copies, version numbers, and change logs. Always loads the shared edit guardrails
   support skill before edits. Do not use for end-user demo package creation.
 metadata:
-  version: "1.1.1"
+  version: "1.1.2"
   cowork-category: "automation"
   cowork-icon: "Tools"
 ---
@@ -47,13 +47,13 @@ canonical source.
 
 ## Local file validation
 
-- **Cowork skill local path:** `C:\Users\anconnif\.scout\m-skills\demo-on-demand\SKILL.md`.
-- **Generate-data local folder:** `C:\Users\anconnif\.scout\m-skills\generate-data`.
+- **Cowork skill path:** `/Documents/Cowork/skills/demo-on-demand/SKILL.md`.
+- **Generate-data skill folder:** `/Documents/Cowork/skills/generate-data`.
 - Before running a maintenance update, validate that the Cowork skill local path exists and that the
   generate-data folder contains `SKILL.md`, `companies.csv`, and `names.csv`.
 - If any required local file is missing, offer to download and install it from the full public GitHub
   URL before continuing.
-- If the maintainer provides a different local Cowork skills root, validate that path instead and
+- If the maintainer provides a different Cowork skills root, validate that path instead and
   report the exact path used.
 
 ## Change log requirement

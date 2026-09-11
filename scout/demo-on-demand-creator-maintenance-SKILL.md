@@ -5,7 +5,7 @@ description: |
   version numbers, change logs, and repository updates. Always loads the shared edit guardrails
   support skill before edits. Do not use for end-user demo package creation.
 metadata:
-  version: "1.0.1"
+  version: "1.0.2"
 ---
 
 ## Purpose
@@ -45,13 +45,13 @@ personal SharePoint, OneDrive, Teams file, internal catalog, or private folder a
 
 ## Local file validation
 
-- **Scout skill local path:** `C:\Users\anconnif\.scout\m-skills\demo-on-demand\SKILL.md`.
-- **Generate-data local folder:** `C:\Users\anconnif\.scout\m-skills\generate-data`.
+- **Scout skill path:** the Scout skills root selected or configured by the user, with the skill at `demo-on-demand/SKILL.md`.
+- **Generate-data skill folder:** the same Scout skills root, with generate-data installed at `generate-data/`.
 - Before running a maintenance update, validate that the Scout skill local path exists and that the
   generate-data folder contains `SKILL.md`, `companies.csv`, and `names.csv`.
 - If any required local file is missing, offer to download and install it from the full public GitHub
   URL before continuing.
-- If the maintainer provides a different local Scout skills root, validate that path instead and
+- If the maintainer provides a different Scout skills root, validate that path instead and
   report the exact path used.
 
 ## Change log requirement
