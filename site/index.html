@@ -1,0 +1,500 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="MTT Demo Creation Tools: shared skills for building consistent, presentation-ready demos in Cowork and Scout.">
+  <title>MTT Demo Creation Tools</title>
+  <script>
+    (() => {
+      const param = new URLSearchParams(window.location.search).get("scoutTheme");
+      const theme =
+        param || (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+      document.documentElement.setAttribute("data-theme", theme);
+    })();
+  </script>
+  <style>
+    :root {
+      color-scheme: light;
+      --cp-bg: #f7f4ef;
+      --cp-bg-elevated: #fcfbf8;
+      --cp-surface: #ffffff;
+      --cp-surface-soft: #f5f5f5;
+      --cp-border: #dedede;
+      --cp-border-strong: #919191;
+      --cp-text: #242424;
+      --cp-text-muted: #5c5c5c;
+      --cp-text-soft: #6f6f6f;
+      --cp-accent: #b11f4b;
+      --cp-accent-hover: #9a1a41;
+      --cp-accent-soft: rgba(177, 31, 75, 0.08);
+      --cp-accent-fg: #ffffff;
+      --cp-success: #16a34a;
+      --cp-danger: #dc2626;
+      --cp-warning: #f59e0b;
+      --cp-link: #0078d4;
+      --cp-shadow: 0 18px 48px rgba(0, 0, 0, 0.12);
+      --cp-overlay: rgba(255, 255, 255, 0.8);
+      --cp-panel: rgba(255, 255, 255, 0.86);
+      --cp-panel-strong: rgba(255, 255, 255, 0.96);
+      --cp-sheen: rgba(255, 255, 255, 0.55);
+      --cp-highlight: rgba(177, 31, 75, 0.12);
+    }
+    html[data-theme="dark"] {
+      color-scheme: dark;
+      --cp-bg: #3d3b3a;
+      --cp-bg-elevated: #343231;
+      --cp-surface: #292929;
+      --cp-surface-soft: #2e2e2e;
+      --cp-border: #474747;
+      --cp-border-strong: #5f5f5f;
+      --cp-text: #dedede;
+      --cp-text-muted: #919191;
+      --cp-text-soft: #b0b0b0;
+      --cp-accent: #fd8ea1;
+      --cp-accent-hover: #fb7b91;
+      --cp-accent-soft: rgba(253, 142, 161, 0.14);
+      --cp-accent-fg: #1a1a1a;
+      --cp-success: #4ade80;
+      --cp-danger: #f87171;
+      --cp-warning: #fbbf24;
+      --cp-link: #4da6ff;
+      --cp-shadow: 0 18px 48px rgba(0, 0, 0, 0.32);
+      --cp-overlay: rgba(41, 41, 41, 0.88);
+      --cp-panel: rgba(41, 41, 41, 0.72);
+      --cp-panel-strong: rgba(41, 41, 41, 0.96);
+      --cp-sheen: rgba(255, 255, 255, 0.04);
+      --cp-highlight: rgba(253, 142, 161, 0.12);
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      background: var(--cp-bg);
+      color: var(--cp-text);
+      font-family: "Segoe UI", Aptos, Calibri, -apple-system, BlinkMacSystemFont, sans-serif;
+      line-height: 1.6;
+    }
+    a { color: var(--cp-link); }
+    a:hover { color: var(--cp-accent); }
+    button { font: inherit; }
+    .skip-link {
+      position: fixed;
+      top: 8px;
+      left: 8px;
+      z-index: 20;
+      padding: 8px 12px;
+      background: var(--cp-accent);
+      color: var(--cp-accent-fg);
+      transform: translateY(-160%);
+    }
+    .skip-link:focus { transform: translateY(0); }
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      border-bottom: 1px solid var(--cp-border);
+      background: var(--cp-overlay);
+      backdrop-filter: blur(14px);
+    }
+    .nav {
+      width: min(1120px, calc(100% - 40px));
+      min-height: 64px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+    .brand {
+      color: var(--cp-text);
+      font-weight: 700;
+      text-decoration: none;
+    }
+    .nav-links { display: flex; gap: 24px; }
+    .nav-links a {
+      color: var(--cp-text-muted);
+      font-size: 0.9rem;
+      font-weight: 600;
+      text-decoration: none;
+    }
+    .hero {
+      min-height: min(700px, calc(100vh - 64px));
+      display: grid;
+      align-items: center;
+      overflow: hidden;
+      border-bottom: 1px solid var(--cp-border);
+      background:
+        linear-gradient(90deg, var(--cp-highlight) 1px, transparent 1px),
+        linear-gradient(var(--cp-highlight) 1px, transparent 1px),
+        var(--cp-bg-elevated);
+      background-size: 48px 48px;
+    }
+    .hero-inner {
+      width: min(1120px, calc(100% - 40px));
+      margin: 0 auto;
+      padding: 72px 0 88px;
+      display: grid;
+      grid-template-columns: minmax(0, 1.35fr) minmax(280px, 0.65fr);
+      gap: 72px;
+      align-items: end;
+    }
+    .eyebrow {
+      margin: 0 0 20px;
+      color: var(--cp-accent);
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0;
+      text-transform: uppercase;
+    }
+    h1, h2, h3 { line-height: 1.1; }
+    h1 {
+      max-width: 800px;
+      margin: 0;
+      font-size: clamp(3rem, 8vw, 7rem);
+      font-weight: 750;
+      letter-spacing: 0;
+    }
+    .hero-copy {
+      max-width: 690px;
+      margin: 28px 0 0;
+      color: var(--cp-text-muted);
+      font-size: clamp(1.05rem, 2vw, 1.3rem);
+    }
+    .hero-aside {
+      padding: 24px 0 8px 24px;
+      border-left: 3px solid var(--cp-accent);
+    }
+    .hero-aside strong { display: block; font-size: 1.7rem; }
+    .hero-aside span { color: var(--cp-text-muted); }
+    .cta-row { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 32px; }
+    .button {
+      min-height: 44px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 10px 18px;
+      border: 1px solid var(--cp-accent);
+      border-radius: 0.625rem;
+      background: var(--cp-accent);
+      color: var(--cp-accent-fg);
+      font-weight: 700;
+      text-decoration: none;
+    }
+    .button:hover { background: var(--cp-accent-hover); color: var(--cp-accent-fg); }
+    .button.secondary { background: transparent; color: var(--cp-accent); }
+    main section { padding: 96px 0; }
+    .section-alt {
+      border-block: 1px solid var(--cp-border);
+      background: var(--cp-bg-elevated);
+    }
+    .container { width: min(1120px, calc(100% - 40px)); margin: 0 auto; }
+    .section-heading {
+      display: grid;
+      grid-template-columns: 0.45fr 1fr;
+      gap: 48px;
+      margin-bottom: 48px;
+      align-items: start;
+    }
+    h2 { margin: 0; font-size: clamp(2rem, 4vw, 3.5rem); letter-spacing: 0; }
+    .section-heading p { max-width: 680px; margin: 0; color: var(--cp-text-muted); font-size: 1.1rem; }
+    .principles {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      border: 1px solid var(--cp-border);
+      background: var(--cp-border);
+    }
+    .principle { padding: 28px; background: var(--cp-surface); }
+    .principle span { color: var(--cp-accent); font-family: Consolas, "Courier New", Courier, monospace; }
+    .principle h3 { margin: 18px 0 8px; font-size: 1.2rem; }
+    .principle p { margin: 0; color: var(--cp-text-muted); }
+    .team-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px; }
+    .profile {
+      min-height: 190px;
+      display: grid;
+      grid-template-columns: 112px 1fr;
+      gap: 24px;
+      align-items: center;
+      padding: 28px;
+      border: 1px solid var(--cp-border);
+      border-radius: 16px;
+      background: var(--cp-surface);
+      box-shadow: 0 0 2px var(--cp-border), 0 1px 2px var(--cp-border);
+    }
+    .profile img {
+      width: 112px;
+      aspect-ratio: 1;
+      border: 1px solid var(--cp-border);
+      border-radius: 50%;
+      object-fit: cover;
+    }
+    .profile h3 { margin: 0 0 8px; font-size: 1.35rem; }
+    .profile p { margin: 0 0 12px; color: var(--cp-text-muted); }
+    .source-note { margin: 24px 0 0; color: var(--cp-text-soft); font-size: 0.85rem; }
+    .install-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px; }
+    .install-panel {
+      position: relative;
+      padding: 32px;
+      border: 1px solid var(--cp-border);
+      border-radius: 16px;
+      background: var(--cp-surface);
+    }
+    .install-panel h3 { margin: 0 0 12px; font-size: 1.8rem; }
+    .install-panel > p { margin: 0 0 24px; color: var(--cp-text-muted); }
+    .prompt-wrap { position: relative; }
+    pre {
+      min-height: 250px;
+      margin: 0;
+      padding: 24px;
+      overflow-x: auto;
+      border: 1px solid var(--cp-border);
+      border-radius: 0.625rem;
+      background: var(--cp-surface-soft);
+      color: var(--cp-text);
+      white-space: pre-wrap;
+      overflow-wrap: anywhere;
+      font: 0.88rem/1.65 Consolas, "Courier New", Courier, monospace;
+    }
+    .copy-button {
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      min-width: 72px;
+      min-height: 36px;
+      border: 1px solid var(--cp-border-strong);
+      border-radius: 0.625rem;
+      background: var(--cp-surface);
+      color: var(--cp-text);
+      cursor: pointer;
+      font-weight: 600;
+    }
+    .copy-button:hover { border-color: var(--cp-accent); color: var(--cp-accent); }
+    .checklist { margin: 24px 0 0; padding: 0; list-style: none; }
+    .checklist li { margin-top: 10px; padding-left: 24px; position: relative; }
+    .checklist li::before { content: "✓"; position: absolute; left: 0; color: var(--cp-success); font-weight: 700; }
+    footer { padding: 36px 0; border-top: 1px solid var(--cp-border); }
+    .footer-inner { display: flex; justify-content: space-between; gap: 24px; color: var(--cp-text-muted); font-size: 0.9rem; }
+    @media (max-width: 760px) {
+      .nav { width: min(100% - 28px, 1120px); }
+      .nav-links a:not(:last-child) { display: none; }
+      .hero { min-height: auto; }
+      .hero-inner { width: min(100% - 28px, 1120px); grid-template-columns: 1fr; gap: 44px; padding: 64px 0; }
+      h1 { font-size: clamp(2.8rem, 16vw, 4.7rem); }
+      main section { padding: 72px 0; }
+      .container { width: min(100% - 28px, 1120px); }
+      .section-heading, .principles, .team-grid, .install-grid { grid-template-columns: 1fr; }
+      .section-heading { gap: 20px; }
+      .profile { grid-template-columns: 80px 1fr; padding: 20px; }
+      .profile img { width: 80px; }
+      .install-panel { padding: 20px; }
+      pre { min-height: auto; padding: 64px 18px 20px; }
+      .footer-inner { flex-direction: column; }
+    }
+    @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+    <nav class="nav" aria-label="Main navigation">
+      <a class="brand" href="#top">MTT / DEMO TOOLS</a>
+      <div class="nav-links">
+        <a href="#about">About</a>
+        <a href="#install">Install</a>
+        <a href="#demo-prompt">Demo prompt</a>
+        <a href="#team">V-Team</a>
+        <a href="https://github.com/rob-foulkrod/mtt-demo-creation-tools">GitHub</a>
+      </div>
+    </nav>
+  </header>
+
+  <main id="main">
+    <section class="hero" id="top">
+      <div class="hero-inner">
+        <div>
+          <p class="eyebrow">Public skill repository</p>
+          <h1>MTT Demo Creation Tools</h1>
+          <p class="hero-copy">A shared toolkit for turning ideas into consistent, presentation-ready demo packages across Microsoft 365 Copilot experiences.</p>
+          <div class="cta-row">
+            <a class="button" href="#install">Install the skills</a>
+            <a class="button secondary" href="https://github.com/rob-foulkrod/mtt-demo-creation-tools">View repository</a>
+          </div>
+        </div>
+        <aside class="hero-aside" aria-label="Supported environments">
+          <strong>Two environments.</strong>
+          <span>One quality standard for Scout and Cowork.</span>
+        </aside>
+      </div>
+    </section>
+
+    <section id="about">
+      <div class="container">
+        <div class="section-heading">
+          <h2>Built for repeatable demos</h2>
+          <p>The project brings together demo-building skills, quality guidance, maintenance guardrails, and approved sample-data resources. It helps creators produce polished demo packages while keeping Scout and Cowork workflows aligned.</p>
+        </div>
+        <div class="principles">
+          <article class="principle">
+            <span>01</span>
+            <h3>Consistent</h3>
+            <p>Shared standards keep demo structure and quality predictable across environments.</p>
+          </article>
+          <article class="principle">
+            <span>02</span>
+            <h3>Ready to present</h3>
+            <p>Skills produce practical assets, presenter guidance, and reusable demo instructions.</p>
+          </article>
+          <article class="principle">
+            <span>03</span>
+            <h3>Responsible data</h3>
+            <p>The generate-data dependency validates fictional names and companies used in samples.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="install">
+      <div class="container">
+        <div class="section-heading">
+          <h2>Install and start building</h2>
+          <p>Paste the matching prompt into your environment. Each prompt installs the demo builder together with the files it needs to run locally.</p>
+        </div>
+        <div class="install-grid">
+          <article class="install-panel">
+            <h3>Cowork</h3>
+            <p>Install the folder-native demo builder, its companion references, and shared data dependency.</p>
+            <div class="prompt-wrap">
+              <button class="copy-button" type="button" data-copy="cowork-prompt" aria-label="Copy Cowork installation prompt">Copy</button>
+              <pre id="cowork-prompt">Install these Cowork demo-builder files from https://github.com/rob-foulkrod/mtt-demo-creation-tools
+
+- cowork/demo-builder-SKILL.md → install as skill "demo-on-demand"
+- cowork/references/ → install as companion references for the Cowork demo builder
+- Common/generate-data/ → install as "generate-data", including companies.csv and names.csv</pre>
+            </div>
+            <ul class="checklist">
+              <li>Demo builder skill</li>
+              <li>Presenter and quality references</li>
+              <li>Generate-data skill and both CSV files</li>
+            </ul>
+          </article>
+
+          <article class="install-panel">
+            <h3>Scout</h3>
+            <p>Install or refresh the Scout demo builder and the shared data dependency.</p>
+            <div class="prompt-wrap">
+              <button class="copy-button" type="button" data-copy="scout-prompt" aria-label="Copy Scout installation prompt">Copy</button>
+              <pre id="scout-prompt">Install these two skills from https://github.com/rob-foulkrod/mtt-demo-creation-tools
+
+- scout/demo-on-demand-SKILL.md → install as skill "demo-on-demand"
+- Common/generate-data/ → install as "generate-data", including companies.csv and names.csv</pre>
+            </div>
+            <ul class="checklist">
+              <li>Demo-on-demand skill</li>
+              <li>Generate-data skill</li>
+              <li>Approved companies and names CSV files</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-alt" id="demo-prompt">
+      <div class="container">
+        <div class="section-heading">
+          <h2>Demo prompt</h2>
+          <p>A ready-to-use scenario for creating a bakery sales analysis demonstration based on Module 6 of the MS-4018 course.</p>
+        </div>
+        <article class="install-panel">
+          <h3>Bakery sales analysis</h3>
+          <p>Paste this prompt into the demo-on-demand skill to generate the demonstration assets.</p>
+          <div class="prompt-wrap">
+            <button class="copy-button" type="button" data-copy="bakery-demo-prompt" aria-label="Copy bakery sales analysis demonstration prompt">Copy</button>
+            <pre id="bakery-demo-prompt">This demo will be based on the customization and curation of the MS-4018 course, specifically Module 6, “Excel: Uncover New Data Insights with AI.”
+
+The customer for whom the session will be delivered operates in the food industry, specifically in the bakery sector. The demonstration should be based on the task of an administrative employee who needs to analyze data from a spreadsheet containing multiple products, categories, quantities produced, quantities sold, and unit prices from the past six months.
+
+Using Copilot prompts, the employee should generate sales performance analyses and charts.
+
+I need a Word document containing the step-by-step demonstration instructions, as well as the Excel file that will be used during the demonstration.</pre>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section id="team">
+      <div class="container">
+        <div class="section-heading">
+          <h2>The V-Team</h2>
+          <p>The people behind the repository's public contributions and ongoing evolution.</p>
+        </div>
+        <div class="team-grid">
+          <article class="profile">
+            <img src="https://github.com/gchoquetMS.png?size=224" alt="gchoquetMS's GitHub profile image" width="112" height="112">
+            <div>
+              <h3>gchoquetMS</h3>
+              <p>V-Team member</p>
+              <a href="https://github.com/gchoquetMS">View GitHub profile</a>
+            </div>
+          </article>
+          <article class="profile">
+            <img src="https://github.com/AndrewConniff.png?size=224" alt="Andrew Conniff's GitHub profile image" width="112" height="112">
+            <div>
+              <h3>Andrew Conniff</h3>
+              <p>Repository contributor</p>
+              <a href="https://github.com/AndrewConniff">View GitHub profile</a>
+            </div>
+          </article>
+          <article class="profile">
+            <img src="https://github.com/rob-foulkrod.png?size=224" alt="Rob Foulkrod's GitHub profile image" width="112" height="112">
+            <div>
+              <h3>Rob Foulkrod</h3>
+              <p>Repository owner and contributor</p>
+              <a href="https://github.com/rob-foulkrod">View GitHub profile</a>
+            </div>
+          </article>
+          <article class="profile">
+            <img src="https://github.com/true-while.png?size=224" alt="Alex Ivanov's GitHub profile image" width="112" height="112">
+            <div>
+              <h3>Alex Ivanov</h3>
+              <p>V-Team member · true-while</p>
+              <a href="https://github.com/true-while">View GitHub profile</a>
+            </div>
+          </article>
+          <article class="profile">
+            <img src="https://github.com/waltercoan.png?size=224" alt="Walter Silvestre Coan's GitHub profile image" width="112" height="112">
+            <div>
+              <h3>Walter Silvestre Coan</h3>
+              <p>V-Team member · waltercoan</p>
+              <a href="https://github.com/waltercoan">View GitHub profile</a>
+            </div>
+          </article>
+        </div>
+        <p class="source-note">V-Team members are listed in collaboration order, with links to their public GitHub profiles.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-inner">
+      <span>MTT Demo Creation Tools</span>
+      <span>Open source under the repository license.</span>
+    </div>
+  </footer>
+
+  <script>
+    document.querySelectorAll("[data-copy]").forEach((button) => {
+      button.addEventListener("click", async () => {
+        const prompt = document.getElementById(button.dataset.copy).textContent;
+        try {
+          await navigator.clipboard.writeText(prompt);
+          button.textContent = "Copied";
+          window.setTimeout(() => { button.textContent = "Copy"; }, 1800);
+        } catch {
+          button.textContent = "Select text";
+        }
+      });
+    });
+  </script>
+</body>
+</html>
