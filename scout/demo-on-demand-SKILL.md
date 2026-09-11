@@ -1,5 +1,5 @@
 ---
-version: 2026.09.04.4
+version: 2026.09.04.5
 name: demo-on-demand
 description: |
   Builds public-safe demo-on-demand packages for MTT private deliveries and first asks, "Will you
@@ -15,7 +15,7 @@ description: |
 Use this skill when an MTT wants to create a demo-on-demand package for a private delivery. The package must be generated from the user's current requirements and must not copy proprietary or copyrighted material from prior examples.
 
 Skill version:
-Version: 2026.09.04.4
+Version: 2026.09.04.5
 
 Source references:
 - Public repository: `https://github.com/rob-foulkrod/mtt-demo-creation-tools`
@@ -25,6 +25,8 @@ Source references:
 - Generate-data skill folder: `https://github.com/rob-foulkrod/mtt-demo-creation-tools/tree/main/Common/generate-data`
 - Generate-data source file: `https://raw.githubusercontent.com/rob-foulkrod/mtt-demo-creation-tools/main/Common/generate-data/SKILL.md`
 - Change logs folder: `https://github.com/rob-foulkrod/mtt-demo-creation-tools/tree/main/change%20logs`
+
+Use only the public GitHub repository above as the canonical source for this skill, its Cowork format reference, generate-data dependency, change logs, updates, and documentation. Do not use or reference any personal SharePoint, OneDrive, Teams file, internal catalog, or private folder as a skill source of truth.
 
 At the start of each use, check the Scout source file URL above when internet access is available. If the public GitHub copy has a higher version number than this local skill file, tell the user that a newer Scout version is available and prompt them to install it before continuing. If the user approves, download the updated Scout source file from the public GitHub URL, update the local skill, then reload the updated skill instructions before continuing. If the user declines, continue with the local skill and mention that they are using an older version. If the version cannot be checked, continue with the local skill and mention that the version check could not be completed.
 
@@ -43,7 +45,7 @@ Local file validation:
 
 Change log requirement:
 - Every update to this skill must write a change log file in `https://github.com/rob-foulkrod/mtt-demo-creation-tools/tree/main/change%20logs`.
-- The change log file name must be `<skill-name>-<skill-version>-log.md`; for this skill, use `demo-on-demand-2026.09.04.4-log.md` for version `2026.09.04.4`.
+- The change log file name must be `<skill-name>-<skill-version>-log.md`; for this skill, use `demo-on-demand-2026.09.04.5-log.md` for version `2026.09.04.5`.
 - The change log title must be `<skill-name> <skill-version>-log`.
 - The change log must include `Skill name`, `Skill version`, `Additions`, and `Deletions` sections. If there are no deletions, write `None`.
 - Commit the change log file in the same commit as the skill update.
@@ -289,6 +291,10 @@ Quality bar:
   labeled assumptions.
 - **Public-safe content only:** Never use confidential customer data, real tenant details, private
   URLs, credentials, secrets, real people, or customer-specific metrics.
+- **GitHub-only skill source:** Use `https://github.com/rob-foulkrod/mtt-demo-creation-tools` as
+  the only source of truth for this skill, the Cowork reference, generate-data files, change logs,
+  updates, and documentation. Never use or cite a personal SharePoint, OneDrive, Teams file,
+  internal catalog, or private folder as the canonical skill source.
 - **Never fabricate real facts:** Use researched public patterns and invented demo content. Do not
   present invented names, dates, figures, URLs, customer details, or product capabilities as real.
 - **Approval before visible writes:** Preview the exact package, destination, classification, and
@@ -301,6 +307,20 @@ Quality bar:
 - **Branch fidelity:** GitHub packages must contain the complete repository structure and download
   links. Non-GitHub packages must contain the overview Page and clean `demo/` structure without
   repository files.
+- **No placeholder deliverables:** Final artifacts must contain substantive demo content or
+  transparently report the remaining gap.
+- **No empty sample-data folder:** `demo/sample-data/` must contain substantive runnable inputs,
+  grounding content, or configuration, plus an output template or expected-result artifact when the
+  workflow produces a deliverable.
+- **No generic generated identities:** Do not use numbered fictional-customer labels, `Sample`,
+  `Test`, `Fake`, or `Demo` as business entity names.
+- **No implementation columns:** Do not add file names, folder paths, prompt names, generation
+  notes, or authoring metadata to business datasets unless public research confirms that the real
+  system stores those fields.
+- **Transparency stays outside records:** Keep Public classification, AI transparency, and the
+  Microsoft Fake Company disclaimer in README/overview/governance materials; do not put fictional,
+  fake, synthetic, sample, test, or demo labels inside ordinary business records, entity names, or
+  copy-and-paste prompts.
 - **Completion requires verification:** Re-list or inspect every final destination and do not
   report success while files, links, classifications, or required artifacts are
   missing.
