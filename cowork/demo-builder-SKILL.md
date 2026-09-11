@@ -1,5 +1,5 @@
 ---
-version: 2.2.3
+version: 2.3.0
 name: demo-on-demand
 description: |
   Builds a clean, public-safe demo-on-demand package for an MTT private delivery and places it in
@@ -18,7 +18,7 @@ cowork:
 
 ## Version and Canonical Source
 
-- **Current version:** `2.2.3`
+- **Current version:** `2.3.0`
 - **Public repository:** `https://github.com/rob-foulkrod/mtt-demo-creation-tools`
 - **Cowork skill folder:** `https://github.com/rob-foulkrod/mtt-demo-creation-tools/tree/main/cowork`
 - **Canonical source file:** `https://raw.githubusercontent.com/rob-foulkrod/mtt-demo-creation-tools/main/cowork/demo-builder-SKILL.md`
@@ -63,7 +63,7 @@ cannot be accessed, continue with the loaded version and disclose the gap.
 - Every update to this skill must write a change log file in
   `https://github.com/rob-foulkrod/mtt-demo-creation-tools/tree/main/change%20logs`.
 - The change log file name must be `<skill-name>-<skill-version>-log.md`; for this skill, use
-  `demo-on-demand-2.2.3-log.md` for version `2.2.3`.
+  `demo-on-demand-2.3.0-log.md` for version `2.3.0`.
 - The change log title must be `<skill-name> <skill-version>-log`.
 - The change log must include `Skill name`, `Skill version`, `Additions`, and `Deletions`
   sections. If there are no deletions, write `None`.
@@ -96,6 +96,18 @@ scaffolding. Cowork packages are not prepared or posted as GitHub repositories.
 
 Generate all content fresh from the user's requirements. Never copy proprietary or copyrighted
 material from an example.
+
+### Shared Core Contract
+
+The scenario design, artifact quality, presenter-guide rules, public-safety requirements, and
+verification standards in this skill intentionally match the Scout demo-on-demand skill. Keep
+those shared rules synchronized when either skill changes. Publishing remains platform-specific:
+
+- Cowork creates only the OneDrive/SharePoint folder-native package defined below.
+- Cowork must not ask the Scout GitHub branch question or create repository files, licensing,
+  GitHub CLI steps, public repositories, or repository deletion workflows.
+- Scout may retain its GitHub-ready and Cowork-compatible publishing branches without adding them
+  to this skill.
 
 ## ALWAYS Do - Production-Realistic Artifacts
 
@@ -474,6 +486,14 @@ After approval:
    not describe the package as complete.
 8. Report the actual Page and folder links returned by tools.
 
+### Demo logging
+
+1. Do not log newly created demos to a shared catalog, SharePoint tracking folder, workbook, list,
+  or other tracking destination.
+2. Demo logging remains deferred until a separate logging process is selected.
+3. After publishing, report only the actual Page and folder links plus the verified package
+  contents. Do not create or update a separate catalog row.
+
 ## Quality Bar
 
 - The package root contains exactly one overview Page and one `demo/` folder.
@@ -524,6 +544,8 @@ After approval:
 - **Destination required:** Resolve the exact OneDrive or SharePoint folder before uploading.
 - **Approval before upload:** Preview the complete Page and folder structure, then obtain explicit
   approval before writing to the shared destination.
+- **No silent overwrite:** If a package or destination item already exists, identify it and obtain
+  explicit direction before replacing or reusing it.
 - **No secrets:** Never create or store credentials, tokens, tenant IDs, or private URLs.
 - **No fabricated links:** Use only Page, folder, and file links returned by tools.
 - **No placeholder deliverables:** Final artifacts must contain substantive demo content or
@@ -541,3 +563,5 @@ After approval:
   invented records are real customer or operational data.
 - **Verify every upload:** Re-list all three levels and compare them with the internal expected-file
   checklist before reporting success.
+- **No demo catalog:** Do not create or update a catalog, tracking workbook, list, or logging row
+  as part of this workflow.

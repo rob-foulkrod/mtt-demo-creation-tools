@@ -1,5 +1,5 @@
 ---
-version: 2026.09.04.4
+version: 2026.09.11.1
 name: demo-on-demand
 description: |
   Builds public-safe demo-on-demand packages for MTT private deliveries and first asks, "Will you
@@ -15,7 +15,7 @@ description: |
 Use this skill when an MTT wants to create a demo-on-demand package for a private delivery. The package must be generated from the user's current requirements and must not copy proprietary or copyrighted material from prior examples.
 
 Skill version:
-Version: 2026.09.04.4
+Version: 2026.09.11.1
 
 Source references:
 - Public repository: `https://github.com/rob-foulkrod/mtt-demo-creation-tools`
@@ -43,13 +43,60 @@ Local file validation:
 
 Change log requirement:
 - Every update to this skill must write a change log file in `https://github.com/rob-foulkrod/mtt-demo-creation-tools/tree/main/change%20logs`.
-- The change log file name must be `<skill-name>-<skill-version>-log.md`; for this skill, use `demo-on-demand-2026.09.04.4-log.md` for version `2026.09.04.4`.
+- The change log file name must be `<skill-name>-<skill-version>-log.md`; for this skill, use `demo-on-demand-2026.09.11.1-log.md` for version `2026.09.11.1`.
 - The change log title must be `<skill-name> <skill-version>-log`.
 - The change log must include `Skill name`, `Skill version`, `Additions`, and `Deletions` sections. If there are no deletions, write `None`.
 - Commit the change log file in the same commit as the skill update.
 
 Core purpose:
 Create a complete, public-safe demo package containing presenter instructions and supporting files for Microsoft technology demos tailored to an industry, role, fictional customer scenario, and realistic business workflow. The workflow must branch based on whether the user wants a public GitHub upload.
+
+## Shared Core Contract
+
+The scenario design, artifact quality, presenter-guide rules, public-safety requirements, and
+verification standards in this skill intentionally match the Cowork demo builder. Keep those
+shared rules synchronized when either skill changes. Publishing remains platform-specific:
+
+- Scout asks whether the user will upload to GitHub and supports both the GitHub-ready and
+  Cowork-compatible branches defined below.
+- Cowork remains OneDrive/SharePoint-only and must not inherit Scout's GitHub question,
+  repository files, licensing, GitHub CLI steps, or repository deletion workflow.
+
+Apply these production-realistic artifact rules to both Scout branches:
+
+1. **Research the real data shape first.** Research public, non-confidential examples,
+  glossaries, workflows, forms, and industry conventions before creating scenario documents or
+  datasets. Use that research to determine fields, identifiers, relationships, units, statuses,
+  calculations, and record density. Synthesize original content rather than copying an example.
+2. **Create one shared style system.** Define the package font, color palette, title treatment,
+  heading hierarchy, table style, header band, row banding, border treatment, column widths,
+  number formats, and date formats before building the first artifact. Apply that design language
+  to every related Word, Excel, PowerPoint, PDF, Markdown, and visual artifact.
+3. **Style every worksheet and document.** Every Excel sheet needs a meaningful title, filled
+  header band, consistent font and palette, readable column widths, frozen headers, appropriate
+  number formats, and charts or summaries when they support the scenario. Verify related files
+  side by side before publishing.
+4. **Use the scenario's locale.** Research or confirm the country and use its currency symbol,
+  date format, decimal and thousands separators, address structure, phone pattern, and units.
+  Store currency and dates as typed values with display formats when the file format supports it.
+5. **Generate natural, invented identities.** Use realistic, made-up names and stable IDs for
+  recurring people, organizations, products, projects, and locations. Avoid generic labels such
+  as `Fictional Customer 0001`, `Sample Agency`, `Test Vendor`, or `Demo Company`.
+6. **Identify source organizations like real sources.** Include both a stable source ID and a
+  natural invented name for agencies, branches, vendors, hospitals, stores, partners, or other
+  source organizations.
+7. **Keep implementation details out of business data.** Do not put workbook names, file names,
+  folder paths, prompt labels, or generation notes into ordinary business-record columns unless
+  public research confirms the real system stores that provenance.
+8. **Keep the scenario internally coherent.** Names, IDs, dates, amounts, products, statuses,
+  locations, and relationships must agree across related files. Deliberate nonmatches are allowed
+  only when they support a documented filtering, exception, quality, or validation step.
+9. **Keep provenance language out of demonstration content.** Do not use `fictional`, `fake`,
+  `synthetic`, `sample`, `test`, or `demo` in copy-and-paste prompts, business-record values,
+  entity names, table titles, or ordinary scenario documents.
+10. **Retain package-level transparency.** Put Public classification, AI transparency, the
+   Microsoft Fake Company disclaimer, and the reminder not to add confidential information in
+   the branch-specific overview files. Never represent invented records as actual records.
 
 ## When to Use
 
@@ -91,37 +138,39 @@ Scenario sufficiency gate:
 Before generating files, confirm there is enough information to define:
 1. Business task or problem.
 2. Persona.
-3. Desired outcome.
+3. Desired outcome or handoff.
 4. Input or source type.
-5. Operation to perform.
-6. Expected output.
-7. Success conditions.
-If any are missing, ask only for the missing details or propose reasonable synthetic assumptions for approval.
+5. Decision, filter, calculation, transformation, or interaction to perform.
+6. Expected output and at least one must-show success condition.
+If two or more are missing, or the request is only a broad label, ask one focused question for the
+missing details. If the user has no more detail, research public patterns and document clearly
+labeled synthetic assumptions in the branch-specific overview. Technology, starting experience,
+build/use scope, and destination must still be resolved.
 
 Research and scenario-building workflow:
 1. Always research or look up the target industry, role or persona, and company context before generating artifacts. Prefer sources the user provides; otherwise use public web sources for industry norms, vocabulary, business workflows, KPIs, regulatory context, and role responsibilities.
 2. When the user provides a real company, use it only for public inspiration. The package must use a fictional Microsoft Fake Company with synthetic data and must not use real company names in sample records, screenshots, prompts, internal process names, financials, employee names, customer names, or metrics.
 3. Create a concrete end-to-end workflow for the demo showing multiple inputs, handoffs, decisions, and outputs.
 4. Prefer multi-artifact experiences. Use more than one document, spreadsheet, data file, prompt set, or configuration file when that better demonstrates how Copilot or an agent reasons across multiple inputs.
-5. Record public source URLs and assumptions. For GitHub packages, cite them in README.md, DEMO-INSTRUCTIONS.md, and manifest.json. For non-GitHub packages, cite them in the overview `.page` and DEMO-INSTRUCTIONS.docx.
+5. Record public source URLs and assumptions. For GitHub packages, cite them in README.md and
+  manifest.json. For non-GitHub packages, cite them on the overview `.page`. Keep package context
+  out of the concise presenter guide.
 6. If public web research is unavailable or blocked, continue with clearly identified synthetic assumptions and document them in the appropriate overview and instructions files.
 
 Public-data and privacy rules:
 1. Never use confidential customer data, private tenant details, internal URLs, real people, or real customer-specific metrics.
 2. If a real customer web page is provided, use it only as public inspiration for industry vocabulary, business priorities, and plausible use cases.
 3. Replace the customer with a fictional Microsoft Fake Company. The fictional company name must be clearly artificial and must not imply endorsement by or affiliation with any real organization.
-4. Include this disclaimer prominently in README.md and DEMO-INSTRUCTIONS.md for GitHub packages, and in the overview `.page` and DEMO-INSTRUCTIONS.docx for non-GitHub packages: "This demo uses a fictional Microsoft Fake Company created for demonstration purposes. Any resemblance to real organizations, people, products, services, or data is coincidental. Do not use customer confidential information in this package."
-5. Label every generated artifact as Public where the format supports it. At minimum, include "Classification: Public" near the top of README.md, DEMO-INSTRUCTIONS.md, AI-CONTENT-DECLARATION.md, overview `.page`, generated supporting markdown, CSV, JSON, sample data, prompt, or configuration files. For binary or media artifacts, include a companion entry in the README/manifest or overview/instructions marking them Public.
+4. Include this disclaimer prominently in README.md for GitHub packages and on the overview
+  `.page` for non-GitHub packages: "This demo uses a fictional Microsoft Fake Company created for
+  demonstration purposes. Any resemblance to real organizations, people, products, services, or
+  data is coincidental. Do not use customer confidential information in this demo package."
+5. Label the package and generated artifacts Public where the format supports metadata or an
+  unobtrusive footer. Include `Classification: Public` in README.md,
+  AI-CONTENT-DECLARATION.md, the overview `.page`, and Office document properties or footers.
+  Do not add classification text as an ordinary CSV/JSON record or business-data field. For
+  binary or media artifacts, mark classification in the branch-specific overview or manifest.
 6. Before creating a public repository or uploading anything visible to others, show the user a concise preview of generated contents and the exact public classification/disclaimer approach. Require explicit approval before public upload.
-
-Always do:
-1. Make every related generated file look like it belongs to the same professional package. Use consistent workbook themes, fonts, header styles, table styles, number formats, chart styling, terminology, and scenario naming across all related Excel, Word, Markdown, CSV, JSON, and supporting artifacts.
-2. Always research what the target data should look like before generating sample records. Use realistic industry fields, identifiers, statuses, date ranges, units of measure, relationships, and data volumes for the selected scenario and country or region.
-3. Format currencies, dates, percentages, phone numbers, postal codes, and measurements according to the scenario geography. Use `$` for US currency and the correct symbol or code for other countries or regions.
-4. Always invent plausible company, agency, person, product, location, project, and record names. Avoid placeholder names, joke names, obvious test values, repeated names, or file names used as worksheet titles, data values, customer names, agency names, or business content.
-5. Never label in-demo prompts, sample records, worksheet data, business documents, or generated operational artifacts as fictional, fake, synthetic, pretend, dummy, sample-only, or test data. Those safety concepts belong in public-safety disclaimers, AI transparency sections, README/overview materials, declarations, and manifest-style metadata only. The in-demo data itself should read like credible movie-prop business data while remaining entirely invented and public-safe.
-6. When generating data from multiple pretend source systems, organizations, or agencies, include realistic source identifiers and display names. For insurance agency scenarios, include an Agency ID and an Agency Name column with credible invented agency names, and use those fields consistently across matching, reconciliation, and lookup artifacts.
-7. Do not include silly or self-referential content such as worksheet rows named after the file, fields whose values are just the column name, obvious lorem ipsum, or labels that break the illusion of a real business workflow.
 
 GitHub-ready output structure when GitHub upload is Yes:
 Create a local repository folder named after the requested repository with this clean structure by default:
@@ -182,7 +231,7 @@ Required overview `.page` content for non-GitHub packages:
 9. Audience.
 10. Duration.
 11. Prerequisites.
-12. Contents links or file references to `demo/DEMO-INSTRUCTIONS.docx` and every file under `demo/sample-data/`.
+12. A short contents section linking to `demo/DEMO-INSTRUCTIONS.docx` and `demo/sample-data/`.
 13. Public research sources.
 14. Assumptions.
 15. AI transparency notice.
@@ -190,15 +239,33 @@ Required overview `.page` content for non-GitHub packages:
 Required DEMO-INSTRUCTIONS content:
 For GitHub packages, create both `demo/DEMO-INSTRUCTIONS.md` and `demo/DEMO-INSTRUCTIONS.docx`. For non-GitHub packages, create only `demo/DEMO-INSTRUCTIONS.docx`.
 
-The presenter guide must use this clean structure:
+The presenter guide should normally be one or two pages and use this clean structure:
 1. Demo title.
 2. Scenario: concise paragraph describing the task and desired outcome.
 3. Demo Tool: exact app, exact agent or experience, and whether this is build, use, or both.
 4. Files to Attach: bulleted list of files in execution order, all located under `demo/sample-data/`.
-5. Prompts: numbered prompts. Each prompt must include exact prompt text, sources/files used, required result format, acceptance criteria, next handoff, failure behavior where relevant, and expected output.
-6. Build or Configure, optional when the demo requires setup.
-7. Test and Validate, optional but recommended for agent or workflow demos.
-8. Cleanup steps where needed.
+5. Prompts: numbered prompt headings in execution order. Put each exact copy-and-paste prompt in a
+  shaded, bordered, single-cell prompt box. Each prompt must identify the files or knowledge
+  sources in use, required result format, validation or acceptance criteria, failure or no-match
+  behavior where relevant, and next handoff.
+6. Build or Configure: include only when the demonstration creates or configures an agent. Name
+  the exact interface, grounding files, instructions, starter prompts, tests, and handoff to Chat.
+7. Test and Validate: include when the product must be built, published, permission-tested, or
+  connected before it can be demonstrated.
+
+Use-only demonstrations should remain one or two pages. Build-heavy SharePoint agent, Agent
+Builder, and Copilot Studio guides may exceed two pages only for required current-interface setup,
+permission checks, test prompts, expected results, and acceptance criteria. Do not add a cover
+page, table of contents, executive summary, package inventory, long talk track, timing table,
+cleanup section, troubleshooting section, repeated disclaimer, or overview material unless the
+user explicitly requests it.
+
+For Word, use a clean printable white page, one restrained blue accent, one professional sans-serif
+font, real Heading 1 and Heading 2 styles, generous whitespace, short paragraphs, and simple file
+bullets. Use a light single-cell callout table with a subtle border for each prompt. Avoid
+decorative banners, crowded tables, excessive shading, and unnecessary headers. Put
+`Classification: Public` unobtrusively in the footer or document properties. Validate the document
+and visually inspect every rendered page before publishing.
 
 GitHub `DEMO-INSTRUCTIONS.md` and `DEMO-INSTRUCTIONS.docx` must also include readable download links or file references for every supporting file. In Word, use readable hyperlinks or path references.
 
@@ -210,20 +277,53 @@ Required AI-CONTENT-DECLARATION.md content for GitHub packages:
 5. Reminder not to add customer confidential information to the repository.
 
 Rich artifact requirements:
-1. Word documents must be substantive, polished business documents, not placeholders. A generated Word document should normally be a few pages long and include relevant headings, executive context, scenario details, tables or structured sections, and realistic fictional content.
-2. Excel workbooks used as a primary dataset must include more than one worksheet. For GitHub packages, include at least 100 fictional data rows unless the scenario requires more. For non-GitHub/Cowork-compatible packages, target at least 1,000 rows for primary structured datasets, with calculations/formulas and lookup/reference tabs where useful.
-3. CSV or JSON files must contain enough realistic synthetic records to support analysis, filtering, summarization, or agent grounding.
-4. Include matching and nonmatching records, verified counts, and testability for major steps when the scenario depends on data matching, reconciliation, triage, or validation.
-5. Include charts, diagrams, or visual summaries where useful. Place any exported images or media under `demo/sample-data/`.
-6. Every artifact must serve the demo workflow. Do not add filler files solely to increase artifact count.
+Every package must contain substantive, runnable, scenario-specific supporting artifacts. Unless a
+format is genuinely inapplicable, include at least one detailed business document or grounding
+file, one primary structured-data artifact, and one output template, destination file, or
+expected-result artifact when the workflow creates a deliverable. Explain equivalent alternatives
+in the branch-specific overview.
+
+1. Word documents must be polished business artifacts rather than placeholders. SOPs, playbooks,
+  and procedural guides must be several pages long and cover purpose, scope, roles,
+  prerequisites, procedures, decisions, exceptions, controls, validation, troubleshooting, and
+  expected outcomes.
+2. Every primary Excel data workbook must contain at least 1,000 realistic data rows and more than
+  one worksheet in both publishing branches. Include researched fields, stable entity and source
+  IDs, natural invented names, lookup tabs, calculations, summaries, and charts where useful.
+3. At least 50% of each primary source dataset must match the intended criteria. Include plausible
+  nonmatches so the presenter must filter and reason over the data. Record and verify matching and
+  nonmatching counts.
+4. Use live Excel formulas for derived totals and verify that formulas calculate without errors.
+5. CSV and JSON files must contain enough records for meaningful filtering, summarization, or
+  grounding. Tiny illustrative datasets are insufficient.
+6. Include visuals only when they materially support a demo step.
+7. Every artifact must serve an input, action, decision, handoff, or output. Do not add filler.
+8. For every major step, define the exact input, action or prompt, expected result, pass criteria,
+  failure or no-match behavior, and next handoff.
 
 Technology guidance:
-1. Microsoft 365 Copilot demos should focus on prompts, workflow orchestration, content generation, summarization, analysis, and meeting/email/document productivity across multiple rich inputs.
-2. Copilot prebuilt agent demos should clearly identify which prebuilt agent is being demonstrated and provide realistic setup, usage instructions, expected inputs, and expected outputs.
-3. Cowork demos should include collaboration workflow steps, prompts, expected handoffs, and how to show value in a private delivery.
-4. Microsoft Scout demos should include Scout-oriented prompts, scenario walkthroughs, expected outputs, and safe sample artifacts.
-5. M365 Agent Builder, Agent Builder in Chat, or SharePoint custom agent demos should include agent purpose, grounding files, instructions, starter prompts, test cases, acceptance criteria, and deployment/setup guidance.
-6. Copilot Studio demos should include topic/agent design notes, sample trigger phrases, actions/connectors placeholders if needed, test scripts, fallback behavior, and sample data or documents that make the conversation realistic.
+1. **Microsoft 365 Copilot Chat:** Name the exact attached agent or experience, such as Excel,
+  Researcher, an analysis agent, or a custom agent. Provide an end-to-end walkthrough with exact
+  files, prompts, expected outputs, validation criteria, and handoffs.
+2. **Copilot prebuilt agents:** Name the agent and provide access or setup assumptions, exact
+  files, expected inputs, prompts, outputs, test cases, acceptance criteria, and next handoff.
+3. **Cowork:** Name the exact starting surface and files. Include a complete walkthrough,
+  collaboration steps, handoffs, expected outputs, safe artifacts, test prompts, acceptance
+  criteria, and a clear private-delivery value story.
+4. **Microsoft Scout:** Name the exact starting surface, source configuration, and files. Include a
+  complete walkthrough, Scout-oriented prompts, collaboration or handoff steps, expected outputs,
+  testable pass criteria, safe artifacts, and a value story comparable in depth to Cowork.
+5. **SharePoint agent:** Include agent purpose, exact SharePoint grounding locations, detailed
+  grounding files, instructions, starter prompts, access assumptions, setup, and later Chat use.
+  Test grounded and cited answers, an out-of-scope or no-answer case, and a permission boundary.
+6. **Agent Builder in Chat:** Use the current Agent Builder experience in Microsoft 365 Copilot
+  Chat. Include purpose, instructions, grounding files, starter prompts, access assumptions, save
+  or share steps, tests, expected results, acceptance criteria, and steps to select the agent.
+7. **Copilot Studio:** Use only the new Copilot Studio interface. Do not include classic or
+  legacy-interface directions. Include instructions, knowledge sources, trigger phrases, runnable
+  actions or clearly labeled connector prerequisites, publish or channel steps, and later usage.
+  Test a successful response, no-match or out-of-scope request, fallback behavior, and action
+  failure. A connector placeholder is not a runnable demo step.
 
 Licensing for GitHub packages:
 Always create an MIT LICENSE file using the current year and the GitHub account or organization provided by the user as copyright holder unless the user specifies another public-safe copyright holder.
@@ -258,8 +358,8 @@ Demo archive and deletion workflow:
 2. Never delete a public GitHub repository, local folder, or SharePoint file without explicit confirmation that names the target repository or file.
 3. If the repository should remain but no longer be promoted, keep the repository and tell the user demo logging/catalog updates are not currently maintained by this skill.
 4. If the repository should be deleted, confirm the exact `owner/repository` name, clearly state that repository deletion is irreversible, obtain explicit confirmation naming that target, and use GitHub CLI when authenticated.
-6. If the local generated package folder should be deleted, confirm the exact local path before deleting it.
-7. If a demo's own `manifest.json` is being updated during archive or deletion, set a repository-level status field when present or add one if needed, then commit and push that status update before any repository deletion.
+5. If the local generated package folder should be deleted, confirm the exact local path before deleting it.
+6. If a demo's own `manifest.json` is being updated during archive or deletion, set a repository-level status field when present or add one if needed, then commit and push that status update before any repository deletion.
 
 Quality bar:
 1. The package must be complete enough for an MTT to run the private delivery without asking for missing scripts or files.
@@ -269,13 +369,19 @@ Quality bar:
 5. Validate that every generated file uses the correct branch-specific structure.
 6. Validate that GitHub packages include README.md, LICENSE, AI-CONTENT-DECLARATION.md, manifest.json, `demo/DEMO-INSTRUCTIONS.md`, `demo/DEMO-INSTRUCTIONS.docx`, and all demo artifacts under `demo/sample-data/`.
 7. Validate that non-GitHub packages contain one `.page`, one `demo/` folder, `demo/DEMO-INSTRUCTIONS.docx`, and non-empty `demo/sample-data/`, with no Markdown or repository files.
-8. Validate that all generated files include Public classification where applicable and the required disclaimer is present in branch-appropriate overview and instruction files.
+8. Validate that generated artifacts carry Public classification where appropriate and that the
+  required disclaimer is present in the branch-specific README or overview Page without
+  cluttering the presenter guide.
 9. Validate that GitHub README.md, `demo/DEMO-INSTRUCTIONS.md`, and `demo/DEMO-INSTRUCTIONS.docx` include download links or readable file references for every supporting artifact after upload.
 10. Validate that Word documents are substantive and a few pages long where Word documents are part of the demo.
-11. Validate that Excel workbooks have multiple sheets and enough fictional data rows for the selected branch and scenario.
+11. Validate that every primary Excel workbook has multiple sheets, at least 1,000 rows, live
+  error-free formulas where applicable, and verified matching and nonmatching counts with at
+  least 50% matching the intended criteria.
 12. Validate that prompts and human-readable instructions are consolidated in the branch-appropriate instruction files and prompt text is shown in clearly labeled boxes.
 13. Validate that no separate demo catalog, SharePoint logging file, workbook, or list was created or updated.
 14. Do not create or store secrets, credentials, tenant IDs, private URLs, or customer confidential content.
+15. Validate that every related artifact follows the shared style system and scenario locale, uses
+  stable IDs and natural invented names, and excludes implementation details from business data.
 
 ## Guardrails
 

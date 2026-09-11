@@ -84,14 +84,19 @@ Each skill carries its own version in frontmatter and in its version section:
 
 | Skill | Current version | Canonical source |
 | --- | --- | --- |
-| Scout demo builder | `2026.09.04.4` | `https://raw.githubusercontent.com/rob-foulkrod/mtt-demo-creation-tools/main/scout/demo-on-demand-SKILL.md` |
-| Cowork demo builder | `2.2.3` | `https://raw.githubusercontent.com/rob-foulkrod/mtt-demo-creation-tools/main/cowork/demo-builder-SKILL.md` |
+| Scout demo builder | `2026.09.11.1` | `https://raw.githubusercontent.com/rob-foulkrod/mtt-demo-creation-tools/main/scout/demo-on-demand-SKILL.md` |
+| Cowork demo builder | `2.3.0` | `https://raw.githubusercontent.com/rob-foulkrod/mtt-demo-creation-tools/main/cowork/demo-builder-SKILL.md` |
 | Generate data | `2026.09.04.4` | `https://raw.githubusercontent.com/rob-foulkrod/mtt-demo-creation-tools/main/Common/generate-data/SKILL.md` |
 
 At the start of a run, the installed skill should check its canonical raw GitHub URL. If the public
 copy has a higher version, it should tell the user and offer to download and install the updated
 local copy before continuing. If the check cannot be completed, the skill can continue with the
 installed version while disclosing that the update check was skipped.
+
+The Scout and Cowork demo builders share the same scenario-design, artifact-quality,
+presenter-guide, public-safety, and verification baseline. Their publishing behavior remains
+different: Scout first branches between a GitHub-ready repository and a Cowork-compatible folder,
+while Cowork publishes only the folder-native OneDrive/SharePoint package.
 
 ## Generate-data dependency
 
