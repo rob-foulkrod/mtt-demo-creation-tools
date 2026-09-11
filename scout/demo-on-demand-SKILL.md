@@ -10,13 +10,13 @@ description: |
   Do NOT use for a standalone document - use docx instead; a standalone spreadsheet - use xlsx
   instead; or a deck or slide - use pptx instead.
 metadata:
-  version: "2026.09.04.8"
+  version: "2026.09.04.9"
 ---
 
 Use this skill when an MTT wants to create a demo-on-demand package for a private delivery. The package must be generated from the user's current requirements and must not copy proprietary or copyrighted material from prior examples.
 
 Skill version:
-Version: 2026.09.04.8
+Version: 2026.09.04.9
 
 Source references:
 - Public repository: `https://github.com/rob-foulkrod/mtt-demo-creation-tools`
@@ -25,6 +25,7 @@ Source references:
 - Cowork format reference: `https://raw.githubusercontent.com/rob-foulkrod/mtt-demo-creation-tools/main/cowork/demo-builder-SKILL.md`
 - Generate-data skill folder: `https://github.com/rob-foulkrod/mtt-demo-creation-tools/tree/main/Common/generate-data`
 - Generate-data source file: `https://raw.githubusercontent.com/rob-foulkrod/mtt-demo-creation-tools/main/Common/generate-data/SKILL.md`
+- Style guidelines support skill: `https://raw.githubusercontent.com/rob-foulkrod/mtt-demo-creation-tools/main/Common/demo-builder-style-guidelines-SKILL.md`
 - Scout creator maintenance support skill: `https://raw.githubusercontent.com/rob-foulkrod/mtt-demo-creation-tools/main/scout/demo-on-demand-creator-maintenance-SKILL.md`
 - Shared edit guardrails support skill: `https://raw.githubusercontent.com/rob-foulkrod/mtt-demo-creation-tools/main/Common/demo-builder-edit-guardrails-SKILL.md`
 
@@ -107,7 +108,7 @@ Public-data and privacy rules:
 6. Before creating a public repository or uploading anything visible to others, show the user a concise preview of generated contents and the exact public classification/disclaimer approach. Require explicit approval before public upload.
 
 Always do:
-1. Define one shared package style system before artifact creation and apply it to every related file where the format supports styling. The style system must cover fonts, color palette, title treatment, heading hierarchy, table styles, header bands, row banding, borders, column widths, number formats, date formats, chart styling, terminology, and scenario naming across Excel, Word, PowerPoint, Markdown, CSV, JSON, and supporting artifacts.
+1. Before creating documents, workbooks, presentations, Pages, diagrams, images, or styled artifacts, load the shared style guidelines support skill from `https://raw.githubusercontent.com/rob-foulkrod/mtt-demo-creation-tools/main/Common/demo-builder-style-guidelines-SKILL.md`. Define one shared package style system before artifact creation and apply it to every related file where the format supports styling. The style system must cover at least three complementary colors, fonts, title treatment, heading hierarchy, table styles, header bands, row banding, borders, column widths, number formats, date formats, chart styling, terminology, and scenario naming across Excel, Word, PowerPoint, Markdown, CSV, JSON, and supporting artifacts.
 2. Style every worksheet and secondary sheet deliberately. Every Excel sheet must have a meaningful title, filled header band, consistent font and palette, readable column widths, frozen headers, appropriate typed number/date formats, and charts or summaries when they support the scenario. Review related artifacts side by side before upload or publication to confirm visual and terminology consistency.
 3. Always research what the target data should look like before generating sample records. Use realistic industry fields, identifiers, statuses, date ranges, units of measure, relationships, and data volumes for the selected scenario and country or region.
 4. Use the scenario locale. Format currencies, dates, percentages, phone numbers, postal codes, separators, addresses, and measurements according to the scenario geography. Use `$` for United States currency or the correct symbol/code for other countries or regions. Store currency, dates, percentages, and derived numeric values as typed values where the file format supports them; do not embed formatted money or dates as plain text when Excel or another structured format can store them as typed values.
@@ -214,6 +215,8 @@ Required AI-CONTENT-DECLARATION.md content for GitHub packages:
 5. Reminder not to add customer confidential information to the repository.
 
 Rich artifact requirements:
+Before creating sample data, business documents, templates, slides, workbooks, diagrams, images, or visual outputs, load the shared style guidelines support skill and apply it with the data-quality requirements below.
+
 1. Word documents must be substantive, polished business documents, not placeholders. A generated Word document should normally be a few pages long and include relevant headings, executive context, scenario details, tables or structured sections, and realistic fictional content.
 2. Detailed SOPs, playbooks, and procedural documents must be several pages long and cover purpose, scope, roles, prerequisites, procedures, decision points, exceptions, controls, validation, troubleshooting, and expected outcomes.
 3. Excel workbooks used as a primary dataset must include more than one worksheet. For GitHub packages, include at least 100 fictional data rows unless the scenario requires more. For non-GitHub/Cowork-compatible packages, require at least 1,000 rows for primary structured datasets. Include calculations/formulas, lookup/reference tabs, summaries, and charts where useful.

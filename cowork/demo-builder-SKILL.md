@@ -11,49 +11,45 @@ description: |
   instead. Do NOT use for a plain slide or deck - use the built-in pptx instead. Do
   NOT use for an MTT initiative.
 metadata:
-  version: "2.3.2"
+  version: "2.3.3"
   cowork-category: "automation"
   cowork-icon: "Rocket"
 ---
 
 ## Version, Canonical Source, and References
 
-- **Current version:** `2.3.2`
+- **Current version:** `2.3.3`
 - **Public repository:** `https://github.com/rob-foulkrod/mtt-demo-creation-tools`
 - **Cowork skill folder:** `https://github.com/rob-foulkrod/mtt-demo-creation-tools/tree/main/cowork`
 - **Canonical source file:** `https://raw.githubusercontent.com/rob-foulkrod/mtt-demo-creation-tools/main/cowork/demo-builder-SKILL.md`
 - **Generate-data skill folder:** `https://github.com/rob-foulkrod/mtt-demo-creation-tools/tree/main/Common/generate-data`
 - **Generate-data source file:** `https://raw.githubusercontent.com/rob-foulkrod/mtt-demo-creation-tools/main/Common/generate-data/SKILL.md`
+- **Style guidelines support skill:** `https://raw.githubusercontent.com/rob-foulkrod/mtt-demo-creation-tools/main/Common/demo-builder-style-guidelines-SKILL.md`
 - **Quality standards reference:** [references/QUALITY-STANDARDS.md](references/QUALITY-STANDARDS.md)
 - **Presenter guide reference:** [references/PRESENTER-GUIDE.md](references/PRESENTER-GUIDE.md)
 - **Technology guidance reference:** [references/TECHNOLOGY-GUIDANCE.md](references/TECHNOLOGY-GUIDANCE.md)
 - **Creator-only maintenance support skill:** `https://raw.githubusercontent.com/rob-foulkrod/mtt-demo-creation-tools/main/cowork/demo-builder-creator-maintenance-SKILL.md`
 - **Shared edit guardrails support skill:** `https://raw.githubusercontent.com/rob-foulkrod/mtt-demo-creation-tools/main/Common/demo-builder-edit-guardrails-SKILL.md`
 
-Before running a demo-on-demand workflow, read the canonical source file from the public GitHub URL
-above and compare its `metadata.version` with this loaded copy. If the canonical version is
-newer, use its current instructions for the run and tell the user that a newer version was found. Do
-not overwrite the installed personal skill unless the user asks to update it. If the canonical file
-cannot be accessed, continue with the loaded version and disclose the gap.
+Before running, compare the canonical GitHub file's `metadata.version` with this copy. If it is
+newer, use the canonical instructions and disclose that a newer version was found. Do not overwrite
+the installed skill unless asked. If unavailable, continue and disclose the gap.
 
-Creator-only update, versioning, install, change-log, and repository maintenance instructions live
-in the creator maintenance support skill and must not surface in ordinary demo creation. Before
-editing Scout or Cowork demo-builder files, creators must load the shared edit guardrails support
-skill so both builders keep equivalent safety, quality, publishing, and verification behavior.
+Creator-only update, install, change-log, and repository maintenance guidance lives in the creator
+maintenance support skill and must not surface in ordinary demo creation. Before editing Scout or
+Cowork demo-builder files, load the shared edit guardrails support skill.
 
 ## Generate-data Dependency
 
 - **Required version:** `2026.09.04.4` or newer.
-- Load the generate-data skill before creating any fictional company, person, email address, or
-  sample data.
-- If the generate-data skill or its `companies.csv` and `names.csv` support files are not installed
-  locally with this Cowork skill, offer to download and install the full folder from the public
-  GitHub repository before generating data.
+- Load generate-data before creating fictional companies, people, email addresses, or sample data.
+- If generate-data or its `companies.csv` and `names.csv` files are missing, offer to install the
+  full folder from GitHub before generating data.
 
 ## Overview
 
-Turn an MTT's private-delivery requirements into a polished, repeatable, public-safe demo stored
-in the OneDrive or SharePoint folder the user chooses.
+Turn an MTT's private-delivery requirements into a polished, repeatable, public-safe demo stored in
+the OneDrive or SharePoint folder the user chooses.
 
 The output is intentionally folder-native rather than repository-shaped. Create one readable
 overview Page at the package root and put the runnable demonstration inside a `demo/` folder.
@@ -65,9 +61,10 @@ material from an example.
 
 ## ALWAYS Do - Production-Realistic Artifacts
 
-Before creating artifacts, load [references/QUALITY-STANDARDS.md](references/QUALITY-STANDARDS.md)
-and apply it to every demo package. Summary: research the real data shape,
-define one shared style system, style every worksheet and document, use locale-correct typed values,
+Before creating artifacts, load the shared style guidelines support skill and
+[references/QUALITY-STANDARDS.md](references/QUALITY-STANDARDS.md), then apply both to every demo
+package. Summary: research the real data shape, define one shared style system with at least three
+complementary colors, style every worksheet and document, use locale-correct typed values,
 use natural invented identities with stable IDs, keep business data internally coherent, keep
 implementation details out of datasets, and keep transparency language at the package level rather
 than in business records or prompts.
@@ -242,7 +239,9 @@ Every demonstration must contain substantive, runnable, scenario-specific suppor
 An empty `sample-data/` folder, placeholder-only files, external links without local demo inputs,
 or a guide that refers to files that were not created fails verification.
 
-Load [references/QUALITY-STANDARDS.md](references/QUALITY-STANDARDS.md) before creating sample data.
+Load the shared style guidelines support skill and
+[references/QUALITY-STANDARDS.md](references/QUALITY-STANDARDS.md) before creating sample data,
+business documents, templates, slides, workbooks, diagrams, images, or visual outputs.
 Unless the technology makes one format genuinely inapplicable, include at least one detailed
 business document or grounding file, one primary structured-data artifact, and one output template,
 destination file, or expected-result artifact when the workflow creates or updates a deliverable.

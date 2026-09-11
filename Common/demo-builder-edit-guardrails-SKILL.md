@@ -5,7 +5,7 @@ description: |
   editing either runtime skill, support skill, or companion reference to keep behaviour, quality,
   safety, publishing, and verification requirements aligned.
 metadata:
-  version: "1.0.2"
+  version: "1.0.3"
 ---
 
 ## Purpose
@@ -69,6 +69,8 @@ Before committing, verify that both Scout and Cowork still enforce equivalent re
   README, presenter guide, and governance materials.
 - Research-based realistic data shape, locale-correct typed values, stable IDs, cross-file
   integrity, non-generic invented identities, and no implementation metadata in business datasets.
+- Shared style-guidelines loading before document, workbook, presentation, Page, image, diagram, or
+  other styled artifact creation.
 - Substantive non-empty `demo/sample-data/` content, branch-appropriate Excel row counts, matching
   and nonmatching records, verified counts, and live formula validation.
 - Clean presenter guide with exact files, exact tools or agents, shaded prompt boxes, expected
