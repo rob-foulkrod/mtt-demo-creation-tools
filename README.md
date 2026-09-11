@@ -22,7 +22,7 @@ Use this prompt in Scout to install or refresh the Scout demo builder and the sh
 dependency:
 
 ```text
-Install these Cowork demo-builder files from https://github.com/rob-foulkrod/mtt-demo-creation-tools
+Install these two skills from https://github.com/rob-foulkrod/mtt-demo-creation-tools
 
 - scout/demo-on-demand-SKILL.md → install as skill "demo-on-demand"
 - Common/generate-data/ → install as "generate-data", including companies.csv and names.csv
@@ -34,7 +34,7 @@ Use this prompt in Cowork to install or refresh the Cowork demo builder and the 
 dependency:
 
 ```text
-Install these two skills from https://github.com/rob-foulkrod/mtt-demo-creation-tools
+Install these Cowork demo-builder files from https://github.com/rob-foulkrod/mtt-demo-creation-tools
 
 - cowork/demo-builder-SKILL.md → install as skill "demo-on-demand"
 - cowork/references/ → install as companion references for the Cowork demo builder
