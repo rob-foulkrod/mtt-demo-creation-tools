@@ -58,6 +58,11 @@ IMPORTANT:
 
 The plugin should be completely self-contained.
 
+This plugin must contain only functional demo-generation logic.
+Exclude all lifecycle-management features including updates,
+version checks, dependency management, installation,
+migration, or synchronization capabilities.
+
 Generate:
 - complete folder structure
 - complete manifest.json
