@@ -107,10 +107,10 @@ stable app ID. Each skill retains its independent `metadata.version`:
 
 | Packaged skill | Current version | Source |
 | --- | --- | --- |
-| Scout demo builder | `2026.09.11.1` | [Scout runtime](scout/demo-on-demand-SKILL.md) |
-| Cowork demo builder | `2.4.0` | [Cowork runtime](cowork/demo-builder-SKILL.md) |
+| Scout demo builder | `2026.09.11.2` | [Scout runtime](scout/demo-on-demand-SKILL.md) |
+| Cowork demo builder | `2.4.1` | [Cowork runtime](cowork/demo-builder-SKILL.md) |
 | Shared style guidelines | `1.0.0` | [Style guidance](Common/demo-builder-style-guidelines-SKILL.md) |
-| Generate data | `2026.09.11.1` | [Data skill](Common/generate-data/SKILL.md) |
+| Generate data | `2026.09.11.2` | [Data skill](Common/generate-data/SKILL.md) |
 
 Installed skills do not check main or update themselves. Install a newer complete release explicitly,
 confirm replacements, and avoid duplicate skill registrations. Published release assets are not
@@ -120,9 +120,9 @@ overwritten. See [deployment.md](docs/deployment.md) for build commands and rele
 
 Both demo builder skills depend on the shared generate-data skill whenever a package needs
 fictional companies, people, email addresses, or sample data. Each release bundles SKILL.md,
-companies.csv, and names.csv together. Preserve that folder and verify it is readable through the
-installed skill. Missing or unusable files block named-data generation; the runtime must report an
-incomplete installation instead of silently downloading replacements or inventing names.
+companies.csv, and names.csv together. Preserve that folder. Generate-data owns validation and
+reading of its own companion files; invoking demo builders should load generate-data and follow its
+reported approved-name handoff, stop, or role-placeholder fallback behavior.
 
 ## Release tooling
 

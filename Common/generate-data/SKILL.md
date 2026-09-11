@@ -8,14 +8,14 @@ description: >
   "invent a fictional company/customer/employee", or "/generate-data". Covers Excel, Word, PowerPoint and CSV. Load this BEFORE inventing any company or person name, including when the
   data is a supporting artifact of a larger build. Do NOT use for real customer, employee, confidential, or production data.
 metadata:
-  version: "2026.09.11.1"
+  version: "2026.09.11.2"
 ---
 
 # Generate Data Skill
 
 ## Version and Bundled Data
 
-- **Current version:** `2026.09.11.1`
+- **Current version:** `2026.09.11.2`
 - **Public repository:** `https://github.com/rob-foulkrod/mtt-demo-creation-tools`
 - **Approved company list:** `companies.csv` alongside this skill.
 - **Approved person-name list:** `names.csv` alongside this skill.
@@ -23,13 +23,21 @@ metadata:
 ## Local File Validation
 
 - Resolve this skill's own root using the host-provided skill location, not a hardcoded path.
-- Before generating named data, validate that the skill can read `companies.csv` and `names.csv`
-  from that root and that both contain usable approved records.
+- Validate and read companion files only from paths relative to this skill root: `companies.csv`
+  and `names.csv`. Invoking skills must not inspect this skill's companion directory.
+- Before generating named data, validate that `companies.csv` exists, is readable, is not empty, and
+  has usable `CompanyName` and `EmailDomain` columns.
+- Validate that `names.csv` exists, is readable, is not empty, and has either a usable `FullName`
+  column or usable `FirstName` and `LastName` columns.
+- Treat missing, empty, unreadable, malformed, or unusable companion files as validation failures
+  owned by this skill. Report the exact failed file and condition to the invoking workflow.
 - Use the bundled instructions and data from this release. Do not fetch replacement skill files
   or newer lists during a demo run.
-- If a required file is missing or unreadable, report the incomplete installation and stop named
-  data generation. Never substitute invented names. The approved-source and role-placeholder
-  fallback below applies only when explicitly continuing without a usable person-name source.
+- If `companies.csv` is missing, empty, unreadable, malformed, or lacks usable company records, stop
+  named data generation. Never substitute invented company names.
+- If `names.csv` is missing, empty, unreadable, malformed, or lacks usable person-name records, ask
+  the user for an approved-name source or explicitly continue with documented role placeholders.
+  Never create realistic invented person names.
 
 ## When Not to Use
 
@@ -88,6 +96,18 @@ If no approved person-name source is available:
   Fictitious Names Finder](https://aka.ms/fnftool) before the content is used in packaging,
   documentation, advertising, promotional materials, recordings, or customer-facing demos.
 4. Do not create realistic first-name/last-name combinations yourself.
+
+### Handoff contract
+Return approved names and domains to the invoking workflow only after validation succeeds:
+
+1. Approved company names come from `companies.csv` `CompanyName` values exactly as written.
+2. Approved company email domains come from matching `EmailDomain` values.
+3. Approved person names come from `names.csv` `FullName` values, or from same-row `FirstName` plus
+   `LastName` when `FullName` is absent.
+4. If continuing without usable `names.csv`, return only role placeholders plus a `Name Replacement
+   Required` table. Clearly mark that no approved person names were available.
+5. Include a short validation summary for the invoking workflow: files checked, record counts,
+   selected values returned, and whether placeholders were used.
 
 ### Email and domain safety
 When creating email addresses:

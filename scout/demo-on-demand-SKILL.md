@@ -9,13 +9,13 @@ description: |
   for a private delivery". Do NOT use for confidential customer data or an MTT idea or initiative.
   Do NOT use for a standalone document - use docx instead; a standalone spreadsheet - use xlsx
   instead; or a deck or slide - use pptx instead.
-metadata: {version: "2026.09.11.1"}
+metadata: {version: "2026.09.11.2"}
 ---
 
 Use this skill when an MTT wants to create a demo-on-demand package for a private delivery. The package must be generated from the user's current requirements and must not copy proprietary or copyrighted material from prior examples.
 
 Skill version:
-Version: 2026.09.11.1
+Version: 2026.09.11.2
 
 Source and bundled dependencies:
 - Public repository: `https://github.com/rob-foulkrod/mtt-demo-creation-tools`
@@ -28,8 +28,8 @@ The public GitHub repository is the source of truth, not any private folder, cat
 
 Generate-data dependency:
 - Before creating any fictional company, person, email address, or sample data, load the bundled generate-data skill.
-- Verify that generate-data can access its bundled `companies.csv` and `names.csv` files.
-- If a required skill or companion is missing or unreadable, stop the affected generation and report the incomplete installation. Do not invent replacement data or silently download files.
+- Do not inspect generate-data's companion directory from this skill. The generate-data skill owns validation and reading of its own `companies.csv` and `names.csv` files.
+- If generate-data reports missing, empty, malformed, or unusable companion data, follow its documented stop or role-placeholder fallback behavior. Do not invent replacement names or silently download files.
 
 Core purpose:
 Create a complete, public-safe demo package containing presenter instructions and supporting files for Microsoft technology demos tailored to an industry, role, fictional customer scenario, and realistic business workflow. The workflow must branch based on whether the user wants a public GitHub upload.

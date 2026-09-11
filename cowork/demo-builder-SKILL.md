@@ -10,12 +10,12 @@ description: |
   or a GitHub-ready repository. Do NOT use for document, docx, or Word-only deliverables - use docx
   instead. Do NOT use for a plain slide or deck - use the built-in pptx instead. Do
   NOT use for an MTT initiative.
-metadata: {version: "2.4.0", cowork-category: "automation", cowork-icon: "Rocket"}
+metadata: {version: "2.4.1", cowork-category: "automation", cowork-icon: "Rocket"}
 ---
 
 ## Version and Bundled References
 
-- **Current version:** `2.4.0`
+- **Current version:** `2.4.1`
 - **Public repository:** `https://github.com/rob-foulkrod/mtt-demo-creation-tools`
 - **Data dependency:** bundled `generate-data` skill, including `companies.csv` and `names.csv`.
 - **Style dependency:** bundled `demo-builder-style-guidelines` skill.
@@ -29,9 +29,11 @@ name and host-provided location; do not assume a filesystem root or fetch replac
 ## Generate-data Dependency
 
 - Load generate-data before creating fictional companies, people, email addresses, or sample data.
-- Verify that generate-data can access its bundled `companies.csv` and `names.csv` files.
-- If a required skill or companion is missing or unreadable, stop the affected generation and
-   report the incomplete installation. Do not invent replacement data or silently download files.
+- Do not inspect generate-data's companion directory from this skill. Generate-data owns validation
+  and reading of its own `companies.csv` and `names.csv` files.
+- If generate-data reports missing, empty, malformed, or unusable companion data, follow its
+  documented stop or role-placeholder fallback behavior. Do not invent replacement names or silently
+  download files.
 
 ## Overview
 
