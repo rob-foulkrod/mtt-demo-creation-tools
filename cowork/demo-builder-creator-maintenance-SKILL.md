@@ -1,13 +1,13 @@
 ---
-version: 1.1.0
 name: demo-builder-creator-maintenance
 description: |
   Creator-only support skill for maintaining the Cowork demo-builder skill, companion references,
   local installed copies, version numbers, and change logs. Always loads the shared edit guardrails
   support skill before edits. Do not use for end-user demo package creation.
-cowork:
-  category: automation
-  icon: Tools
+metadata:
+  version: "1.1.1"
+  cowork-category: "automation"
+  cowork-icon: "Tools"
 ---
 
 ## Purpose
@@ -61,7 +61,7 @@ canonical source.
 - Every update to the Cowork runtime skill, companion references, or this support skill must write a
   change log file in `https://github.com/rob-foulkrod/mtt-demo-creation-tools/tree/main/change%20logs`.
 - Name each change log file `<skill-name>-<skill-version>-log.md`; for Cowork runtime skill version
-  `2.3.1`, use `demo-on-demand-2.3.1-log.md`.
+  `2.3.2`, use `demo-on-demand-2.3.2-log.md`.
 - The change log title must be `<skill-name> <skill-version>-log`.
 - The change log must include `Skill name`, `Skill version`, `Additions`, and `Deletions` sections.
   If there are no deletions, write `None`.
@@ -74,7 +74,7 @@ When the user asks to update the Cowork demo-builder skill:
 1. Read the canonical runtime skill and companion references before editing.
 2. Load the shared edit guardrails support skill and apply its parity, source-of-truth, and
    regression checks before changing files.
-3. Increment the semantic version in both the frontmatter `version` field and the **Current version**
+3. Increment the semantic version in frontmatter `metadata.version` and the **Current version**
    line. Use a patch version for wording or fixes, a minor version for backward-compatible behavior
    additions, and a major version for incompatible workflow or output-structure changes.
 4. Keep end-user runtime instructions in `cowork/demo-builder-SKILL.md`.

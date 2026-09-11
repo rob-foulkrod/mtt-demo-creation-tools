@@ -1,5 +1,4 @@
 ---
-version: 2.3.1
 name: demo-on-demand
 description: |
   Builds a clean, public-safe demo-on-demand package for an MTT private delivery and places it in
@@ -11,14 +10,15 @@ description: |
   or a GitHub-ready repository. Do NOT use for document, docx, or Word-only deliverables - use docx
   instead. Do NOT use for a plain slide or deck - use the built-in pptx instead. Do
   NOT use for an MTT initiative.
-cowork:
-  category: automation
-  icon: Rocket
+metadata:
+  version: "2.3.2"
+  cowork-category: "automation"
+  cowork-icon: "Rocket"
 ---
 
 ## Version, Canonical Source, and References
 
-- **Current version:** `2.3.1`
+- **Current version:** `2.3.2`
 - **Public repository:** `https://github.com/rob-foulkrod/mtt-demo-creation-tools`
 - **Cowork skill folder:** `https://github.com/rob-foulkrod/mtt-demo-creation-tools/tree/main/cowork`
 - **Canonical source file:** `https://raw.githubusercontent.com/rob-foulkrod/mtt-demo-creation-tools/main/cowork/demo-builder-SKILL.md`
@@ -31,7 +31,7 @@ cowork:
 - **Shared edit guardrails support skill:** `https://raw.githubusercontent.com/rob-foulkrod/mtt-demo-creation-tools/main/Common/demo-builder-edit-guardrails-SKILL.md`
 
 Before running a demo-on-demand workflow, read the canonical source file from the public GitHub URL
-above and compare its frontmatter `version` with this loaded copy. If the canonical version is
+above and compare its `metadata.version` with this loaded copy. If the canonical version is
 newer, use its current instructions for the run and tell the user that a newer version was found. Do
 not overwrite the installed personal skill unless the user asks to update it. If the canonical file
 cannot be accessed, continue with the loaded version and disclose the gap.

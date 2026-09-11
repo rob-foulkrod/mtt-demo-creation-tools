@@ -1,10 +1,11 @@
 ---
-version: 1.0.0
 name: demo-builder-edit-guardrails
 description: |
   Creator-only edit guardrails for maintaining Scout and Cowork demo-builder skills. Load before
   editing either runtime skill, support skill, or companion reference to keep behaviour, quality,
   safety, publishing, and verification requirements aligned.
+metadata:
+  version: "1.0.1"
 ---
 
 ## Purpose
@@ -45,7 +46,7 @@ references, support skills, generated examples, documentation, or change logs.
    must not prepare GitHub repositories.
 6. Keep source references public and GitHub-only. Do not introduce SharePoint, OneDrive, Teams, or
    private URLs as skill source-of-truth references.
-7. Update versions and change logs in the same commit when a skill or support skill changes.
+7. Update `metadata.version` and change logs in the same commit when a skill or support skill changes.
 8. Update README installation and repository-layout guidance when files are added, moved, renamed, or
    split.
 9. Update installed local copies only when the user asks or when the current task is explicitly to

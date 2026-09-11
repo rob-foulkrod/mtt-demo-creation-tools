@@ -1,5 +1,4 @@
 ---
-version: 2026.09.04.4
 name: generate-data
 description: >
   REQUIRED whenever synthetic, fake, or sample content will contain a COMPANY NAME or PERSON NAME.
@@ -8,6 +7,8 @@ description: >
   "make sample files", "dummy/mock/test data", "CIE or Copilot demo examples", "courseware or class demo pack",
   "invent a fictional company/customer/employee", or "/generate-data". Covers Excel, Word, PowerPoint and CSV. Load this BEFORE inventing any company or person name, including when the
   data is a supporting artifact of a larger build. Do NOT use for real customer, employee, confidential, or production data.
+metadata:
+  version: "2026.09.04.5"
 
 ---
 
@@ -15,7 +16,7 @@ description: >
 
 ## Version and Canonical Source
 
-- **Current version:** `2026.09.04.4`
+- **Current version:** `2026.09.04.5`
 - **Public repository:** `https://github.com/rob-foulkrod/mtt-demo-creation-tools`
 - **Canonical folder:** `https://github.com/rob-foulkrod/mtt-demo-creation-tools/tree/main/Common/generate-data`
 - **Canonical source file:** `https://raw.githubusercontent.com/rob-foulkrod/mtt-demo-creation-tools/main/Common/generate-data/SKILL.md`
@@ -24,7 +25,7 @@ description: >
 - **Change logs folder:** `https://github.com/rob-foulkrod/mtt-demo-creation-tools/tree/main/change%20logs`
 
 Before using this skill, check the canonical source file when internet access is available. If the
-public GitHub copy has a higher version number than the local copy, tell the user that a newer
+public GitHub copy has a higher `metadata.version` than the local copy, tell the user that a newer
 generate-data skill is available and offer to download and install the full folder from
 `https://github.com/rob-foulkrod/mtt-demo-creation-tools/tree/main/Common/generate-data`. If this
 skill is referenced by another skill but is not installed locally with `companies.csv` and
@@ -48,7 +49,7 @@ check was skipped.
 - Every update to this skill must write a change log file in
   `https://github.com/rob-foulkrod/mtt-demo-creation-tools/tree/main/change%20logs`.
 - The change log file name must be `<skill-name>-<skill-version>-log.md`; for this skill, use
-  `generate-data-2026.09.04.4-log.md` for version `2026.09.04.4`.
+  `generate-data-2026.09.04.5-log.md` for version `2026.09.04.5`.
 - The change log title must be `<skill-name> <skill-version>-log`.
 - The change log must include `Skill name`, `Skill version`, `Additions`, and `Deletions`
   sections. If there are no deletions, write `None`.

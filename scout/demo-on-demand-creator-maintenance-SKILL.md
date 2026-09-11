@@ -1,10 +1,11 @@
 ---
-version: 1.0.0
 name: demo-on-demand-creator-maintenance
 description: |
   Creator-only support skill for maintaining the Scout demo-on-demand skill, local installed copy,
   version numbers, change logs, and repository updates. Always loads the shared edit guardrails
   support skill before edits. Do not use for end-user demo package creation.
+metadata:
+  version: "1.0.1"
 ---
 
 ## Purpose
@@ -58,7 +59,7 @@ personal SharePoint, OneDrive, Teams file, internal catalog, or private folder a
 - Every update to the Scout runtime skill or this support skill must write a change log file in
   `https://github.com/rob-foulkrod/mtt-demo-creation-tools/tree/main/change%20logs`.
 - Name each change log file `<skill-name>-<skill-version>-log.md`; for Scout runtime skill version
-  `2026.09.04.7`, use `demo-on-demand-2026.09.04.7-log.md`.
+  `2026.09.04.8`, use `demo-on-demand-2026.09.04.8-log.md`.
 - The change log title must be `<skill-name> <skill-version>-log`.
 - The change log must include `Skill name`, `Skill version`, `Additions`, and `Deletions` sections.
   If there are no deletions, write `None`.
@@ -71,7 +72,7 @@ When the user asks to update the Scout demo-on-demand skill:
 1. Read the canonical runtime skill and Cowork runtime skill before editing.
 2. Load the shared edit guardrails support skill and apply its parity, source-of-truth, and
    regression checks before changing files.
-3. Increment the date-style version in both the frontmatter `version` field and the `Version:` line.
+3. Increment the date-style version in both frontmatter `metadata.version` and the `Version:` line.
 4. Keep end-user runtime instructions in `scout/demo-on-demand-SKILL.md`.
 5. Move creator-only maintenance material into this support skill.
 6. Keep Scout's GitHub-ready and non-GitHub/Cowork-compatible branches intact unless the user

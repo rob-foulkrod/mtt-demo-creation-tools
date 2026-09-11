@@ -1,5 +1,4 @@
 ---
-version: 2026.09.04.7
 name: demo-on-demand
 description: |
   Builds public-safe demo-on-demand packages for MTT private deliveries and first asks, "Will you
@@ -10,12 +9,14 @@ description: |
   for a private delivery". Do NOT use for confidential customer data or an MTT idea or initiative.
   Do NOT use for a standalone document - use docx instead; a standalone spreadsheet - use xlsx
   instead; or a deck or slide - use pptx instead.
+metadata:
+  version: "2026.09.04.8"
 ---
 
 Use this skill when an MTT wants to create a demo-on-demand package for a private delivery. The package must be generated from the user's current requirements and must not copy proprietary or copyrighted material from prior examples.
 
 Skill version:
-Version: 2026.09.04.7
+Version: 2026.09.04.8
 
 Source references:
 - Public repository: `https://github.com/rob-foulkrod/mtt-demo-creation-tools`
@@ -29,7 +30,7 @@ Source references:
 
 Use only the public GitHub repository above as the canonical source for this skill, its Cowork format reference, generate-data dependency, change logs, updates, and documentation. Do not use or reference any personal SharePoint, OneDrive, Teams file, internal catalog, or private folder as a skill source of truth.
 
-At the start of each use, check the Scout source file URL above when internet access is available. If the public GitHub copy has a higher version number than this local skill file, tell the user that a newer Scout version is available and prompt them to install it before continuing. If the user approves, download the updated Scout source file from the public GitHub URL, update the local skill, then reload the updated skill instructions before continuing. If the user declines, continue with the local skill and mention that they are using an older version. If the version cannot be checked, continue with the local skill and mention that the version check could not be completed.
+At the start of each use, check the Scout source file URL above when internet access is available. If the public GitHub copy has a higher `metadata.version` than this local skill file, tell the user that a newer Scout version is available and prompt them to install it before continuing. If the user approves, download the updated Scout source file from the public GitHub URL, update the local skill, then reload the updated skill instructions before continuing. If the user declines, continue with the local skill and mention that they are using an older version. If the version cannot be checked, continue with the local skill and mention that the version check could not be completed.
 
 Creator-only skill-update, versioning, change-log, local-installation, and repository maintenance instructions live in the Scout creator maintenance support skill. Before editing either Scout or Cowork demo-builder skills or companion files, creators must load the shared edit guardrails support skill so both demo builders keep equivalent safety, quality, publishing, and verification behavior.
 
