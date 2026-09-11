@@ -1,5 +1,5 @@
 ---
-version: 2.2.3
+version: 2.3.0
 name: demo-on-demand
 description: |
   Builds a clean, public-safe demo-on-demand package for an MTT private delivery and places it in
@@ -16,15 +16,18 @@ cowork:
   icon: Rocket
 ---
 
-## Version and Canonical Source
+## Version, Canonical Source, and References
 
-- **Current version:** `2.2.3`
+- **Current version:** `2.3.0`
 - **Public repository:** `https://github.com/rob-foulkrod/mtt-demo-creation-tools`
 - **Cowork skill folder:** `https://github.com/rob-foulkrod/mtt-demo-creation-tools/tree/main/cowork`
 - **Canonical source file:** `https://raw.githubusercontent.com/rob-foulkrod/mtt-demo-creation-tools/main/cowork/demo-builder-SKILL.md`
 - **Generate-data skill folder:** `https://github.com/rob-foulkrod/mtt-demo-creation-tools/tree/main/Common/generate-data`
 - **Generate-data source file:** `https://raw.githubusercontent.com/rob-foulkrod/mtt-demo-creation-tools/main/Common/generate-data/SKILL.md`
-- **Change logs folder:** `https://github.com/rob-foulkrod/mtt-demo-creation-tools/tree/main/change%20logs`
+- **Quality standards reference:** [references/QUALITY-STANDARDS.md](references/QUALITY-STANDARDS.md)
+- **Presenter guide reference:** [references/PRESENTER-GUIDE.md](references/PRESENTER-GUIDE.md)
+- **Technology guidance reference:** [references/TECHNOLOGY-GUIDANCE.md](references/TECHNOLOGY-GUIDANCE.md)
+- **Creator-only maintenance support skill:** `https://raw.githubusercontent.com/rob-foulkrod/mtt-demo-creation-tools/main/cowork/demo-builder-creator-maintenance-SKILL.md`
 
 Before running a demo-on-demand workflow, read the canonical source file from the public GitHub URL
 above and compare its frontmatter `version` with this loaded copy. If the canonical version is
@@ -32,57 +35,19 @@ newer, use its current instructions for the run and tell the user that a newer v
 not overwrite the installed personal skill unless the user asks to update it. If the canonical file
 cannot be accessed, continue with the loaded version and disclose the gap.
 
+Creator-only skill-update, versioning, change-log, support-file installation, and repository
+maintenance instructions live in the creator-only maintenance support skill. End-user demo package
+creation must not surface those maintenance steps unless the user is explicitly maintaining the
+skill itself.
+
 ## Generate-data Dependency
 
 - **Required version:** `2026.09.04.4` or newer.
 - Load the generate-data skill before creating any fictional company, person, email address, or
   sample data.
 - If the generate-data skill or its `companies.csv` and `names.csv` support files are not installed
-  locally with this Cowork skill, offer to download and install the full folder from
-  `https://github.com/rob-foulkrod/mtt-demo-creation-tools/tree/main/Common/generate-data` before
-  generating data.
-- When downloading directly, use the raw files from
-  `https://raw.githubusercontent.com/rob-foulkrod/mtt-demo-creation-tools/main/Common/generate-data/SKILL.md`,
-  `https://raw.githubusercontent.com/rob-foulkrod/mtt-demo-creation-tools/main/Common/generate-data/companies.csv`,
-  and
-  `https://raw.githubusercontent.com/rob-foulkrod/mtt-demo-creation-tools/main/Common/generate-data/names.csv`.
-
-## Local File Validation
-
-- **Cowork skill local path:** `C:\Users\anconnif\.scout\m-skills\demo-on-demand\SKILL.md`.
-- **Generate-data local folder:** `C:\Users\anconnif\.scout\m-skills\generate-data`.
-- Before running, validate that the Cowork skill local path exists and that the generate-data folder
-  contains `SKILL.md`, `companies.csv`, and `names.csv`.
-- If any required local file is missing, offer to download and install it from the full public GitHub
-  URL listed above before continuing.
-- If the user provides a different local Cowork skills root, validate that path instead and report
-  the exact path used.
-
-## Change Log Requirement
-
-- Every update to this skill must write a change log file in
-  `https://github.com/rob-foulkrod/mtt-demo-creation-tools/tree/main/change%20logs`.
-- The change log file name must be `<skill-name>-<skill-version>-log.md`; for this skill, use
-  `demo-on-demand-2.2.3-log.md` for version `2.2.3`.
-- The change log title must be `<skill-name> <skill-version>-log`.
-- The change log must include `Skill name`, `Skill version`, `Additions`, and `Deletions`
-  sections. If there are no deletions, write `None`.
-- Commit the change log file in the same commit as the skill update.
-
-When the user asks to update this skill:
-
-1. Read the canonical source file before editing.
-2. Increment the semantic version in both the frontmatter `version` field and the **Current
-   version** line. Use a patch version for wording or fixes, a minor version for backward-compatible
-   behavior additions, and a major version for incompatible workflow or output-structure changes.
-3. Write the required change log file for the new version in the public repository `change logs`
-   folder.
-4. Apply the change to the active personal skill when requested, then validate and score it.
-5. Commit the identical validated `SKILL.md` content back to the public GitHub repository path
-   `https://github.com/rob-foulkrod/mtt-demo-creation-tools/tree/main/cowork`.
-6. Read the saved canonical file again from
-   `https://raw.githubusercontent.com/rob-foulkrod/mtt-demo-creation-tools/main/cowork/demo-builder-SKILL.md`
-   and verify that its version and content match before reporting completion.
+  locally with this Cowork skill, offer to download and install the full folder from the public
+  GitHub repository before generating data.
 
 ## Overview
 
@@ -99,55 +64,12 @@ material from an example.
 
 ## ALWAYS Do - Production-Realistic Artifacts
 
-Apply every rule in this section to every demo package.
-
-1. **Research the real data shape first.** Before creating any scenario document or dataset,
-   research public, non-confidential examples, glossaries, workflows, forms, and industry
-   conventions to determine the fields, identifiers, relationships, units, statuses, calculations,
-   and record density that the artifact should contain. Cite research sources on the overview Page
-   and synthesize original content rather than copying an example.
-2. **Create one shared style system for related files.** Before building the first artifact,
-   define the package's font, color palette, title treatment, heading hierarchy, table style,
-   header band, row banding, border treatment, column widths, number formats, and date formats.
-   Apply that same design language to every related Word, Excel, PowerPoint, PDF, and visual
-   artifact. Different files may vary in layout, but they must clearly look like parts of the same
-   organization and workflow.
-3. **Style every worksheet and document.** Never leave one workbook or secondary sheet with
-   default formatting. Every Excel sheet needs a meaningful title, filled header band, consistent
-   font and palette, readable column widths, frozen headers, appropriate number formats, and
-   charts or summaries when they support the scenario. Verify related files side by side before
-   uploading.
-4. **Use the scenario's locale.** Research or confirm the country and use its currency symbol,
-   date format, decimal and thousands separators, address structure, phone pattern, and units.
-   Use `$` for United States currency, or the appropriate symbol for the confirmed country.
-   Store currency and dates as real numeric or date values and apply display formats; never embed
-   formatted money or dates as plain text when the file format supports typed values.
-5. **Generate natural, invented identities.** Use realistic, made-up names for people,
-   customers, agencies, vendors, products, projects, locations, and organizations. Give every
-   recurring entity a stable ID and use that same ID and name consistently across related files.
-   Avoid generic labels such as `Fictional Customer 0001`, `Sample Agency`, `Test Vendor`, or
-   `Demo Company`.
-6. **Identify pretend source organizations like real sources.** When records are supplied by
-   agencies, branches, brokers, vendors, hospitals, stores, partners, or other source
-   organizations, include both a stable source ID and a natural invented name, such as
-   `Agency ID` and `Agency Name`. Use the equivalent business-appropriate fields for the
-   scenario.
-7. **Keep implementation details out of business data.** Do not put workbook names, file names,
-   folder paths, prompt labels, or generation notes into ordinary business-record columns unless
-   a researched real-world system would genuinely store that provenance. Distinguish sources with
-   business identifiers and names rather than a `Source File` column.
-8. **Keep the scenario internally coherent.** Names, IDs, dates, amounts, products, statuses,
-   locations, and relationships must agree across every related file. Deliberate nonmatching or
-   erroneous records are allowed only when they support a documented filtering, exception, data
-   quality, or validation step.
-9. **Keep provenance language out of the demonstration content.** Do not use the words
-   `fictional`, `fake`, `synthetic`, `sample`, `test`, or `demo` in copy-and-paste prompts,
-   business-record values, entity names, table titles, or ordinary scenario documents. Write from
-   the perspective of the scenario's worker and organization.
-10. **Retain package-level transparency.** The overview Page must still state that the package is
-    AI-generated, human-review-ready demonstration content, include the Microsoft Fake Company
-    disclaimer, and identify the package as Public. Production-realistic artifacts must never be
-    represented as actual customer, employee, financial, clinical, or operational records.
+Before creating artifacts, load [references/QUALITY-STANDARDS.md](references/QUALITY-STANDARDS.md)
+and apply it to every demo package. The runtime-critical summary is: research the real data shape,
+define one shared style system, style every worksheet and document, use locale-correct typed values,
+use natural invented identities with stable IDs, keep business data internally coherent, keep
+implementation details out of datasets, and keep transparency language at the package level rather
+than in business records or prompts.
 
 ## When to Use
 
@@ -167,16 +89,6 @@ Apply every rule in this section to every demo package.
 - A standalone slide deck -> use the **pptx** skill.
 - A spreadsheet without a broader demo package -> use the **xlsx** skill.
 - An MTT idea or initiative -> use the **mtt-initiative-creator** skill.
-
-## Example
-
-**User:** "Build a Cowork demo on demand for a fictional energy procurement team and put it in my
-Demo Deliveries SharePoint folder."
-
-**Expected behavior:** Confirm the exact technology and starting experience, resolve the folder,
-design a realistic multi-input workflow, create one overview Page, create a clean two-page Word
-guide modeled on [the bundled reference](references/DEMO-INSTRUCTIONS-REFERENCE.docx), place every runnable artifact under
-`demo/`, preview the structure, upload it after approval, and verify the final folder contents.
 
 ## Output Structure
 
@@ -312,62 +224,13 @@ location, and keep the `demo/` folder in the selected destination.
 
 Create `demo/DEMO-INSTRUCTIONS.docx` through the **docx** skill and artifact tools.
 
-Use [the bundled Word guide](references/DEMO-INSTRUCTIONS-REFERENCE.docx) as the visual,
-structural, and content-density reference. Match its cleanliness and hierarchy, but generate fresh
-scenario-specific content.
-Do not copy its Pacific Northwest scenario text into unrelated demos.
-
-#### Default content structure
-
-The guide should normally be one or two pages and contain only:
-
-1. Demo title.
-2. **Scenario** - one concise paragraph stating the task and desired outcome.
-3. **Demo Tool** - the exact app and exact named agent or experience that must be selected or
-   attached. State whether the presenter is building or using an agent.
-4. **Files to Attach** - a short bulleted list of exact file names in the intended order. When
-   files go to different experiences, state where each file is loaded, attached, grounded,
-   imported, or opened.
-5. **Prompts** - numbered prompt headings in execution order. Put each exact copy-and-paste prompt
-   inside a shaded, bordered, single-cell prompt box. Each prompt must identify the files or
-   knowledge sources in use, the required result format, the validation or acceptance criteria,
-   and the next handoff. Keep these requirements inside the prompt so the guide remains clean.
-
-Add a short **Build or Configure** section only when the demonstration creates or configures an
-agent. Keep the setup steps separate from the later usage prompts and name the exact user
-interface, grounding files, instructions, starter prompts, tests, and handoff to Chat. Add a short
-**Test and Validate** section when the product must be built, published, permission-tested, or
-connected before it can be demonstrated.
-
-Use-only demonstrations should normally remain one or two pages. Build-heavy SharePoint agent,
-Agent Builder, and Copilot Studio demonstrations may exceed two pages only when the additional
-space contains required current-interface build steps, permission checks, test prompts, expected
-results, and acceptance criteria. Preserve the same clean headings, short paragraphs, bullets, and
-prompt-box treatment throughout.
-
-Do not add a cover page, table of contents, executive summary, package inventory, long talk track,
-timing table, cleanup section, troubleshooting section, repeated disclaimer, or explanatory
-material that belongs on the overview Page unless the user explicitly requests it.
-
-#### Visual standard
-
-- Use a clean, printable white page with one restrained blue accent.
-- Use a single professional sans-serif font and a clear title.
-- Use real Heading 1 and Heading 2 styles with generous whitespace.
-- Keep paragraphs short and avoid dense prose.
-- Present file names as simple bullets.
-- Present every prompt in a light, single-cell callout table with a subtle border.
-- Avoid decorative banners, crowded tables, excessive shading, and unnecessary headers.
-- Put `Classification: Public` unobtrusively in the footer or document properties rather than
-  repeating it throughout the body.
-- Run document validation and visually inspect every rendered page before publishing.
-
-Clarity test: an MTT should be able to open the guide and immediately answer:
-
-1. What scenario am I demonstrating?
-2. Which product, app, or named agent do I select?
-3. Which exact files do I load, and where?
-4. Which prompts do I run, and in what order?
+Load [references/PRESENTER-GUIDE.md](references/PRESENTER-GUIDE.md) before creating the guide.
+Use [the bundled Word guide](references/DEMO-INSTRUCTIONS-REFERENCE.docx) only as a visual,
+structural, and content-density reference; generate fresh scenario-specific content. The guide must
+normally be one or two clean pages with real heading styles, exact files, numbered shaded prompt
+boxes, acceptance criteria, and next handoffs. Do not add cover pages, tables of contents, package
+inventories, long talk tracks, repeated disclaimers, or overview content unless explicitly requested.
+Visually inspect every rendered page and apply the clarity test before publishing.
 
 ### Phase 6 - Create substantive sample data
 
@@ -378,71 +241,20 @@ Every demonstration must contain substantive, runnable, scenario-specific suppor
 An empty `sample-data/` folder, placeholder-only files, external links without local demo inputs,
 or a guide that refers to files that were not created fails verification.
 
-Unless the technology makes one format genuinely inapplicable, the default minimum is:
-
-- At least one detailed scenario-specific business document or grounding file.
-- At least one primary structured-data artifact used for filtering, calculation, analysis,
-  retrieval, orchestration, or action testing.
-- At least one output template, destination file, or expected-result artifact when the workflow
-  updates or creates a business deliverable.
-
-If a default artifact type is genuinely inapplicable, provide an equally substantive alternative
-and explain the reason on the overview Page.
-
-1. **Word documents:** Each scenario document must be a polished business artifact rather than a
-   placeholder. SOPs, playbooks, and procedural guides must be several pages long and highly
-   detailed, including purpose, scope, roles, prerequisites, procedures, decision points,
-   exceptions, controls, validation, troubleshooting, and expected outcomes.
-2. **Excel workbooks:** Every Excel data workbook must contain at least 1,000 realistic data rows
-   and more than one worksheet. Include researched business-appropriate columns, stable entity and
-   source IDs, natural invented names, reference or lookup tabs, calculations, summaries, and
-   charts where useful. Related workbooks must share the same style system and field conventions.
-3. **Data realism:** At least 50% of each primary source dataset must match the intended criteria.
-   Include a meaningful number of plausible nonmatches such as other regions, dates, stages,
-   categories, or conditions so the presenter must filter and reason over the data. Record and
-   verify the matching and nonmatching counts for each primary dataset.
-4. **Calculated values:** Use live Excel formulas for derived totals and verify that formulas
-   calculate without errors.
-5. **CSV and JSON:** Include enough synthetic records to support meaningful filtering,
-   summarization, or agent grounding. Tiny illustrative datasets are not sufficient.
-6. **Visuals and media:** Include them only when they materially support a demo step.
-7. **No filler:** Every file must support a specific input, action, decision, handoff, or output.
-8. **Public labeling:** Put `Classification: Public` in Office files and other assets where
-   practical without making the presenter guide visually noisy.
-9. **Testability:** For every major step, define the exact input, action or prompt, expected result,
-   pass criteria, failure or no-match behavior, and next handoff.
-10. **Business-facing language:** Remove generation commentary and provenance words from prompts,
-    business records, source names, and ordinary artifact titles. Keep disclosure on the overview
-    Page rather than repeating it inside the scenario.
+Load [references/QUALITY-STANDARDS.md](references/QUALITY-STANDARDS.md) before creating sample data.
+Unless the technology makes one format genuinely inapplicable, include at least one detailed
+business document or grounding file, one primary structured-data artifact, and one output template,
+destination file, or expected-result artifact when the workflow creates or updates a deliverable.
+Excel primary datasets must have at least 1,000 rows and multiple sheets. At least 50% of every
+primary source dataset must match the intended criteria, with meaningful nonmatches and verified
+counts. Derived Excel values must use live formulas and be checked for errors.
 
 ### Phase 7 - Apply technology-specific guidance
 
-- **Microsoft 365 Copilot Chat:** Name the exact attached agent or experience, such as Excel,
-  Researcher, an analysis agent, or a custom agent. Provide an end-to-end walkthrough with the
-  exact files attached at each step, prompts, expected outputs, validation criteria, and handoffs.
-- **Copilot prebuilt agents:** Name the agent and provide access or setup assumptions, exact files,
-  expected inputs, prompts, outputs, test cases, acceptance criteria, and the next handoff.
-- **Cowork:** Name the exact starting surface and files. Include a complete scenario walkthrough,
-  collaboration steps, handoffs, expected outputs, safe sample artifacts, test prompts, acceptance
-  criteria, and a clear private-delivery value story.
-- **Microsoft Scout:** Name the exact starting surface, source configuration, and files. Include a
-  complete scenario walkthrough, Scout-oriented prompts, collaboration or handoff steps, expected
-  outputs, testable pass criteria, safe sample artifacts, and a value story comparable in depth to
-  Cowork.
-- **SharePoint agent:** Include agent purpose, exact SharePoint grounding locations, detailed
-  grounding files, instructions, starter prompts, access assumptions, setup, and later Chat usage.
-  Test expected grounded and cited answers, an out-of-scope or no-answer case, and a permission
-  boundary. Define the expected result and pass criteria for every test.
-- **Agent Builder in Chat:** Use the current Agent Builder experience in Microsoft 365 Copilot
-  Chat. Include agent purpose, instructions, grounding files, starter prompts, access assumptions,
-  save or share steps, tests with expected results, acceptance criteria, and the exact steps to
-  select or attach the finished agent.
-- **Copilot Studio:** Use only the new Copilot Studio user interface. Do not include classic or
-  legacy-interface directions. Include agent instructions, knowledge sources, trigger phrases,
-  runnable actions or clearly labeled connector prerequisites, publish or channel steps, and later
-  usage. Include test cases for a successful response, no-match or out-of-scope request, fallback
-  behavior, and action failure, with expected results and pass criteria. A connector placeholder
-  does not count as a runnable demo step.
+Load [references/TECHNOLOGY-GUIDANCE.md](references/TECHNOLOGY-GUIDANCE.md) before writing
+product-specific setup, prompts, tests, or expected results. Always name the exact product surface,
+agent, attached experience, build/use scope, files, access assumptions, test prompts, expected
+outputs, acceptance criteria, fallback or no-match behavior, and next handoff.
 
 ### Phase 8 - Preview, approve, upload, and verify
 
@@ -476,37 +288,13 @@ After approval:
 
 ## Quality Bar
 
-- The package root contains exactly one overview Page and one `demo/` folder.
-- `demo/` contains only `DEMO-INSTRUCTIONS.docx` and `sample-data/`.
-- No Markdown, manifest, README, repository metadata, or GitHub-posting guidance is generated.
-- The Word presenter guide matches the reference guide's clean one-to-two-page design and contains
-  only the scenario, exact demo tool or attached agent, exact files, and numbered prompt boxes,
-  plus a concise build section when genuinely required.
-- Every demo step names the exact file, where it is loaded, the selected app or agent, the prompt,
-  expected result, pass criteria, failure behavior, and next handoff.
-- Technology, starting experience, and build-versus-use scope are explicitly confirmed.
-- Light scenarios trigger one focused question for the missing task, persona, inputs, business
-  rules, expected output, and must-show success conditions before generation starts.
-- `demo/sample-data/` is never empty and always contains substantive scenario-specific inputs plus
-  an output or expected-result artifact when the workflow creates or updates a deliverable.
-- Word scenario documents are substantive; detailed SOPs are several pages long.
-- Every Excel data workbook has multiple sheets and at least 1,000 data rows.
-- At least 50% of every primary source dataset matches the intended criteria, with verified counts
-  and realistic nonmatching data.
-- Every related artifact uses one documented style system, including consistent fonts, palette,
-  headings, tables, number formats, currency, dates, and visual treatment.
-- Data structures are based on public research and include realistic business fields, stable IDs,
-  and natural invented names rather than generic generated labels.
-- Source organizations are represented by business-appropriate ID and name fields. Workbook names,
-  file paths, and generation notes do not appear as ordinary business data.
-- Currency, dates, addresses, phone patterns, separators, and units match the confirmed country or
-  locale.
-- Copy-and-paste prompts and business-facing data do not call themselves fictional, fake,
-  synthetic, sample, test, or demo; package-level transparency remains on the overview Page.
-- Public classification and the Microsoft Fake Company disclaimer remain present without making
-  the presenter guide cluttered.
-- Every final artifact is verified, every rendered guide page is visually inspected, and every
-  uploaded file is present before completion is reported.
+Before reporting completion, load the completion checklist in
+[references/QUALITY-STANDARDS.md](references/QUALITY-STANDARDS.md) and verify the package against
+it. The runtime summary is: exact Page plus `demo/` structure, no repository files, confirmed scope,
+substantive non-empty `sample-data/`, clean presenter guide, researched realistic data, at least
+1,000 rows in Excel datasets, at least 50% intended matches with verified counts, live formula
+validation, shared styling, package-level transparency, no provenance language in business records,
+and verified final uploads.
 
 ## Guardrails
 
