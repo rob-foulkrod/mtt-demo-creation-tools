@@ -1,5 +1,5 @@
 ---
-version: 2.3.0
+version: 2.3.1
 name: demo-on-demand
 description: |
   Builds a clean, public-safe demo-on-demand package for an MTT private delivery and places it in
@@ -18,7 +18,7 @@ cowork:
 
 ## Version, Canonical Source, and References
 
-- **Current version:** `2.3.0`
+- **Current version:** `2.3.1`
 - **Public repository:** `https://github.com/rob-foulkrod/mtt-demo-creation-tools`
 - **Cowork skill folder:** `https://github.com/rob-foulkrod/mtt-demo-creation-tools/tree/main/cowork`
 - **Canonical source file:** `https://raw.githubusercontent.com/rob-foulkrod/mtt-demo-creation-tools/main/cowork/demo-builder-SKILL.md`
@@ -28,6 +28,7 @@ cowork:
 - **Presenter guide reference:** [references/PRESENTER-GUIDE.md](references/PRESENTER-GUIDE.md)
 - **Technology guidance reference:** [references/TECHNOLOGY-GUIDANCE.md](references/TECHNOLOGY-GUIDANCE.md)
 - **Creator-only maintenance support skill:** `https://raw.githubusercontent.com/rob-foulkrod/mtt-demo-creation-tools/main/cowork/demo-builder-creator-maintenance-SKILL.md`
+- **Shared edit guardrails support skill:** `https://raw.githubusercontent.com/rob-foulkrod/mtt-demo-creation-tools/main/Common/demo-builder-edit-guardrails-SKILL.md`
 
 Before running a demo-on-demand workflow, read the canonical source file from the public GitHub URL
 above and compare its frontmatter `version` with this loaded copy. If the canonical version is
@@ -35,10 +36,10 @@ newer, use its current instructions for the run and tell the user that a newer v
 not overwrite the installed personal skill unless the user asks to update it. If the canonical file
 cannot be accessed, continue with the loaded version and disclose the gap.
 
-Creator-only skill-update, versioning, change-log, support-file installation, and repository
-maintenance instructions live in the creator-only maintenance support skill. End-user demo package
-creation must not surface those maintenance steps unless the user is explicitly maintaining the
-skill itself.
+Creator-only update, versioning, install, change-log, and repository maintenance instructions live
+in the creator maintenance support skill and must not surface in ordinary demo creation. Before
+editing Scout or Cowork demo-builder files, creators must load the shared edit guardrails support
+skill so both builders keep equivalent safety, quality, publishing, and verification behavior.
 
 ## Generate-data Dependency
 
@@ -65,7 +66,7 @@ material from an example.
 ## ALWAYS Do - Production-Realistic Artifacts
 
 Before creating artifacts, load [references/QUALITY-STANDARDS.md](references/QUALITY-STANDARDS.md)
-and apply it to every demo package. The runtime-critical summary is: research the real data shape,
+and apply it to every demo package. Summary: research the real data shape,
 define one shared style system, style every worksheet and document, use locale-correct typed values,
 use natural invented identities with stable IDs, keep business data internally coherent, keep
 implementation details out of datasets, and keep transparency language at the package level rather

@@ -1,5 +1,5 @@
 ---
-version: 2026.09.04.6
+version: 2026.09.04.7
 name: demo-on-demand
 description: |
   Builds public-safe demo-on-demand packages for MTT private deliveries and first asks, "Will you
@@ -15,7 +15,7 @@ description: |
 Use this skill when an MTT wants to create a demo-on-demand package for a private delivery. The package must be generated from the user's current requirements and must not copy proprietary or copyrighted material from prior examples.
 
 Skill version:
-Version: 2026.09.04.6
+Version: 2026.09.04.7
 
 Source references:
 - Public repository: `https://github.com/rob-foulkrod/mtt-demo-creation-tools`
@@ -24,31 +24,20 @@ Source references:
 - Cowork format reference: `https://raw.githubusercontent.com/rob-foulkrod/mtt-demo-creation-tools/main/cowork/demo-builder-SKILL.md`
 - Generate-data skill folder: `https://github.com/rob-foulkrod/mtt-demo-creation-tools/tree/main/Common/generate-data`
 - Generate-data source file: `https://raw.githubusercontent.com/rob-foulkrod/mtt-demo-creation-tools/main/Common/generate-data/SKILL.md`
-- Change logs folder: `https://github.com/rob-foulkrod/mtt-demo-creation-tools/tree/main/change%20logs`
+- Scout creator maintenance support skill: `https://raw.githubusercontent.com/rob-foulkrod/mtt-demo-creation-tools/main/scout/demo-on-demand-creator-maintenance-SKILL.md`
+- Shared edit guardrails support skill: `https://raw.githubusercontent.com/rob-foulkrod/mtt-demo-creation-tools/main/Common/demo-builder-edit-guardrails-SKILL.md`
 
 Use only the public GitHub repository above as the canonical source for this skill, its Cowork format reference, generate-data dependency, change logs, updates, and documentation. Do not use or reference any personal SharePoint, OneDrive, Teams file, internal catalog, or private folder as a skill source of truth.
 
 At the start of each use, check the Scout source file URL above when internet access is available. If the public GitHub copy has a higher version number than this local skill file, tell the user that a newer Scout version is available and prompt them to install it before continuing. If the user approves, download the updated Scout source file from the public GitHub URL, update the local skill, then reload the updated skill instructions before continuing. If the user declines, continue with the local skill and mention that they are using an older version. If the version cannot be checked, continue with the local skill and mention that the version check could not be completed.
+
+Creator-only skill-update, versioning, change-log, local-installation, and repository maintenance instructions live in the Scout creator maintenance support skill. Before editing either Scout or Cowork demo-builder skills or companion files, creators must load the shared edit guardrails support skill so both demo builders keep equivalent safety, quality, publishing, and verification behavior.
 
 Generate-data dependency:
 - Required version: `2026.09.04.4` or newer.
 - Before creating any fictional company, person, email address, or sample data, load the generate-data skill from `https://github.com/rob-foulkrod/mtt-demo-creation-tools/tree/main/Common/generate-data`.
 - If the generate-data skill or its `companies.csv` and `names.csv` support files are not installed locally with this skill, offer to download and install the full folder from `https://github.com/rob-foulkrod/mtt-demo-creation-tools/tree/main/Common/generate-data` before generating data.
 - When downloading directly, use the raw files from `https://raw.githubusercontent.com/rob-foulkrod/mtt-demo-creation-tools/main/Common/generate-data/SKILL.md`, `https://raw.githubusercontent.com/rob-foulkrod/mtt-demo-creation-tools/main/Common/generate-data/companies.csv`, and `https://raw.githubusercontent.com/rob-foulkrod/mtt-demo-creation-tools/main/Common/generate-data/names.csv`.
-
-Local file validation:
-- Scout skill local path: `C:\Users\anconnif\.scout\m-skills\demo-on-demand\SKILL.md`.
-- Generate-data local folder: `C:\Users\anconnif\.scout\m-skills\generate-data`.
-- Before running, validate that the Scout skill local path exists and that the generate-data folder contains `SKILL.md`, `companies.csv`, and `names.csv`.
-- If any required local file is missing, offer to download and install it from the full public GitHub URL listed above before continuing.
-- If the user provides a different local Scout skills root, validate that path instead and report the exact path used.
-
-Change log requirement:
-- Every update to this skill must write a change log file in `https://github.com/rob-foulkrod/mtt-demo-creation-tools/tree/main/change%20logs`.
-- The change log file name must be `<skill-name>-<skill-version>-log.md`; for this skill, use `demo-on-demand-2026.09.04.6-log.md` for version `2026.09.04.6`.
-- The change log title must be `<skill-name> <skill-version>-log`.
-- The change log must include `Skill name`, `Skill version`, `Additions`, and `Deletions` sections. If there are no deletions, write `None`.
-- Commit the change log file in the same commit as the skill update.
 
 Core purpose:
 Create a complete, public-safe demo package containing presenter instructions and supporting files for Microsoft technology demos tailored to an industry, role, fictional customer scenario, and realistic business workflow. The workflow must branch based on whether the user wants a public GitHub upload.

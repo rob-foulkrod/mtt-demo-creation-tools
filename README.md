@@ -12,6 +12,10 @@ For Cowork, install `cowork/demo-builder-SKILL.md` with its `cowork/references/`
 The creator-only maintenance support skill is only for maintainers updating the skill repository;
 ordinary end users do not need it for demo package creation.
 
+Creators maintaining Scout or Cowork should load the shared edit guardrails support skill before
+editing either demo builder so both skills keep equivalent safety, quality, publishing, and
+verification behavior.
+
 Before running either demo builder skill, validate that its local `SKILL.md` exists and that the
 generate-data folder contains all three required files. If a file is missing, download it from the
 full public GitHub URL rather than relying on a relative path.
@@ -77,9 +81,11 @@ flowchart TD
 | Path | Purpose |
 | --- | --- |
 | [`scout/demo-on-demand-SKILL.md`](https://github.com/rob-foulkrod/mtt-demo-creation-tools/blob/main/scout/demo-on-demand-SKILL.md) | Scout demo builder skill. It asks whether the package will be uploaded to GitHub, then creates either a GitHub-ready public demo repository package or a Cowork-compatible folder package. |
+| [`scout/demo-on-demand-creator-maintenance-SKILL.md`](https://github.com/rob-foulkrod/mtt-demo-creation-tools/blob/main/scout/demo-on-demand-creator-maintenance-SKILL.md) | Creator-only support skill for maintaining the Scout demo builder, versions, change logs, repository updates, and local installed copies. |
 | [`cowork/demo-builder-SKILL.md`](https://github.com/rob-foulkrod/mtt-demo-creation-tools/blob/main/cowork/demo-builder-SKILL.md) | Cowork demo builder runtime skill. It creates private-delivery, folder-native demo packages for OneDrive or SharePoint destinations and progressively loads companion references. |
 | [`cowork/references/`](https://github.com/rob-foulkrod/mtt-demo-creation-tools/tree/main/cowork/references) | Cowork companion references for quality standards, presenter-guide specifications, and technology-specific guidance. |
 | [`cowork/demo-builder-creator-maintenance-SKILL.md`](https://github.com/rob-foulkrod/mtt-demo-creation-tools/blob/main/cowork/demo-builder-creator-maintenance-SKILL.md) | Creator-only support skill for maintaining the Cowork demo builder, companion references, versions, change logs, and repository updates. |
+| [`Common/demo-builder-edit-guardrails-SKILL.md`](https://github.com/rob-foulkrod/mtt-demo-creation-tools/blob/main/Common/demo-builder-edit-guardrails-SKILL.md) | Shared creator-only edit guardrails for keeping Scout and Cowork demo-builder behavior aligned during maintenance. |
 | [`Common/generate-data/SKILL.md`](https://github.com/rob-foulkrod/mtt-demo-creation-tools/blob/main/Common/generate-data/SKILL.md) | Shared generate-data compliance skill used before creating fictional companies, people, email addresses, or sample data. |
 | [`Common/generate-data/companies.csv`](https://github.com/rob-foulkrod/mtt-demo-creation-tools/blob/main/Common/generate-data/companies.csv) | Approved fictitious company and domain list used by the generate-data skill. |
 | [`Common/generate-data/names.csv`](https://github.com/rob-foulkrod/mtt-demo-creation-tools/blob/main/Common/generate-data/names.csv) | Approved person-name list used by the generate-data skill. |
@@ -91,9 +97,11 @@ Each skill carries its own version in frontmatter and in its version section:
 
 | Skill | Current version | Canonical source |
 | --- | --- | --- |
-| Scout demo builder | `2026.09.04.6` | `https://raw.githubusercontent.com/rob-foulkrod/mtt-demo-creation-tools/main/scout/demo-on-demand-SKILL.md` |
-| Cowork demo builder | `2.3.0` | `https://raw.githubusercontent.com/rob-foulkrod/mtt-demo-creation-tools/main/cowork/demo-builder-SKILL.md` |
-| Cowork creator maintenance | `1.0.0` | `https://raw.githubusercontent.com/rob-foulkrod/mtt-demo-creation-tools/main/cowork/demo-builder-creator-maintenance-SKILL.md` |
+| Scout demo builder | `2026.09.04.7` | `https://raw.githubusercontent.com/rob-foulkrod/mtt-demo-creation-tools/main/scout/demo-on-demand-SKILL.md` |
+| Scout creator maintenance | `1.0.0` | `https://raw.githubusercontent.com/rob-foulkrod/mtt-demo-creation-tools/main/scout/demo-on-demand-creator-maintenance-SKILL.md` |
+| Cowork demo builder | `2.3.1` | `https://raw.githubusercontent.com/rob-foulkrod/mtt-demo-creation-tools/main/cowork/demo-builder-SKILL.md` |
+| Cowork creator maintenance | `1.1.0` | `https://raw.githubusercontent.com/rob-foulkrod/mtt-demo-creation-tools/main/cowork/demo-builder-creator-maintenance-SKILL.md` |
+| Shared edit guardrails | `1.0.0` | `https://raw.githubusercontent.com/rob-foulkrod/mtt-demo-creation-tools/main/Common/demo-builder-edit-guardrails-SKILL.md` |
 | Generate data | `2026.09.04.4` | `https://raw.githubusercontent.com/rob-foulkrod/mtt-demo-creation-tools/main/Common/generate-data/SKILL.md` |
 
 At the start of a run, the installed skill should check its canonical raw GitHub URL. If the public
@@ -121,7 +129,10 @@ offer to download and install the folder before it generates any data.
 ## Updating skills
 
 Creator-only maintenance instructions live in
+[`scout/demo-on-demand-creator-maintenance-SKILL.md`](https://github.com/rob-foulkrod/mtt-demo-creation-tools/blob/main/scout/demo-on-demand-creator-maintenance-SKILL.md)
+and
 [`cowork/demo-builder-creator-maintenance-SKILL.md`](https://github.com/rob-foulkrod/mtt-demo-creation-tools/blob/main/cowork/demo-builder-creator-maintenance-SKILL.md)
-so end-user demo package skills stay focused on runtime behavior. Creators should use that support
-skill when updating the Cowork demo builder, companion references, versions, change logs, or local
-installed copies.
+so end-user demo package skills stay focused on runtime behavior. Creators should load
+[`Common/demo-builder-edit-guardrails-SKILL.md`](https://github.com/rob-foulkrod/mtt-demo-creation-tools/blob/main/Common/demo-builder-edit-guardrails-SKILL.md)
+before updating either demo builder, companion references, support skills, versions, change logs, or
+local installed copies.

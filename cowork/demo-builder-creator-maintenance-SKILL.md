@@ -1,10 +1,10 @@
 ---
-version: 1.0.0
+version: 1.1.0
 name: demo-builder-creator-maintenance
 description: |
   Creator-only support skill for maintaining the Cowork demo-builder skill, companion references,
-  local installed copies, version numbers, and change logs. Do not use for end-user demo package
-  creation.
+  local installed copies, version numbers, and change logs. Always loads the shared edit guardrails
+  support skill before edits. Do not use for end-user demo package creation.
 cowork:
   category: automation
   icon: Tools
@@ -18,11 +18,15 @@ install, validate, or publish the Cowork demo-builder skill and its companion fi
 Do not load or expose these maintenance instructions during ordinary end-user demo package creation.
 End-user demo workflows use `cowork/demo-builder-SKILL.md` plus its runtime references.
 
+Before editing any Scout or Cowork demo-builder skill, support skill, or companion reference, load
+the shared edit guardrails support skill and follow its cross-skill parity checks.
+
 ## Canonical source
 
 - **Public repository:** `https://github.com/rob-foulkrod/mtt-demo-creation-tools`
 - **Cowork runtime skill:** `https://raw.githubusercontent.com/rob-foulkrod/mtt-demo-creation-tools/main/cowork/demo-builder-SKILL.md`
 - **Creator maintenance support skill:** `https://raw.githubusercontent.com/rob-foulkrod/mtt-demo-creation-tools/main/cowork/demo-builder-creator-maintenance-SKILL.md`
+- **Shared edit guardrails support skill:** `https://raw.githubusercontent.com/rob-foulkrod/mtt-demo-creation-tools/main/Common/demo-builder-edit-guardrails-SKILL.md`
 - **Change logs folder:** `https://github.com/rob-foulkrod/mtt-demo-creation-tools/tree/main/change%20logs`
 - **Generate-data folder:** `https://github.com/rob-foulkrod/mtt-demo-creation-tools/tree/main/Common/generate-data`
 
@@ -57,7 +61,7 @@ canonical source.
 - Every update to the Cowork runtime skill, companion references, or this support skill must write a
   change log file in `https://github.com/rob-foulkrod/mtt-demo-creation-tools/tree/main/change%20logs`.
 - Name each change log file `<skill-name>-<skill-version>-log.md`; for Cowork runtime skill version
-  `2.3.0`, use `demo-on-demand-2.3.0-log.md`.
+  `2.3.1`, use `demo-on-demand-2.3.1-log.md`.
 - The change log title must be `<skill-name> <skill-version>-log`.
 - The change log must include `Skill name`, `Skill version`, `Additions`, and `Deletions` sections.
   If there are no deletions, write `None`.
@@ -68,18 +72,20 @@ canonical source.
 When the user asks to update the Cowork demo-builder skill:
 
 1. Read the canonical runtime skill and companion references before editing.
-2. Increment the semantic version in both the frontmatter `version` field and the **Current version**
+2. Load the shared edit guardrails support skill and apply its parity, source-of-truth, and
+   regression checks before changing files.
+3. Increment the semantic version in both the frontmatter `version` field and the **Current version**
    line. Use a patch version for wording or fixes, a minor version for backward-compatible behavior
    additions, and a major version for incompatible workflow or output-structure changes.
-3. Keep end-user runtime instructions in `cowork/demo-builder-SKILL.md`.
-4. Move creator-only maintenance material into this support skill.
-5. Move detailed runtime reference material into focused companion files under `cowork/references/`
+4. Keep end-user runtime instructions in `cowork/demo-builder-SKILL.md`.
+5. Move creator-only maintenance material into this support skill.
+6. Move detailed runtime reference material into focused companion files under `cowork/references/`
    and reference them from the main skill only one level deep.
-6. Write the required change log file for the new version.
-7. Apply the change to the active personal skill when requested, then validate and score it.
-8. Commit the identical validated runtime `SKILL.md`, companion references, support skill updates,
+7. Write the required change log file for the new version.
+8. Apply the change to the active personal skill when requested, then validate and score it.
+9. Commit the identical validated runtime `SKILL.md`, companion references, support skill updates,
    and change log changes back to `https://github.com/rob-foulkrod/mtt-demo-creation-tools`.
-9. Read the saved canonical files again from GitHub and verify that their versions and content match
+10. Read the saved canonical files again from GitHub and verify that their versions and content match
    before reporting completion.
 
 ## Progressive-disclosure regression checks
