@@ -8,55 +8,30 @@ description: >
   "invent a fictional company/customer/employee", or "/generate-data". Covers Excel, Word, PowerPoint and CSV. Load this BEFORE inventing any company or person name, including when the
   data is a supporting artifact of a larger build. Do NOT use for real customer, employee, confidential, or production data.
 metadata:
-  version: "2026.09.04.6"
-
+  version: "2026.09.11.1"
 ---
 
 # Generate Data Skill
 
-## Version and Canonical Source
+## Version and Bundled Data
 
-- **Current version:** `2026.09.04.6`
+- **Current version:** `2026.09.11.1`
 - **Public repository:** `https://github.com/rob-foulkrod/mtt-demo-creation-tools`
-- **Canonical folder:** `https://github.com/rob-foulkrod/mtt-demo-creation-tools/tree/main/Common/generate-data`
-- **Canonical source file:** `https://raw.githubusercontent.com/rob-foulkrod/mtt-demo-creation-tools/main/Common/generate-data/SKILL.md`
-- **Approved company list:** `https://raw.githubusercontent.com/rob-foulkrod/mtt-demo-creation-tools/main/Common/generate-data/companies.csv`
-- **Approved person-name list:** `https://raw.githubusercontent.com/rob-foulkrod/mtt-demo-creation-tools/main/Common/generate-data/names.csv`
-- **Change logs folder:** `https://github.com/rob-foulkrod/mtt-demo-creation-tools/tree/main/change%20logs`
-
-Before using this skill, check the canonical source file when internet access is available. If the
-public GitHub copy has a higher `metadata.version` than the local copy, tell the user that a newer
-generate-data skill is available and offer to download and install the full folder from
-`https://github.com/rob-foulkrod/mtt-demo-creation-tools/tree/main/Common/generate-data`. If this
-skill is referenced by another skill but is not installed locally with `companies.csv` and
-`names.csv`, offer to download and install the full generate-data folder before generating data. If
-the version check cannot be completed, continue with the local copy and disclose that the update
-check was skipped.
+- **Approved company list:** `companies.csv` alongside this skill.
+- **Approved person-name list:** `names.csv` alongside this skill.
 
 ## Local File Validation
 
-- **Generate-data skill folder:** the owning skill root where this skill is installed. For Cowork,
-  use `/Documents/Cowork/skills/generate-data`; for Scout, use the Scout skills root selected or
-  configured by the user.
-- Before generating data, validate that the installed skill folder contains `SKILL.md`,
-  `companies.csv`, and `names.csv`.
-- If any required file is missing, offer to download and install the full folder from
-  `https://github.com/rob-foulkrod/mtt-demo-creation-tools/tree/main/Common/generate-data`.
-- If downloading directly, use the full raw GitHub URLs listed in the version section above.
-- If the user provides a different skills root, validate that path instead and report the exact path
-  used.
+- Resolve this skill's own root using the host-provided skill location, not a hardcoded path.
+- Before generating named data, validate that the skill can read `companies.csv` and `names.csv`
+  from that root and that both contain usable approved records.
+- Use the bundled instructions and data from this release. Do not fetch replacement skill files
+  or newer lists during a demo run.
+- If a required file is missing or unreadable, report the incomplete installation and stop named
+  data generation. Never substitute invented names. The approved-source and role-placeholder
+  fallback below applies only when explicitly continuing without a usable person-name source.
 
-## Change Log Requirement
-
-- Every update to this skill must write a change log file in
-  `https://github.com/rob-foulkrod/mtt-demo-creation-tools/tree/main/change%20logs`.
-- The change log file name must be `<skill-name>-<skill-version>-log.md`; for this skill, use
-  `generate-data-2026.09.04.6-log.md` for version `2026.09.04.6`.
-- The change log title must be `<skill-name> <skill-version>-log`.
-- The change log must include `Skill name`, `Skill version`, `Additions`, and `Deletions`
-  sections. If there are no deletions, write `None`.
-- Commit the change log file in the same commit as the skill update.
- Use
+## When Not to Use
 
 - **Real data of any kind** — real employees, financials, incidents, medical or legal matters. Never synthesize around real records.
 - **Formatting or authoring an existing document** — if the content already exists and only needs writing, editing or design, use `docx`, `xlsx`, `pptx` or `create` directly. This skill is for originating data, not styling it.

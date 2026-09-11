@@ -2,9 +2,9 @@
 
 Load this reference before creating `demo/DEMO-INSTRUCTIONS.docx`.
 
-Use [the bundled Word guide](DEMO-INSTRUCTIONS-REFERENCE.docx) as the visual, structural, and
-content-density reference. Match its cleanliness and hierarchy, but generate fresh
-scenario-specific content. Do not copy its Pacific Northwest scenario text into unrelated demos.
+Use the specification below as the visual, structural, and content-density reference. Preserve its
+cleanliness and hierarchy, but generate fresh scenario-specific content. No separate Word template
+is required or bundled.
 
 ## Default content structure
 

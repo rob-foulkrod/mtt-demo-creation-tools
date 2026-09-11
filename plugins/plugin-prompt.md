@@ -1,5 +1,9 @@
 # Plugin package prompt
 
+Historical authoring example, not a release build input. Tagged packages use
+[cowork-manifest.json](cowork-manifest.json) and the maintained runtime sources instead. The
+[release strategy](../docs/deployment.md) supersedes this example's naming and workflow choices.
+
 ```text
 Create a Microsoft 365 Copilot Cowork plugin package.
 

@@ -13,8 +13,7 @@ Apply every rule in this section to every demo package.
    and record density that the artifact should contain. Cite research sources on the overview Page
    and synthesize original content rather than copying an example.
 2. **Create one shared style system for related files.** Before building the first artifact, load
-   the shared style guidelines support skill from
-   `https://raw.githubusercontent.com/rob-foulkrod/mtt-demo-creation-tools/main/Common/demo-builder-style-guidelines-SKILL.md`,
+   the bundled `demo-builder-style-guidelines` skill from the same release, then
    define the package's font, color palette, title treatment, heading hierarchy, table style,
    header band, row banding, border treatment, column widths, number formats, and date formats.
    Apply that same design language to every related Word, Excel, PowerPoint, PDF, and visual

@@ -1,0 +1,20 @@
+{
+  "name": "mtt-demo-creation-tools",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "test": "node --test scripts/release-packages.test.mjs",
+    "package": "node scripts/release-packages.mjs"
+  },
+  "devDependencies": {
+    "ajv-draft-04": "1.0.0",
+    "ajv-formats": "3.0.1",
+    "fflate": "0.8.3",
+    "markdown-it": "14.3.1",
+    "pngjs": "7.0.0",
+    "yaml": "2.9.0"
+  }
+}

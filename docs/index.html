@@ -246,7 +246,7 @@
     pre {
       min-height: 250px;
       margin: 0;
-      padding: 24px;
+      padding: 64px 24px 24px;
       overflow-x: auto;
       border: 1px solid var(--cp-border);
       border-radius: 0.625rem;
@@ -358,44 +358,60 @@
       <div class="container">
         <div class="section-heading">
           <h2>Install and start building</h2>
-          <p>Paste the matching prompt into your environment. Each prompt installs the demo builder together with the files it needs to run locally.</p>
+          <p>Paste the matching prompt into Cowork or Scout to install the latest release for your personal use. Each ZIP includes the demo builder, approved data lists, and shared style guidance.</p>
         </div>
         <div class="install-grid">
           <article class="install-panel">
             <h3>Cowork</h3>
-            <p>Install the folder-native demo builder, its companion references, and shared data dependency.</p>
+            <p><a href="https://github.com/rob-foulkrod/mtt-demo-creation-tools/releases/latest/download/cowork-plugin.zip">Download Cowork plugin</a> for personal installation. Tenant policy must allow sideloading.</p>
             <div class="prompt-wrap">
               <button class="copy-button" type="button" data-copy="cowork-prompt" aria-label="Copy Cowork installation prompt">Copy</button>
-              <pre id="cowork-prompt">Install these Cowork demo-builder files from https://github.com/rob-foulkrod/mtt-demo-creation-tools
+              <pre id="cowork-prompt">Download and install this release for my personal use in Cowork:
+https://github.com/rob-foulkrod/mtt-demo-creation-tools/releases/latest/download/cowork-plugin.zip
 
-- cowork/demo-builder-SKILL.md → install as skill "demo-on-demand"
-- cowork/references/ → install as companion references for the Cowork demo builder
-- Common/generate-data/ → install as "generate-data", including companies.csv and names.csv</pre>
+Follow the bundled INSTALL.md. Use supported personal plugin installation if available; otherwise install all three skill folders under skills/ using your supported skill installation mechanism:
+- demo-on-demand, including all references/
+- generate-data, including companies.csv and names.csv
+- demo-builder-style-guidelines
+
+Ask before replacing existing skills or local edits. Keep every companion file and do not fetch replacements from main. Report the release version, installed skill names, versions, and actual locations. Verify both CSVs and all references are readable.
+
+State whether you registered the M365 plugin or installed only skill folders. Do not claim success after merely downloading or extracting the ZIP. Verify discovery in a new conversation if possible; otherwise mark it unverified. If installation is blocked, explain the limitation and give the personal sideloading fallback from INSTALL.md. Do not deploy to my tenant.</pre>
             </div>
             <ul class="checklist">
-              <li>Demo builder skill</li>
-              <li>Presenter and quality references</li>
-              <li>Generate-data skill and both CSV files</li>
+              <li>Demo builder and three companion references</li>
+              <li>Generate-data skill and both approved CSVs</li>
+              <li>Shared style-guidelines skill</li>
             </ul>
+            <p class="source-note">Chat installation support requires testing. <a href="https://github.com/rob-foulkrod/mtt-demo-creation-tools/blob/main/plugins/INSTALL.md">Personal sideloading fallback</a></p>
           </article>
 
           <article class="install-panel">
             <h3>Scout</h3>
-            <p>Install or refresh the Scout demo builder and the shared data dependency.</p>
+            <p><a href="https://github.com/rob-foulkrod/mtt-demo-creation-tools/releases/latest/download/scout-skills.zip">Download Scout skills</a> as a complete set of personal skill folders.</p>
             <div class="prompt-wrap">
               <button class="copy-button" type="button" data-copy="scout-prompt" aria-label="Copy Scout installation prompt">Copy</button>
-              <pre id="scout-prompt">Install these two skills from https://github.com/rob-foulkrod/mtt-demo-creation-tools
+              <pre id="scout-prompt">Download and install this release for my personal use in Scout:
+https://github.com/rob-foulkrod/mtt-demo-creation-tools/releases/latest/download/scout-skills.zip
 
-- scout/demo-on-demand-SKILL.md → install as skill "demo-on-demand"
-- Common/generate-data/ → install as "generate-data", including companies.csv and names.csv</pre>
+Follow the bundled INSTALL.md. Install all three skill folders at the ZIP root into your configured personal skills location:
+- demo-on-demand
+- generate-data, including companies.csv and names.csv
+- demo-builder-style-guidelines
+
+Ask before replacing existing skills or local edits. Preserve all support files and do not fetch replacements from main. This is a Scout skills package, not a Cowork app registration.
+
+Report the release used, installed skill names, versions, and actual locations. Verify both CSVs and style guidance are readable. Verify discovery in a new conversation if possible; otherwise mark it unverified. Do not claim success after merely downloading or extracting the ZIP. If installation is blocked, explain the limitation and the supported manual steps.</pre>
             </div>
             <ul class="checklist">
               <li>Demo-on-demand skill</li>
-              <li>Generate-data skill</li>
-              <li>Approved companies and names CSV files</li>
+              <li>Generate-data skill and both approved CSVs</li>
+              <li>Shared style-guidelines skill</li>
             </ul>
+            <p class="source-note">If URL installation is unavailable, attach the downloaded ZIP and use the same prompt.</p>
           </article>
         </div>
+        <p class="source-note"><a href="https://github.com/rob-foulkrod/mtt-demo-creation-tools/releases">All releases and checksums</a> · <a href="https://github.com/rob-foulkrod/mtt-demo-creation-tools/blob/main/docs/deployment.md">Release and installation guide</a></p>
       </div>
     </section>
 

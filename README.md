@@ -2,47 +2,53 @@
 
 Public skill repository for MTT demo-on-demand tooling used by Scout and Cowork.
 
-## Installing locally
+## Install a release
 
-Download the raw skill file and any required support files from the canonical URLs below, then place
-them in the local skill folder used by Scout or Cowork. For generate-data, install `SKILL.md`,
-`companies.csv`, and `names.csv` together so name and company validation can run locally.
+Starting with **v0.1.0**, install the complete package for your environment from
+[GitHub Releases](https://github.com/rob-foulkrod/mtt-demo-creation-tools/releases).
+Each ZIP includes demo-on-demand, generate-data with both approved CSVs, shared style guidance,
+LICENSE, and INSTALL.md. Cowork additionally includes its references and an M365 plugin manifest.
 
-For Cowork, install `cowork/demo-builder-SKILL.md` with its `cowork/references/` companion files.
-The creator-only maintenance support skill is only for maintainers updating the skill repository;
-ordinary end users do not need it for demo package creation.
+- [Cowork plugin ZIP](https://github.com/rob-foulkrod/mtt-demo-creation-tools/releases/latest/download/cowork-plugin.zip)
+- [Scout skills ZIP](https://github.com/rob-foulkrod/mtt-demo-creation-tools/releases/latest/download/scout-skills.zip)
+- [Checksums](https://github.com/rob-foulkrod/mtt-demo-creation-tools/releases/latest/download/SHA256SUMS.txt)
 
-Creators maintaining Scout or Cowork should load the shared edit guardrails support skill before
-editing either demo builder so both skills keep equivalent safety, quality, publishing, and
-verification behavior.
-
-Before running either demo builder skill, validate that its local `SKILL.md` exists and that the
-generate-data folder contains all three required files. If a file is missing, download it from the
-full public GitHub URL rather than relying on a relative path.
+Use the prompts below or attach the downloaded ZIP. Installation support must be tested in your
+environment; a download or temporary extraction is not a persistent installation. Cowork targets
+personal sideloading only, subject to tenant policy. See [personal installation](plugins/INSTALL.md)
+for the Agents Toolkit fallback and [the deployment strategy](docs/deployment.md) for release,
+migration, and acceptance-test details. Stable download links work after the first release is published.
 
 ## Prompt: install everything for Scout
 
-Use this prompt in Scout to install or refresh the Scout demo builder and the shared generate-data
-dependency:
-
 ```text
-Install these two skills from https://github.com/rob-foulkrod/mtt-demo-creation-tools
+Download and install this release for my personal use in Scout:
+https://github.com/rob-foulkrod/mtt-demo-creation-tools/releases/latest/download/scout-skills.zip
 
-- scout/demo-on-demand-SKILL.md → install as skill "demo-on-demand"
-- Common/generate-data/ → install as "generate-data", including companies.csv and names.csv
+Follow INSTALL.md. Install all three skill folders at the ZIP root: demo-on-demand,
+generate-data (including companies.csv and names.csv), and demo-builder-style-guidelines.
+Preserve all support files. Ask before replacing existing skills or local edits.
+Use your configured personal skills location; do not fetch replacement files from main.
+Report the release, installed names, versions, and locations, and verify both CSVs are readable.
+Verify discovery in a new conversation if possible; otherwise mark it unverified.
+If installation is blocked, explain the limitation rather than claiming success.
 ```
 
 ## Prompt: install everything for Cowork
 
-Use this prompt in Cowork to install or refresh the Cowork demo builder and the shared generate-data
-dependency:
-
 ```text
-Install these Cowork demo-builder files from https://github.com/rob-foulkrod/mtt-demo-creation-tools
+Download and install this release for my personal use in Cowork:
+https://github.com/rob-foulkrod/mtt-demo-creation-tools/releases/latest/download/cowork-plugin.zip
 
-- cowork/demo-builder-SKILL.md → install as skill "demo-on-demand"
-- cowork/references/ → install as companion references for the Cowork demo builder
-- Common/generate-data/ → install as "generate-data", including companies.csv and names.csv
+Follow INSTALL.md. Use personal plugin installation if supported; otherwise install all three
+skill folders under skills/: demo-on-demand with references/, generate-data with both CSVs,
+and demo-builder-style-guidelines. Ask before replacing existing skills or local edits.
+Preserve companions and do not fetch replacement files from main. Report the release,
+installed names, versions, and locations. Verify both CSVs and all three references are readable.
+State whether you registered the M365 plugin or installed only skill folders.
+Verify discovery in a new conversation if possible; otherwise mark it unverified.
+If blocked, explain the limitation and give the personal sideloading fallback from INSTALL.md.
+Do not deploy to my tenant or claim success after only downloading or extracting the ZIP.
 ```
 
 ## Example Prompt
@@ -95,39 +101,38 @@ flowchart TD
 
 ## How versioning works
 
-Each skill carries its own version in frontmatter `metadata.version` and in its version section:
+The distribution version starts at **v0.1.0**. A pushed `vMAJOR.MINOR.PATCH` tag builds and publishes
+both ZIPs from that commit. The Cowork manifest uses the numeric version without `v` and keeps a
+stable app ID. Each skill retains its independent `metadata.version`:
 
-| Skill | Current version | Canonical source |
+| Packaged skill | Current version | Source |
 | --- | --- | --- |
-| Scout demo builder | `2026.09.04.9` | `https://raw.githubusercontent.com/rob-foulkrod/mtt-demo-creation-tools/main/scout/demo-on-demand-SKILL.md` |
-| Scout creator maintenance | `1.0.2` | `https://raw.githubusercontent.com/rob-foulkrod/mtt-demo-creation-tools/main/scout/demo-on-demand-creator-maintenance-SKILL.md` |
-| Cowork demo builder | `2.3.3` | `https://raw.githubusercontent.com/rob-foulkrod/mtt-demo-creation-tools/main/cowork/demo-builder-SKILL.md` |
-| Cowork creator maintenance | `1.1.2` | `https://raw.githubusercontent.com/rob-foulkrod/mtt-demo-creation-tools/main/cowork/demo-builder-creator-maintenance-SKILL.md` |
-| Shared edit guardrails | `1.0.3` | `https://raw.githubusercontent.com/rob-foulkrod/mtt-demo-creation-tools/main/Common/demo-builder-edit-guardrails-SKILL.md` |
-| Shared style guidelines | `1.0.0` | `https://raw.githubusercontent.com/rob-foulkrod/mtt-demo-creation-tools/main/Common/demo-builder-style-guidelines-SKILL.md` |
-| Generate data | `2026.09.04.6` | `https://raw.githubusercontent.com/rob-foulkrod/mtt-demo-creation-tools/main/Common/generate-data/SKILL.md` |
+| Scout demo builder | `2026.09.11.1` | [Scout runtime](scout/demo-on-demand-SKILL.md) |
+| Cowork demo builder | `2.4.0` | [Cowork runtime](cowork/demo-builder-SKILL.md) |
+| Shared style guidelines | `1.0.0` | [Style guidance](Common/demo-builder-style-guidelines-SKILL.md) |
+| Generate data | `2026.09.11.1` | [Data skill](Common/generate-data/SKILL.md) |
 
-At the start of a run, the installed skill should check its canonical raw GitHub URL. If the public
-copy has a higher version, it should tell the user and offer to download and install the updated
-local copy before continuing. If the check cannot be completed, the skill can continue with the
-installed version while disclosing that the update check was skipped.
+Installed skills do not check main or update themselves. Install a newer complete release explicitly,
+confirm replacements, and avoid duplicate skill registrations. Published release assets are not
+overwritten. See [deployment.md](docs/deployment.md) for build commands and release rules.
 
 ## Generate-data dependency
 
 Both demo builder skills depend on the shared generate-data skill whenever a package needs
-fictional companies, people, email addresses, or sample data. The complete dependency is the full
-folder at:
+fictional companies, people, email addresses, or sample data. Each release bundles SKILL.md,
+companies.csv, and names.csv together. Preserve that folder and verify it is readable through the
+installed skill. Missing or unusable files block named-data generation; the runtime must report an
+incomplete installation instead of silently downloading replacements or inventing names.
 
-`https://github.com/rob-foulkrod/mtt-demo-creation-tools/tree/main/Common/generate-data`
+## Release tooling
 
-Install all three files together:
-
-1. `https://raw.githubusercontent.com/rob-foulkrod/mtt-demo-creation-tools/main/Common/generate-data/SKILL.md`
-2. `https://raw.githubusercontent.com/rob-foulkrod/mtt-demo-creation-tools/main/Common/generate-data/companies.csv`
-3. `https://raw.githubusercontent.com/rob-foulkrod/mtt-demo-creation-tools/main/Common/generate-data/names.csv`
-
-If the generate-data skill or either CSV is missing locally, the invoking demo builder skill should
-offer to download and install the folder before it generates any data.
+- [Release workflow](.github/workflows/release.yml): PR/main candidate builds and tag publication.
+- [Packager](scripts/release-packages.mjs) and [tests](scripts/release-packages.test.mjs): schema,
+    folder/frontmatter, companion/link, archive, icon, and runtime-contract validation.
+- [Publisher](scripts/publish-release.mjs): draft uploads, asset verification, and latest selection.
+- [Cowork manifest](plugins/cowork-manifest.json): stable app identity and developer metadata.
+- [Installation guide](plugins/INSTALL.md), [privacy notice](docs/privacy.md), and
+    [release strategy](docs/deployment.md).
 
 ## Updating skills
 

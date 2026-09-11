@@ -1,5 +1,8 @@
 # Scout skill prompt
 
+Historical authoring example, not a release build input. Tagged packages use the maintained Scout
+runtime and shared dependencies. See the [release strategy](../docs/deployment.md).
+
 ```text
 Create a Scout skill named demo-on-demand.
 

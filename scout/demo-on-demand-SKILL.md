@@ -9,37 +9,27 @@ description: |
   for a private delivery". Do NOT use for confidential customer data or an MTT idea or initiative.
   Do NOT use for a standalone document - use docx instead; a standalone spreadsheet - use xlsx
   instead; or a deck or slide - use pptx instead.
-metadata:
-  version: "2026.09.04.9"
+metadata: {version: "2026.09.11.1"}
 ---
 
 Use this skill when an MTT wants to create a demo-on-demand package for a private delivery. The package must be generated from the user's current requirements and must not copy proprietary or copyrighted material from prior examples.
 
 Skill version:
-Version: 2026.09.04.9
+Version: 2026.09.11.1
 
-Source references:
+Source and bundled dependencies:
 - Public repository: `https://github.com/rob-foulkrod/mtt-demo-creation-tools`
-- Scout skill folder: `https://github.com/rob-foulkrod/mtt-demo-creation-tools/tree/main/scout`
-- Scout source file: `https://raw.githubusercontent.com/rob-foulkrod/mtt-demo-creation-tools/main/scout/demo-on-demand-SKILL.md`
-- Cowork format reference: `https://raw.githubusercontent.com/rob-foulkrod/mtt-demo-creation-tools/main/cowork/demo-builder-SKILL.md`
-- Generate-data skill folder: `https://github.com/rob-foulkrod/mtt-demo-creation-tools/tree/main/Common/generate-data`
-- Generate-data source file: `https://raw.githubusercontent.com/rob-foulkrod/mtt-demo-creation-tools/main/Common/generate-data/SKILL.md`
-- Style guidelines support skill: `https://raw.githubusercontent.com/rob-foulkrod/mtt-demo-creation-tools/main/Common/demo-builder-style-guidelines-SKILL.md`
-- Scout creator maintenance support skill: `https://raw.githubusercontent.com/rob-foulkrod/mtt-demo-creation-tools/main/scout/demo-on-demand-creator-maintenance-SKILL.md`
-- Shared edit guardrails support skill: `https://raw.githubusercontent.com/rob-foulkrod/mtt-demo-creation-tools/main/Common/demo-builder-edit-guardrails-SKILL.md`
+- Data dependency: bundled `generate-data` skill, including `companies.csv` and `names.csv`.
+- Style dependency: bundled `demo-builder-style-guidelines` skill.
 
-Use only the public GitHub repository above as the canonical source for this skill, its Cowork format reference, generate-data dependency, change logs, updates, and documentation. Do not use or reference any personal SharePoint, OneDrive, Teams file, internal catalog, or private folder as a skill source of truth.
-
-At the start of each use, check the Scout source file URL above when internet access is available. If the public GitHub copy has a higher `metadata.version` than this local skill file, tell the user that a newer Scout version is available and prompt them to install it before continuing. If the user approves, download the updated Scout source file from the public GitHub URL, update the local skill, then reload the updated skill instructions before continuing. If the user declines, continue with the local skill and mention that they are using an older version. If the version cannot be checked, continue with the local skill and mention that the version check could not be completed.
-
-Creator-only skill-update, versioning, change-log, local-installation, and repository maintenance instructions live in the Scout creator maintenance support skill. Before editing either Scout or Cowork demo-builder skills or companion files, creators must load the shared edit guardrails support skill so both demo builders keep equivalent safety, quality, publishing, and verification behavior.
+Use the installed skills and companions from this release. Resolve each skill by its registered name
+and host-provided location; do not assume a filesystem root or fetch replacement instructions.
+The public GitHub repository is the source of truth, not any private folder, catalog, or shared file.
 
 Generate-data dependency:
-- Required version: `2026.09.04.4` or newer.
-- Before creating any fictional company, person, email address, or sample data, load the generate-data skill from `https://github.com/rob-foulkrod/mtt-demo-creation-tools/tree/main/Common/generate-data`.
-- If the generate-data skill or its `companies.csv` and `names.csv` support files are not installed locally with this skill, offer to download and install the full folder from `https://github.com/rob-foulkrod/mtt-demo-creation-tools/tree/main/Common/generate-data` before generating data.
-- When downloading directly, use the raw files from `https://raw.githubusercontent.com/rob-foulkrod/mtt-demo-creation-tools/main/Common/generate-data/SKILL.md`, `https://raw.githubusercontent.com/rob-foulkrod/mtt-demo-creation-tools/main/Common/generate-data/companies.csv`, and `https://raw.githubusercontent.com/rob-foulkrod/mtt-demo-creation-tools/main/Common/generate-data/names.csv`.
+- Before creating any fictional company, person, email address, or sample data, load the bundled generate-data skill.
+- Verify that generate-data can access its bundled `companies.csv` and `names.csv` files.
+- If a required skill or companion is missing or unreadable, stop the affected generation and report the incomplete installation. Do not invent replacement data or silently download files.
 
 Core purpose:
 Create a complete, public-safe demo package containing presenter instructions and supporting files for Microsoft technology demos tailored to an industry, role, fictional customer scenario, and realistic business workflow. The workflow must branch based on whether the user wants a public GitHub upload.
@@ -108,7 +98,7 @@ Public-data and privacy rules:
 6. Before creating a public repository or uploading anything visible to others, show the user a concise preview of generated contents and the exact public classification/disclaimer approach. Require explicit approval before public upload.
 
 Always do:
-1. Before creating documents, workbooks, presentations, Pages, diagrams, images, or styled artifacts, load the shared style guidelines support skill from `https://raw.githubusercontent.com/rob-foulkrod/mtt-demo-creation-tools/main/Common/demo-builder-style-guidelines-SKILL.md`. Define one shared package style system before artifact creation and apply it to every related file where the format supports styling. The style system must cover at least three complementary colors, fonts, title treatment, heading hierarchy, table styles, header bands, row banding, borders, column widths, number formats, date formats, chart styling, terminology, and scenario naming across Excel, Word, PowerPoint, Markdown, CSV, JSON, and supporting artifacts.
+1. Before creating documents, workbooks, presentations, Pages, diagrams, images, or styled artifacts, load the bundled `demo-builder-style-guidelines` skill from the same release. Define one shared package style system before artifact creation and apply it to every related file where the format supports styling. The style system must cover at least three complementary colors, fonts, title treatment, heading hierarchy, table styles, header bands, row banding, borders, column widths, number formats, date formats, chart styling, terminology, and scenario naming across Excel, Word, PowerPoint, Markdown, CSV, JSON, and supporting artifacts.
 2. Style every worksheet and secondary sheet deliberately. Every Excel sheet must have a meaningful title, filled header band, consistent font and palette, readable column widths, frozen headers, appropriate typed number/date formats, and charts or summaries when they support the scenario. Review related artifacts side by side before upload or publication to confirm visual and terminology consistency.
 3. Always research what the target data should look like before generating sample records. Use realistic industry fields, identifiers, statuses, date ranges, units of measure, relationships, and data volumes for the selected scenario and country or region.
 4. Use the scenario locale. Format currencies, dates, percentages, phone numbers, postal codes, separators, addresses, and measurements according to the scenario geography. Use `$` for United States currency or the correct symbol/code for other countries or regions. Store currency, dates, percentages, and derived numeric values as typed values where the file format supports them; do not embed formatted money or dates as plain text when Excel or another structured format can store them as typed values.

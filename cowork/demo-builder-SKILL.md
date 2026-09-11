@@ -10,41 +10,28 @@ description: |
   or a GitHub-ready repository. Do NOT use for document, docx, or Word-only deliverables - use docx
   instead. Do NOT use for a plain slide or deck - use the built-in pptx instead. Do
   NOT use for an MTT initiative.
-metadata:
-  version: "2.3.3"
-  cowork-category: "automation"
-  cowork-icon: "Rocket"
+metadata: {version: "2.4.0", cowork-category: "automation", cowork-icon: "Rocket"}
 ---
 
-## Version, Canonical Source, and References
+## Version and Bundled References
 
-- **Current version:** `2.3.3`
+- **Current version:** `2.4.0`
 - **Public repository:** `https://github.com/rob-foulkrod/mtt-demo-creation-tools`
-- **Cowork skill folder:** `https://github.com/rob-foulkrod/mtt-demo-creation-tools/tree/main/cowork`
-- **Canonical source file:** `https://raw.githubusercontent.com/rob-foulkrod/mtt-demo-creation-tools/main/cowork/demo-builder-SKILL.md`
-- **Generate-data skill folder:** `https://github.com/rob-foulkrod/mtt-demo-creation-tools/tree/main/Common/generate-data`
-- **Generate-data source file:** `https://raw.githubusercontent.com/rob-foulkrod/mtt-demo-creation-tools/main/Common/generate-data/SKILL.md`
-- **Style guidelines support skill:** `https://raw.githubusercontent.com/rob-foulkrod/mtt-demo-creation-tools/main/Common/demo-builder-style-guidelines-SKILL.md`
+- **Data dependency:** bundled `generate-data` skill, including `companies.csv` and `names.csv`.
+- **Style dependency:** bundled `demo-builder-style-guidelines` skill.
 - **Quality standards reference:** [references/QUALITY-STANDARDS.md](references/QUALITY-STANDARDS.md)
 - **Presenter guide reference:** [references/PRESENTER-GUIDE.md](references/PRESENTER-GUIDE.md)
 - **Technology guidance reference:** [references/TECHNOLOGY-GUIDANCE.md](references/TECHNOLOGY-GUIDANCE.md)
-- **Creator-only maintenance support skill:** `https://raw.githubusercontent.com/rob-foulkrod/mtt-demo-creation-tools/main/cowork/demo-builder-creator-maintenance-SKILL.md`
-- **Shared edit guardrails support skill:** `https://raw.githubusercontent.com/rob-foulkrod/mtt-demo-creation-tools/main/Common/demo-builder-edit-guardrails-SKILL.md`
 
-Before running, compare the canonical GitHub file's `metadata.version` with this copy. If it is
-newer, use the canonical instructions and disclose that a newer version was found. Do not overwrite
-the installed skill unless asked. If unavailable, continue and disclose the gap.
-
-Creator-only update, install, change-log, and repository maintenance guidance lives in the creator
-maintenance support skill and must not surface in ordinary demo creation. Before editing Scout or
-Cowork demo-builder files, load the shared edit guardrails support skill.
+Use the installed skills and companions from this release. Resolve each skill by its registered
+name and host-provided location; do not assume a filesystem root or fetch replacement instructions.
 
 ## Generate-data Dependency
 
-- **Required version:** `2026.09.04.4` or newer.
 - Load generate-data before creating fictional companies, people, email addresses, or sample data.
-- If generate-data or its `companies.csv` and `names.csv` files are missing, offer to install the
-  full folder from GitHub before generating data.
+- Verify that generate-data can access its bundled `companies.csv` and `names.csv` files.
+- If a required skill or companion is missing or unreadable, stop the affected generation and
+   report the incomplete installation. Do not invent replacement data or silently download files.
 
 ## Overview
 
@@ -223,8 +210,8 @@ location, and keep the `demo/` folder in the selected destination.
 Create `demo/DEMO-INSTRUCTIONS.docx` through the **docx** skill and artifact tools.
 
 Load [references/PRESENTER-GUIDE.md](references/PRESENTER-GUIDE.md) before creating the guide.
-Use [the bundled Word guide](references/DEMO-INSTRUCTIONS-REFERENCE.docx) only as a visual,
-structural, and content-density reference; generate fresh scenario-specific content. The guide must
+Use that specification as the visual, structural, and content-density reference; generate fresh
+scenario-specific content. The guide must
 normally be one or two clean pages with real heading styles, exact files, numbered shaded prompt
 boxes, acceptance criteria, and next handoffs. Do not add cover pages, tables of contents, package
 inventories, long talk tracks, repeated disclaimers, or overview content unless explicitly requested.
@@ -312,6 +299,10 @@ and verified final uploads.
 - **Destination required:** Resolve the exact OneDrive or SharePoint folder before uploading.
 - **Approval before upload:** Preview the complete Page and folder structure, then obtain explicit
   approval before writing to the shared destination.
+- **No silent overwrite:** If a destination file or package already exists, identify it and obtain
+   explicit direction before replacing or reusing it.
+- **Destructive actions require named confirmation:** Never delete a package, file, or folder
+   without explicit confirmation naming the exact target.
 - **No secrets:** Never create or store credentials, tokens, tenant IDs, or private URLs.
 - **No fabricated links:** Use only Page, folder, and file links returned by tools.
 - **No placeholder deliverables:** Final artifacts must contain substantive demo content or
